@@ -33,23 +33,28 @@
                 
                 <p>Our core research areas include optimized signal processing and analysis of biometrics for identifying biometric signatures and building robust predictive models of emotional states. We collaborate with leading universities and maintain partnerships with industry leaders to discover the "Biological Decision-Makers" behind each of us.</p>
                 
-<p>Join us as we share about our exploration in state-of-the-art research in the domain.</p>
+                <p>Join us as we share about our exploration in state-of-the-art research in the domain.</p>
             </div>
         </div>
 
-        <!-- Blog Page -->
+        <!-- Blog Page (Research Updates) -->
         <div id="blog" class="page-section">
             <div class="blog-header">
                 <h1>Research Updates</h1>
             </div>
             <div class="blog-grid">
-                <div class="blog-card" onclick="openModal('modal1')">
+                <div class="blog-card" onclick="showResearchPage('neural-architecture')">
                     <h3 class="blog-title">Neural Architecture Search for Industrial Applications</h3>
                     <p class="blog-excerpt">Our team has been developing automated neural architecture search algorithms specifically designed for industrial deployment. These systems can optimize network designs for specific hardware constraints while maintaining performance...</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">neural-nets</span>
+                        <span class="blog-tag">optimization</span>
+                        <span class="blog-tag">industrial</span>
+                    </div>
                     <div class="blog-date">May 15, 2025</div>
                 </div>
 
-                <div class="blog-card featured" onclick="openModal('modal2')">
+                <div class="blog-card" onclick="showResearchPage('autonomous-systems')">
                     <h3 class="blog-title">Breakthrough in Autonomous System Coordination</h3>
                     <p class="blog-excerpt">Multi-agent coordination has reached a new milestone with our latest algorithms. By implementing distributed consensus mechanisms, we've achieved unprecedented coordination efficiency in swarm robotics applications...</p>
                     <div class="blog-tags">
@@ -60,7 +65,7 @@
                     <div class="blog-date">April 28, 2025</div>
                 </div>
 
-                <div class="blog-card" onclick="openModal('modal3')">
+                <div class="blog-card" onclick="showResearchPage('edge-computing')">
                     <h3 class="blog-title">Edge Computing Integration with Deep Learning Models</h3>
                     <p class="blog-excerpt">Deploying complex neural networks on edge devices presents unique challenges. Our recent work focuses on model compression techniques and hardware-aware optimization strategies that maintain accuracy while reducing computational overhead...</p>
                     <div class="blog-tags">
@@ -72,19 +77,29 @@
                     <div class="blog-date">March 20, 2025</div>
                 </div>
 
-                <div class="blog-card" onclick="openModal('modal4')">
+                <div class="blog-card" onclick="showResearchPage('predictive-maintenance')">
                     <h3 class="blog-title">Predictive Maintenance Using Computer Vision</h3>
                     <p class="blog-excerpt">Industrial equipment maintenance has been revolutionized through advanced computer vision systems. Our latest models can predict component failures weeks in advance by analyzing subtle visual patterns invisible to human operators...</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">computer-vision</span>
+                        <span class="blog-tag">maintenance</span>
+                        <span class="blog-tag">prediction</span>
+                    </div>
                     <div class="blog-date">February 10, 2025</div>
                 </div>
 
-                <div class="blog-card" onclick="openModal('modal5')">
+                <div class="blog-card" onclick="showResearchPage('language-models')">
                     <h3 class="blog-title">Real-time Language Model Optimization</h3>
                     <p class="blog-excerpt">Large language models require significant computational resources for real-time applications. We've developed novel compression and inference acceleration techniques that reduce latency by 70% while preserving output quality...</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">nlp</span>
+                        <span class="blog-tag">optimization</span>
+                        <span class="blog-tag">real-time</span>
+                    </div>
                     <div class="blog-date">January 25, 2025</div>
                 </div>
 
-                <div class="blog-card" onclick="openModal('modal6')">
+                <div class="blog-card" onclick="showResearchPage('reinforcement-learning')">
                     <h3 class="blog-title">Reinforcement Learning in Manufacturing Optimization</h3>
                     <p class="blog-excerpt">Production line efficiency has improved dramatically through reinforcement learning algorithms. Our systems continuously adapt to changing conditions, optimizing throughput while minimizing waste and energy consumption...</p>
                     <div class="blog-tags">
@@ -97,119 +112,144 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Blog Modals -->
-    <div id="modal1" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Neural Architecture Search for Industrial Applications</h2>
-                <div class="modal-meta">May 15, 2025 • AI-driller Team</div>
-            </div>
-            <div class="modal-content">
-                <p>Our team has been developing automated neural architecture search algorithms specifically designed for industrial deployment. These systems can optimize network designs for specific hardware constraints while maintaining performance standards required for production environments.</p>
-                
-                <p>The challenge in industrial AI deployment lies in balancing computational efficiency with accuracy requirements. Traditional neural networks often over-engineer solutions for simple tasks or under-perform in complex scenarios. Our NAS approach dynamically adjusts architecture complexity based on the specific requirements of each industrial application.</p>
-                
-                <p>Key innovations include hardware-aware search spaces that consider memory limitations, power consumption, and inference speed requirements. The system has been tested across manufacturing, logistics, and quality control applications with consistent performance improvements.</p>
-                
-                <p>Initial deployment results show 40% reduction in computational overhead while maintaining 98% accuracy compared to manually designed networks. This breakthrough enables AI deployment in resource-constrained industrial environments previously thought unsuitable for deep learning applications.</p>
+        <!-- Individual Research Pages -->
+        <div id="neural-architecture" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Neural Architecture Search for Industrial Applications</h1>
+                    <div class="research-meta">Published: May 15, 2025 | Research Team: AI-driller Labs</div>
+                </div>
+                <div class="research-content">
+                    <p>Our team has been developing automated neural architecture search algorithms specifically designed for industrial deployment. These systems can optimize network designs for specific hardware constraints while maintaining performance standards required for production environments.</p>
+                    
+                    <h2>Key Innovations</h2>
+                    <p>The breakthrough lies in our novel approach to constraint-aware architecture search. Traditional NAS methods focus primarily on accuracy optimization, but industrial applications require careful consideration of memory usage, inference time, and power consumption.</p>
+                    
+                    <h3>Hardware-Aware Optimization</h3>
+                    <p>Our algorithms incorporate hardware specifications directly into the search process, ensuring that discovered architectures are not only accurate but also practical for deployment on specific industrial hardware platforms.</p>
+                    
+                    <h3>Multi-Objective Optimization</h3>
+                    <p>We've implemented a sophisticated multi-objective optimization framework that balances accuracy, efficiency, and robustness. This approach ensures that the resulting neural networks meet the stringent requirements of industrial applications.</p>
+                    
+                    <div class="quote">
+                        "The future of industrial AI lies not just in creating powerful models, but in creating models that can actually be deployed and maintained in real-world environments."
+                    </div>
+                    
+                    <h2>Results and Impact</h2>
+                    <p>Our preliminary results show a 40% reduction in computational overhead while maintaining 98% of the original model accuracy. These improvements translate directly to cost savings and improved efficiency in industrial deployments.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal2" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Breakthrough in Autonomous System Coordination</h2>
-                <div class="modal-meta">April 28, 2025 • Multi-Agent Systems</div>
-            </div>
-            <div class="modal-content">
-                <p>Multi-agent coordination has reached a new milestone with our latest algorithms. By implementing distributed consensus mechanisms, we've achieved unprecedented coordination efficiency in swarm robotics applications.</p>
-                
-                <p>The breakthrough came from developing a novel communication protocol that reduces message overhead by 60% while maintaining system-wide coherence. Each agent operates semi-autonomously while contributing to collective decision-making processes through encrypted, compressed data packets.</p>
-                
-                <p>Applications in warehouse automation have shown remarkable results. Fleets of autonomous vehicles can now coordinate package sorting and delivery with minimal central oversight. The system adapts in real-time to equipment failures, route changes, and varying workload demands.</p>
-                
-                <p>Future applications include disaster response robotics, autonomous drone swarms for environmental monitoring, and coordinated manufacturing systems. The scalability of our approach means coordination efficiency actually improves with larger swarm sizes, contrary to traditional centralized systems.</p>
+        <div id="autonomous-systems" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Breakthrough in Autonomous System Coordination</h1>
+                    <div class="research-meta">Published: April 28, 2025 | Research Team: Multi-Agent Systems</div>
+                </div>
+                <div class="research-content">
+                    <p>Multi-agent coordination has reached a new milestone with our latest algorithms. By implementing distributed consensus mechanisms, we've achieved unprecedented coordination efficiency in swarm robotics applications.</p>
+                    
+                    <h2>Distributed Consensus Framework</h2>
+                    <p>The breakthrough came from developing a novel communication protocol that reduces message overhead by 60% while maintaining system-wide coherence. Each agent operates semi-autonomously while contributing to collective decision-making processes through encrypted, compressed data packets.</p>
+                    
+                    <h3>Scalability Improvements</h3>
+                    <p>Applications in warehouse automation have shown remarkable results. Fleets of autonomous vehicles can now coordinate package sorting and delivery with minimal central oversight. The system adapts in real-time to equipment failures, route changes, and varying workload demands.</p>
+                    
+                    <h2>Real-World Applications</h2>
+                    <p>Future applications include disaster response robotics, autonomous drone swarms for environmental monitoring, and coordinated manufacturing systems. The scalability of our approach means coordination efficiency actually improves with larger swarm sizes, contrary to traditional centralized systems.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal3" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Edge Computing Integration with Deep Learning Models</h2>
-                <div class="modal-meta">March 20, 2025 • Edge AI Research</div>
-            </div>
-            <div class="modal-content">
-                <p>Deploying complex neural networks on edge devices presents unique challenges. Our recent work focuses on model compression techniques and hardware-aware optimization strategies that maintain accuracy while reducing computational overhead.</p>
-                
-                <p>Traditional model compression often sacrifices accuracy for efficiency. Our approach uses dynamic pruning combined with knowledge distillation to create models that adapt their complexity based on available computational resources and task requirements.</p>
-                
-                <p>The system monitors hardware performance in real-time, automatically adjusting model parameters when thermal throttling occurs or battery levels drop. This ensures consistent performance across varying operational conditions without manual intervention.</p>
-                
-                <p>Field tests on industrial IoT devices show 75% reduction in power consumption while maintaining inference accuracy above 95%. The technology enables AI capabilities in previously unsuitable environments including remote monitoring stations, mobile robotics, and battery-powered sensors.</p>
+        <div id="edge-computing" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Edge Computing Integration with Deep Learning Models</h1>
+                    <div class="research-meta">Published: March 20, 2025 | Research Team: Edge AI Research</div>
+                </div>
+                <div class="research-content">
+                    <p>Deploying complex neural networks on edge devices presents unique challenges. Our recent work focuses on model compression techniques and hardware-aware optimization strategies that maintain accuracy while reducing computational overhead.</p>
+                    
+                    <h2>Model Compression Techniques</h2>
+                    <p>Traditional model compression often sacrifices accuracy for efficiency. Our approach uses dynamic pruning combined with knowledge distillation to create models that adapt their complexity based on available computational resources and task requirements.</p>
+                    
+                    <h3>Dynamic Adaptation</h3>
+                    <p>The system monitors hardware performance in real-time, automatically adjusting model parameters when thermal throttling occurs or battery levels drop. This ensures consistent performance across varying operational conditions without manual intervention.</p>
+                    
+                    <h2>Energy Efficiency</h2>
+                    <p>Field tests on industrial IoT devices show 75% reduction in power consumption while maintaining inference accuracy above 95%. The technology enables AI capabilities in previously unsuitable environments including remote monitoring stations, mobile robotics, and battery-powered sensors.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal4" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Predictive Maintenance Using Computer Vision</h2>
-                <div class="modal-meta">February 10, 2025 • Computer Vision Team</div>
-            </div>
-            <div class="modal-content">
-                <p>Industrial equipment maintenance has been revolutionized through advanced computer vision systems. Our latest models can predict component failures weeks in advance by analyzing subtle visual patterns invisible to human operators.</p>
-                
-                <p>The system combines high-resolution imaging with thermal sensors to create comprehensive equipment health profiles. Machine learning algorithms trained on thousands of failure cases can identify microscopic wear patterns, alignment issues, and material degradation before they cause operational disruptions.</p>
-                
-                <p>Implementation across three manufacturing facilities has prevented 23 critical failures over six months, saving an estimated $2.3 million in downtime costs. The system operates continuously, requiring no human oversight while maintaining detailed maintenance schedules and component health reports.</p>
-                
-                <p>Future enhancements include acoustic analysis integration and predictive modeling for entire production lines. The goal is comprehensive facility health monitoring that optimizes maintenance schedules while minimizing unnecessary interventions.</p>
+        <div id="predictive-maintenance" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Predictive Maintenance Using Computer Vision</h1>
+                    <div class="research-meta">Published: February 10, 2025 | Research Team: Computer Vision Team</div>
+                </div>
+                <div class="research-content">
+                    <p>Industrial equipment maintenance has been revolutionized through advanced computer vision systems. Our latest models can predict component failures weeks in advance by analyzing subtle visual patterns invisible to human operators.</p>
+                    
+                    <h2>Multi-Modal Sensor Integration</h2>
+                    <p>The system combines high-resolution imaging with thermal sensors to create comprehensive equipment health profiles. Machine learning algorithms trained on thousands of failure cases can identify microscopic wear patterns, alignment issues, and material degradation before they cause operational disruptions.</p>
+                    
+                    <h3>Anomaly Detection</h3>
+                    <p>Implementation across three manufacturing facilities has prevented 23 critical failures over six months, saving an estimated $2.3 million in downtime costs. The system operates continuously, requiring no human oversight while maintaining detailed maintenance schedules and component health reports.</p>
+                    
+                    <h2>Cost Savings</h2>
+                    <p>Future enhancements include acoustic analysis integration and predictive modeling for entire production lines. The goal is comprehensive facility health monitoring that optimizes maintenance schedules while minimizing unnecessary interventions.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal5" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Real-time Language Model Optimization</h2>
-                <div class="modal-meta">January 25, 2025 • Natural Language Processing</div>
-            </div>
-            <div class="modal-content">
-                <p>Large language models require significant computational resources for real-time applications. We've developed novel compression and inference acceleration techniques that reduce latency by 70% while preserving output quality.</p>
-                
-                <p>The optimization framework combines dynamic quantization with speculative decoding to accelerate text generation without quality loss. Attention mechanisms are pruned based on context relevance, eliminating redundant computations while maintaining coherent outputs.</p>
-                
-                <p>Industrial applications include real-time documentation generation, automated customer service responses, and technical report summarization. The system processes natural language queries and generates responses within 200 milliseconds, suitable for interactive applications.</p>
-                
-                <p>Benchmark tests show our optimized models match full-scale language model performance on technical tasks while requiring 80% less computational power. This enables deployment of sophisticated language capabilities on standard enterprise hardware without specialized AI accelerators.</p>
+        <div id="language-models" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Real-time Language Model Optimization</h1>
+                    <div class="research-meta">Published: January 25, 2025 | Research Team: Natural Language Processing</div>
+                </div>
+                <div class="research-content">
+                    <p>Large language models require significant computational resources for real-time applications. We've developed novel compression and inference acceleration techniques that reduce latency by 70% while preserving output quality.</p>
+                    
+                    <h2>Attention Mechanism Optimization</h2>
+                    <p>The optimization framework combines dynamic quantization with speculative decoding to accelerate text generation without quality loss. Attention mechanisms are pruned based on context relevance, eliminating redundant computations while maintaining coherent outputs.</p>
+                    
+                    <h3>Context-Aware Compression</h3>
+                    <p>Industrial applications include real-time documentation generation, automated customer service responses, and technical report summarization. The system processes natural language queries and generates responses within 200 milliseconds, suitable for interactive applications.</p>
+                    
+                    <h2>Performance Results</h2>
+                    <p>Benchmark tests show our optimized models match full-scale language model performance on technical tasks while requiring 80% less computational power. This enables deployment of sophisticated language capabilities on standard enterprise hardware without specialized AI accelerators.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal6" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Reinforcement Learning in Manufacturing Optimization</h2>
-                <div class="modal-meta">December 8, 2024 • Manufacturing AI</div>
-            </div>
-            <div class="modal-content">
-                <p>Production line efficiency has improved dramatically through reinforcement learning algorithms. Our systems continuously adapt to changing conditions, optimizing throughput while minimizing waste and energy consumption.</p>
-                
-                <p>The reinforcement learning agent monitors hundreds of production parameters simultaneously, learning optimal adjustments for varying material properties, environmental conditions, and quality requirements. The system operates without predefined rules, discovering efficient production strategies through continuous experimentation.</p>
-                
-                <p>Implementation results show 15% increase in production throughput, 22% reduction in material waste, and 18% decrease in energy consumption. The system adapts to new product specifications within hours rather than the weeks required for traditional optimization approaches.</p>
-                
-                <p>The technology scales across different manufacturing contexts, from semiconductor fabrication to automotive assembly. Each deployment learns from local conditions while contributing to shared knowledge that improves performance across all installations.</p>
+        <div id="reinforcement-learning" class="page-section">
+            <div class="research-page">
+                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+                <div class="research-header">
+                    <h1>Reinforcement Learning in Manufacturing Optimization</h1>
+                    <div class="research-meta">Published: December 8, 2024 | Research Team: Manufacturing AI</div>
+                </div>
+                <div class="research-content">
+                    <p>Production line efficiency has improved dramatically through reinforcement learning algorithms. Our systems continuously adapt to changing conditions, optimizing throughput while minimizing waste and energy consumption.</p>
+                    
+                    <h2>Meta-Learning Framework</h2>
+                    <p>The reinforcement learning agent monitors hundreds of production parameters simultaneously, learning optimal adjustments for varying material properties, environmental conditions, and quality requirements. The system operates without predefined rules, discovering efficient production strategies through continuous experimentation.</p>
+                    
+                    <h3>Robust Policy Learning</h3>
+                    <p>Implementation results show 15% increase in production throughput, 22% reduction in material waste, and 18% decrease in energy consumption. The system adapts to new product specifications within hours rather than the weeks required for traditional optimization approaches.</p>
+                    
+                    <h2>Industrial Applications</h2>
+                    <p>The technology scales across different manufacturing contexts, from semiconductor fabrication to automotive assembly. Each deployment learns from local conditions while contributing to shared knowledge that improves performance across all installations.</p>
+                </div>
             </div>
         </div>
     </div>
