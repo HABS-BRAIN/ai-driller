@@ -16,48 +16,30 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetPage).classList.add('active');
         });
     });
-
-    // Modal functionality
-    function openModal(modalId) {
-        document.getElementById(modalId).style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    // Make openModal available globally for onclick handlers
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-
-    // Close modal when clicking the X button
-    document.querySelectorAll('.close-modal').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            const modal = this.closest('.blog-modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    });
-
-    // Close modal when clicking outside the modal content
-    document.querySelectorAll('.blog-modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.blog-modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-            document.body.style.overflow = 'auto';
-        }
-    });
 });
+
+// Function to show individual research pages
+function showResearchPage(pageId) {
+    // Hide all page sections
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    
+    // Show the selected research page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Update nav to show blog as active (since research pages are part of blog section)
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector('[data-page="blog"]').classList.add('active');
+}
+
+// Function to show main pages (about, blog)
+function showPage(pageId) {
+    // Hide all page sections
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    
+    // Show the selected page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Update navigation
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+}
