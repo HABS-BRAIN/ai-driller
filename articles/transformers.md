@@ -1,4 +1,5 @@
-# Attention Models Application in EEG Signal Processing
+# Attention Models Application\ 
+in EEG Signal Processing
 
 **Author:** Arthur de Leusse\
 **Date:** June 4th 2025
@@ -75,9 +76,9 @@ The limitation of this approach arises from the FFT assumption that the signal i
 
 Similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
 
-```
-A = softmax(QK^T / √d_k)V
-```
+
+$A = softmax(QK^T / √d_k)V$
+
 
 Where:
 
@@ -91,13 +92,13 @@ Where:
 
 TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **Xₜ₊₁**, emotion recognition, authentication, ...). The computations inside one encoder layer are exactly the two equations shown below:
 
-```
-h^t_l = LN(MHA(z^t_{l-1}) + z^t_{l-1}),    l = 1,2,...,L
-```
 
-```
-z^t_l = LN(MLP(h^t_l) + h^t_l),    l = 1,2,...,L
-```
+$h^t_l = LN(MHA(z^t_{l-1}) + z^t_{l-1}),    l = 1,2,...,L$
+
+
+
+$z^t_l = LN(MLP(h^t_l) + h^t_l),    l = 1,2,...,L$
+
 
 **Symbol Legend:**
 
@@ -118,13 +119,13 @@ z^t_l = LN(MLP(h^t_l) + h^t_l),    l = 1,2,...,L
 
 The STE architecture is nearly identical to the TTE, but it focuses on dependencies between channels instead of between time steps. Each EEG channel is assigned an index, which is embedded (via sinusoidal functions) and added to the token representations to form a spatial positional encoding. The resulting sequence is then processed by the same stack of **L** encoder layers (MHA → MLP). A single spatial layer is described by:
 
-```
+$
 h^s_l = LN(MHA(z^s_{l-1}) + z^s_{l-1}),    l = 1,2,...,L
-```
+$
 
-```
+$
 z^s_l = LN(MLP(h^s_l) + h^s_l),    l = 1,2,...,L
-```
+$
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head, in this case we talk about a ETST architecture.
 
