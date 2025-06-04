@@ -1,5 +1,4 @@
-# Attention Models Application\ 
-in EEG Signal Processing
+# Attention Models Application in EEG Signal Processing
 
 **Author:** Arthur de Leusse\
 **Date:** June 4th 2025
