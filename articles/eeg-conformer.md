@@ -143,7 +143,7 @@ No method is perfect, and the EEG Conformer has its challenges:
 
 ---
 
-## Conclusion: A New Chapter in Brain-Computer Communication
+## Conclusion
 
 The EEG Conformer appears to be a promising approach, achieving something neither CNNs nor Transformers could accomplish alone. However, several challenges remain for practical implementation: acquiring sufficient labeled data for training, establishing robust preprocessing protocols for effectively utilizing this architecture, and adapting the model to real-world scenarios where users have limited exposure to stimuli with few repetitions. Perhaps most critically, at HABS we face the challenge of developing experimental protocols that are more ecologically valid—closer to natural, everyday conditions—while still maintaining the controlled conditions necessary to achieve results comparable to those reported in state-of-the-art papers using ideal laboratory datasets.
 
