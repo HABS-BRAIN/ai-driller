@@ -97,8 +97,6 @@ The fact that the model's attention maps correspond to known brain anatomy gives
 
 ## Implementation: Getting Your Hands Dirty
 
-### Quick Start for Researchers
-
 The beauty of the EEG Conformer is that the researchers made everything open source. Here's how to get started:
 
 ```python
@@ -122,20 +120,13 @@ predictions = model.predict(X_test)
 
 ### Preprocessing: The Foundation Matters
 
-Before feeding data to the model, proper preprocessing is crucial:
+Before feeding data to the model, proper preprocessing is necessary:
 
 1. **Bandpass filtering**: Remove electrical noise and irrelevant frequencies (4-38 Hz typically)
 2. **Normalization**: Standardize signal amplitudes across channels
 3. **Artifact removal**: Clean out eye blinks, muscle tension, and other contamination
 
 The model is relatively forgiving, but good preprocessing can make the difference between mediocre and excellent results.
-
-### Computational Requirements
-
-- **Training time**: ~9 minutes per subject (much faster than expected)
-- **Parameters**: ~50,000 (compact but powerful)
-- **Memory**: ~387 MB during training
-- **Inference**: 35ms per classification (fast enough for real-time use)
 
 ---
 
