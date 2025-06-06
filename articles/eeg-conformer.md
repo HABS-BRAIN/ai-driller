@@ -84,7 +84,7 @@ This consistency matters because brain signals are highly individual—what work
 
 ## Making the Invisible Visible: Interpretability
 
-Perhaps the most exciting feature of the EEG Conformer is its ability to show us which brain regions it's "paying attention to" when making decisions. The researchers developed a visualization technique called "Class Activation Topography" that projects the model's attention onto a map of the brain.
+Perhaps the most interesting feature of the EEG Conformer is its ability to show us which brain regions it's "paying attention to" when making decisions. The researchers developed a visualization technique called "Class Activation Topography" that projects the model's attention onto a map of the brain.
 
 **Key findings for motor imagery tasks:**
 - **Frontal regions** (areas like Fp1, F1): Important for motor planning
