@@ -51,6 +51,8 @@ Finally, each word's new representation is computed as a weighted sum of the val
 
 The idea is to have multiple sets of weight matrices for the queries, keys, and values, where each set focuses on a different aspect of a word. Then, the outputs of all the heads are concatenated and passed through a final linear layer to mix the information.
 
+----
+
 ## Link with EEG Analysis
 
 Given an input matrix **X ∈ ℝ^(T×C)** where **C** represent our channel and **T** represent our total number of time points both outputted by our EEG receptor, our predictive objective is to find **X_(t+1)**.
@@ -83,15 +85,15 @@ Where:
 
 ### Architecture Overview
 
-The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X_(t+1)**, emotion recognition, authentication, ...).
+The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X<sub>t+1</sub>**, emotion recognition, authentication, ...).
 
 ### Mathematical Formulation
 
 The computations inside one encoder layer are exactly the two equations shown below:
 
-$$h^{t}_{l} = \text{LN}\left(\text{MHA}(z^{t}_{l-1}) + z^{t}_{l-1}\right), \quad l = 1,2,\ldots,L$$
+**h<sup>t</sup><sub>l</sub> = LN(MHA(z<sup>t</sup><sub>l-1</sub>) + z<sup>t</sup><sub>l-1</sub>), for l = 1,2,...,L**
 
-$$z^{t}_{l} = \text{LN}\left(\text{MLP}(h^{t}_{l}) + h^{t}_{l}\right), \quad l = 1,2,\ldots,L$$
+**z<sup>t</sup><sub>l</sub> = LN(MLP(h<sup>t</sup><sub>l</sub>) + h<sup>t</sup><sub>l</sub>), for l = 1,2,...,L**
 
 ### Symbol Legend
 
@@ -99,10 +101,10 @@ $$z^{t}_{l} = \text{LN}\left(\text{MLP}(h^{t}_{l}) + h^{t}_{l}\right), \quad l =
 |--------|----------------|
 | l | Index of the current layer (1 ≤ l ≤ L) |
 | L | Total number of Transformer layers in the temporal branch |
-| ^t | Superscript indicating the *temporal* path of ETST |
-| z^t_(l-1) | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
-| h^t_l | Intermediate representation *after* MHA and *before* the MLP in layer l |
-| z^t_l | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
+| <sup>t</sup> | Superscript indicating the *temporal* path of ETST |
+| z<sup>t</sup><sub>l-1</sub> | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
+| h<sup>t</sup><sub>l</sub> | Intermediate representation *after* MHA and *before* the MLP in layer l |
+| z<sup>t</sup><sub>l</sub> | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
 | **MHA** | *Multi-Head Self-Attention* (context mixing across time steps) |
 | **MLP** | Position-wise feed-forward network (typically Linear → GELU/ReLU → Linear) |
 | **LN** | *Layer Normalization* applied after the residual addition (post-norm scheme) |
@@ -110,12 +112,12 @@ $$z^{t}_{l} = \text{LN}\left(\text{MLP}(h^{t}_{l}) + h^{t}_{l}\right), \quad l =
 
 ## Spatial Transformer Encoder (STE)
 
-The STE architecture is nearly identical to the TTE, but it focuses on dependencies *between channels* instead of between time steps. Each EEG channel is assigned an index, which is embedded (via sinusoidal functions) and added to the token representations to form a spatial positional encoding. The resulting sequence is then processed by the same stack of $L$ encoder layers (MHA → MLP).
+The STE architecture is nearly identical to the TTE, but it focuses on dependencies *between channels* instead of between time steps. Each EEG channel is assigned an index, which is embedded (via sinusoidal functions) and added to the token representations to form a spatial positional encoding. The resulting sequence is then processed by the same stack of L encoder layers (MHA → MLP).
 
 A single spatial layer is described by:
 
-$$h^{s}_{l} = \text{LN}\left(\text{MHA}(z^{s}_{l-1}) + z^{s}_{l-1}\right), \quad l = 1,2,\ldots,L$$
+**h<sup>s</sup><sub>l</sub> = LN(MHA(z<sup>s</sup><sub>l-1</sub>) + z<sup>s</sup><sub>l-1</sub>), for l = 1,2,...,L**
 
-$$z^{s}_{l} = \text{LN}\left(\text{MLP}(h^{s}_{l}) + h^{s}_{l}\right), \quad l = 1,2,\ldots,L$$
+**z<sup>s</sup><sub>l</sub> = LN(MLP(h<sup>s</sup><sub>l</sub>) + h<sup>s</sup><sub>l</sub>), for l = 1,2,...,L**
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
