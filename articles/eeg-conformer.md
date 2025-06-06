@@ -13,3 +13,18 @@ The Three-Stage Pipeline:
 * CNN Module: First, convolutional layers scan through the EEG data identifying local patterns in both time and across brain regions. Think of it as recognizing individual "words" in the brain's language.
 * Transformer Module: Next, the transformer takes these local patterns and figures out how they relate to each other over longer time periods. It's like understanding how those "words" form meaningful "sentences" of neural activity.
 * Classifier: Finally, a simple classifier takes all this rich information and makes the final call about what the brain signal represents.
+
+## Convolution Module Details:
+Temporal convolution: learns patterns within each brain region
+````
+temporal_conv = Conv1D(channels=22, filters=40, kernel_size=64)
+````
+
+Spatial convolution: learns how brain regions interact
+````
+spatial_conv = DepthwiseConv1D(groups=40)
+````
+
+The temporal convolution is like having 40 different "detectors," each tuned to find specific patterns in the timing of brain activity. The spatial convolution then asks: "When this pattern appears in one brain region, what happens in the others?"
+Self-Attention:
+Through self-attention, the transformer creates a dynamic map where each point in the EEG signal can evaluate its relationship with every other point, assigning importance weights based on relevance. This comprehensive cross-referencing enables the detection of subtle long-term dependencies that unfold over extended time periods.
