@@ -39,7 +39,9 @@ For each vector **x̄ᵢ**, we construct three new vectors:
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
-$$Q = XW^Q, \quad K = XW^K, \quad V = XW^V$$
+```
+Q = XW^Q,    K = XW^K,    V = XW^V
+```
 
 Here, **W^Q**, **W^K**, **W^V** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
 
@@ -53,7 +55,7 @@ The idea is to have multiple sets of weight matrices for the queries, keys, and 
 
 ## Link with EEG Analysis
 
-Given an input matrix **X ∈ ℝ^(T×C)** where **C** represent our channel and **T** represent our total number of time points both outputted by our EEG receptor, our predictive objective is to find **X_(t+1)**.
+Given an input matrix **X ∈ ℝ^(T×C)** where **C** represents our channels and **T** represents our total number of time points both outputted by our EEG receptor, our predictive objective is to find **X_(t+1)**.
 
 ### Tokenization
 
@@ -71,11 +73,13 @@ The limitation of this approach arises from the FFT assumption that the signal i
 
 * **Self Attention with EEG**: similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
 
-$$A = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+```
+A = softmax(QK^T / √d_k) × V
+```
 
 Where:
 
-- **Query vector q̄ᵢ:** Contains the information about which other epoch/token carries informations which are relevant for the current epoch/token **x̄ᵢ**.
+- **Query vector q̄ᵢ:** Contains the information about which other epoch/token carries information which is relevant for the current epoch/token **x̄ᵢ**.
 - **Key vector k̄ᵢ:** Functions like a tag. It holds the signature of the sample.
 - **Value vector v̄ᵢ:** Contains the actual EEG features (e.g.: power, phase).
 
@@ -83,15 +87,17 @@ Where:
 
 ### Architecture Overview
 
-The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X<sub>t+1</sub>**, emotion recognition, authentication, ...).
+The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X_(t+1)**, emotion recognition, authentication, ...).
 
 ### Mathematical Formulation
 
 The computations inside one encoder layer are exactly the two equations shown below:
 
-**h<sup>t</sup><sub>l</sub> = LN(MHA(z<sup>t</sup><sub>l-1</sub>) + z<sup>t</sup><sub>l-1</sub>), for l = 1,2,...,L**
+```
+h^t_l = LN(MHA(z^t_(l-1)) + z^t_(l-1)),    for l = 1,2,...,L
 
-**z<sup>t</sup><sub>l</sub> = LN(MLP(h<sup>t</sup><sub>l</sub>) + h<sup>t</sup><sub>l</sub>), for l = 1,2,...,L**
+z^t_l = LN(MLP(h^t_l) + h^t_l),            for l = 1,2,...,L
+```
 
 ### Symbol Legend
 
@@ -99,10 +105,10 @@ The computations inside one encoder layer are exactly the two equations shown be
 |--------|----------------|
 | l | Index of the current layer (1 ≤ l ≤ L) |
 | L | Total number of Transformer layers in the temporal branch |
-| <sup>t</sup> | Superscript indicating the *temporal* path of ETST |
-| z<sup>t</sup><sub>l-1</sub> | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
-| h<sup>t</sup><sub>l</sub> | Intermediate representation *after* MHA and *before* the MLP in layer l |
-| z<sup>t</sup><sub>l</sub> | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
+| ^t | Superscript indicating the *temporal* path of ETST |
+| z^t_(l-1) | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
+| h^t_l | Intermediate representation *after* MHA and *before* the MLP in layer l |
+| z^t_l | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
 | **MHA** | *Multi-Head Self-Attention* (context mixing across time steps) |
 | **MLP** | Position-wise feed-forward network (typically Linear → GELU/ReLU → Linear) |
 | **LN** | *Layer Normalization* applied after the residual addition (post-norm scheme) |
@@ -114,8 +120,10 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 
 A single spatial layer is described by:
 
-**h<sup>s</sup><sub>l</sub> = LN(MHA(z<sup>s</sup><sub>l-1</sub>) + z<sup>s</sup><sub>l-1</sub>), for l = 1,2,...,L**
+```
+h^s_l = LN(MHA(z^s_(l-1)) + z^s_(l-1)),    for l = 1,2,...,L
 
-**z<sup>s</sup><sub>l</sub> = LN(MLP(h<sup>s</sup><sub>l</sub>) + h<sup>s</sup><sub>l</sub>), for l = 1,2,...,L**
+z^s_l = LN(MLP(h^s_l) + h^s_l),            for l = 1,2,...,L
+```
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
