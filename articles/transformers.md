@@ -1,6 +1,6 @@
 # Attention Models Application in EEG Signal Processing
 
-**Author:** Arthur de Leusse\
+**Author:** Arthur de Leusse  
 **Date:** June 4th 2025
 
 ![Transformers](https://www.francetvpro.fr/sites/default/files/styles/crop_format_bandeau/public/images/2017/05/09/phototele-862781_3.jpg.webp?itok=aCiHftXn)
@@ -41,11 +41,9 @@ For each vector **x̄ᵢ**, we construct three new vectors:
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
+$$Q = XW^Q, \quad K = XW^K, \quad V = XW^V$$
 
-$Q = XW^Q,    K = XW^K,    V = XW^V$
-
-
-Here,**W<sup>Q</sup>**, **W<sup>K</sup>**, **W<sup>V</sup>** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
+Here, **W^Q**, **W^K**, **W^V** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
 
 Once we have the **Q** and **K** matrices, we compute the dot product of **Q** and the transpose of **K** to measure the similarities between words. We then apply the softmax function to these scores to obtain the attention weights. These weights indicate how much focus each word gives to every other word.
 
@@ -55,7 +53,7 @@ The idea is to have multiple sets of weight matrices for the queries, keys, and 
 
 ## Link with EEG Analysis
 
-Given an input matrix **X ∈ ℝ^(T×C)** where **C** represent our channel and **T** represent our total number of time points both outputted by our EEG receptor, our predictive objective is to find **Xₜ₊₁**.
+Given an input matrix **X ∈ ℝ^(T×C)** where **C** represent our channel and **T** represent our total number of time points both outputted by our EEG receptor, our predictive objective is to find **X_(t+1)**.
 
 ### Tokenization
 
@@ -65,17 +63,15 @@ To tackle the noise and variability, a common first step is to band-pass filter 
 
 The continuous nature of EEG data presents another major challenge. Two principal strategies address this:
 
-* *Temporal Segmentation*: segment the signal into short epochs (a few seconds) of fixed length **T**. This creates a matrix of shape **T × C**, where **T** is the number of time steps and **C** is the number of electrodes. Define vectors **v̄ᵢ**, where **i ∈ [0, T]**, and feed these vectors to the Transformer encoder.
+* **Temporal Segmentation**: segment the signal into short epochs (a few seconds) of fixed length **T**. This creates a matrix of shape **T × C**, where **T** is the number of time steps and **C** is the number of electrodes. Define vectors **v̄ᵢ**, where **i ∈ [0, T]**, and feed these vectors to the Transformer encoder.
 
-* *Frequency-Based Imaging*: apply the Fast Fourier Transform (FFT) to the signal, producing a matrix of shape **T × F**, where **F** represents frequency bins. Map the intensity of these frequencies to RGB values to generate an image, which can be processed by a Vision Transformer (ViT).
+* **Frequency-Based Imaging**: apply the Fast Fourier Transform (FFT) to the signal, producing a matrix of shape **T × F**, where **F** represents frequency bins. Map the intensity of these frequencies to RGB values to generate an image, which can be processed by a Vision Transformer (ViT).
 
 The limitation of this approach arises from the FFT assumption that the signal is composed of sinusoidal components—an approximation that can lead to loss of information.
 
-* *Self Attention with EEG*: similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
+* **Self Attention with EEG**: similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
 
-
-$A = softmax(QK^T / √d_k)V$
-
+$$A = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
 Where:
 
@@ -83,34 +79,34 @@ Where:
 - **Key vector k̄ᵢ:** Functions like a tag. It holds the signature of the sample.
 - **Value vector v̄ᵢ:** Contains the actual EEG features (e.g.: power, phase).
 
-# Temporal Transformer Encoder (TTE)
+## Temporal Transformer Encoder (TTE)
 
-## Architecture Overview
+### Architecture Overview
 
-The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X_{t+1}**, emotion recognition, authentication, ...).
+The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X_(t+1)**, emotion recognition, authentication, ...).
 
-## Mathematical Formulation
+### Mathematical Formulation
 
 The computations inside one encoder layer are exactly the two equations shown below:
 
-$h^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{t}_{\,l-1}) + z^{t}_{\,l-1}\bigr), \qquad l = 1,2,\dots,L$
+$$h^{t}_{l} = \text{LN}\left(\text{MHA}(z^{t}_{l-1}) + z^{t}_{l-1}\right), \quad l = 1,2,\ldots,L$$
 
-$z^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{t}_{\,l}) + h^{t}_{\,l}\bigr), \qquad l = 1,2,\dots,L$
+$$z^{t}_{l} = \text{LN}\left(\text{MLP}(h^{t}_{l}) + h^{t}_{l}\right), \quad l = 1,2,\ldots,L$$
 
-## Symbol Legend
+### Symbol Legend
 
 | Symbol | Meaning / Role |
 |--------|----------------|
-| $l$ | Index of the current layer ($1 \le l \le L$) |
-| $L$ | Total number of Transformer layers in the temporal branch |
-| $^t$ | Superscript indicating the *temporal* path of ETST |
-| $z^{t}_{l-1}$ | Input to layer $l$: final output of the previous layer (or embeddings + PE for $l=1$) |
-| $h^{t}_{l}$ | Intermediate representation *after* MHA and *before* the MLP in layer $l$ |
-| $z^{t}_{l}$ | Final output of layer $l$ (after MLP, residual addition, and LN) — becomes the input to layer $l+1$ |
+| l | Index of the current layer (1 ≤ l ≤ L) |
+| L | Total number of Transformer layers in the temporal branch |
+| ^t | Superscript indicating the *temporal* path of ETST |
+| z^t_(l-1) | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
+| h^t_l | Intermediate representation *after* MHA and *before* the MLP in layer l |
+| z^t_l | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
 | **MHA** | *Multi-Head Self-Attention* (context mixing across time steps) |
 | **MLP** | Position-wise feed-forward network (typically Linear → GELU/ReLU → Linear) |
 | **LN** | *Layer Normalization* applied after the residual addition (post-norm scheme) |
-| $+$ | Residual connection (element-wise addition) |
+| + | Residual connection (element-wise addition) |
 
 ## Spatial Transformer Encoder (STE)
 
@@ -118,17 +114,8 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 
 A single spatial layer is described by:
 
-$h^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{s}_{l-1}) + z^{s}_{l-1}\bigr), \qquad l = 1,2,\dots,L$
+$$h^{s}_{l} = \text{LN}\left(\text{MHA}(z^{s}_{l-1}) + z^{s}_{l-1}\right), \quad l = 1,2,\ldots,L$$
 
-$z^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{s}_{l}) + h^{s}_{l}\bigr), \qquad l = 1,2,\dots,L$
+$$z^{s}_{l} = \text{LN}\left(\text{MLP}(h^{s}_{l}) + h^{s}_{l}\right), \quad l = 1,2,\ldots,L$$
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
-
----
-
-
-
-
-
-
-
