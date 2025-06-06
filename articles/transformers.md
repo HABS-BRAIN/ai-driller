@@ -49,7 +49,7 @@ Finally, each word's new representation is computed as a weighted sum of the val
 
 The idea is to have multiple sets of weight matrices for the queries, keys, and values, where each set focuses on a different aspect of a word. Then, the outputs of all the heads are concatenated and passed through a final linear layer to mix the information.
 
-----
+---
 
 ## Link with EEG Analysis
 
