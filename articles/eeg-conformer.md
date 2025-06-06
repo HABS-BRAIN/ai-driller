@@ -1,4 +1,4 @@
-# EEG Conformer: Bridging CNNs and Transformers for Better Brain Signal Decoding
+# EEG Conformer: CNNs and Transformers for Better Brain Signal Decoding
 
 **Author:** Silvia Tulli\
 **Date:** June 6th 2025
