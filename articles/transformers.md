@@ -5,8 +5,6 @@
 
 ![Transformers](https://www.francetvpro.fr/sites/default/files/styles/crop_format_bandeau/public/images/2017/05/09/phototele-862781_3.jpg.webp?itok=aCiHftXn)
 
-## Motivations
-
 While working on neuro-marker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of the attention mechanism in EEG processing.
 
 The transformer architecture was first introduced in ["Attention is All You Need"](https://arxiv.org/abs/1706.03762) as a method for interpreting textual information. Given this architecture's success, we investigate how effectively these models can process EEG signals.
