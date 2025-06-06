@@ -87,7 +87,7 @@ Where:
 
 ## Architecture Overview
 
-The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: $X_{t+1}$, emotion recognition, authentication, ...).
+The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG signal with its temporal positional embedding, you pass it through a stack (L layers) of multi-head self-attention followed by a position-wise MLP. The contextualized token embeddings produced by the final layer are then globally pooled and fed to a lightweight prediction head, typically a single fully connected soft-max layer, for the task of your choice (e.g.: **X_{t+1}**, emotion recognition, authentication, ...).
 
 ## Mathematical Formulation
 
