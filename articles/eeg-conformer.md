@@ -8,15 +8,6 @@ EEG signals are like trying to listen to whispered conversations in a noisy rest
 
 Traditional approaches using CNNs excel at capturing local features in EEG data but struggle with long-term dependencies—those important patterns that unfold over longer time periods. Meanwhile, transformer models, famous for their success in natural language processing, are excellent at capturing these long-range relationships and a growing number of researchers are starting to employ them for EEG signal processing, as we previously mentioned in our previous post: [Attention Models Application in EEG Signal Processing]().
 
-graph LR
-    A[Raw Brain Signals] --> B[CNN Module<br/>Local Pattern Detection]
-    B --> C[Transformer Module<br/>Global Relationship Modeling]
-    C --> D[Classifier<br/>Final Decision]
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
 
 The Three-Stage Pipeline:
 * CNN Module: First, convolutional layers scan through the EEG data identifying local patterns in both time and across brain regions. Think of it as recognizing individual "words" in the brain's language.
