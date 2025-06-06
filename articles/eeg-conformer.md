@@ -168,5 +168,3 @@ The EEG Conformer appears to be a promising approach, achieving something neithe
     doi={10.1109/TNSRE.2022.3230250}
 }
 ```
-
-*The intersection of neuroscience and artificial intelligence continues to yield remarkable breakthroughs. The EEG Conformer stands as a testament to what's possible when we thoughtfully combine the best of different approaches to understand the most complex system we know: the human brain.*
