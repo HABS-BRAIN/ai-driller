@@ -7,7 +7,7 @@
 
 While working on neuro-marker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of the attention mechanism in EEG processing.
 
-["Attention is All You Need"](https://arxiv.org/abs/1706.03762) - the paper in which the transformer architecture was first introduced presented a way of interpreting textual information. Based on its architecture we wonder to what extent do these models perform in the EEG signal processing.
+The transformer architecture was first introduced in ["Attention is All You Need"](https://arxiv.org/abs/1706.03762) as a method for interpreting textual information. Given this architecture's success, we investigate how effectively these models can process EEG signals.
 
 ## Generic Transformer Architecture
 
