@@ -1,7 +1,7 @@
 # Attention Models Application in EEG Signal Processing
 
 **Author:** Arthur de Leusse  
-**Date:** June 4th 2025
+**Date:** June 6th 2025
 
 ![Transformers](https://www.francetvpro.fr/sites/default/files/styles/crop_format_bandeau/public/images/2017/05/09/phototele-862781_3.jpg.webp?itok=aCiHftXn)
 
