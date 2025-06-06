@@ -1,1 +1,5 @@
-# EEG-Conformer
+# EEG Conformer: Bridging CNNs and Transformers for Better Brain Signal Decoding
+
+Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.
+EEG signals capture the electrical activity of our brains through electrodes placed on the scalp. These signals are incredibly complex, containing both spatial information (where the activity occurs) and temporal patterns (how the activity changes over time). For brain-computer interfaces (BCIs) and medical applications, accurately decoding these signals is crucial but challenging.
+Traditional approaches using CNNs excel at capturing local features in EEG data but struggle with long-term dependencies—those important patterns that unfold over longer time periods. Meanwhile, transformer models, famous for their success in natural language processing, are excellent at capturing these long-range relationships and a growing number of researchers are starting to employ them for EEG signal processing, as we previously mentioned in our previous post: [Attention Models Application in EEG Signal Processing]().
