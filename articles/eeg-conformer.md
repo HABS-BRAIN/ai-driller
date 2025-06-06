@@ -3,6 +3,8 @@
 **Author:** Silvia Tulli\
 **Date:** June 6th 2025
 
+![CNN](https://miro.medium.com/v2/resize:fit:1086/format:webp/1*Ff6mG3aPdWFkjb6hZPy3Xw.gif)
+
 Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.
 
 EEG signals capture the electrical activity of our brains through electrodes placed on the scalp. These signals are incredibly complex, containing both spatial information (where the activity occurs) and temporal patterns (how the activity changes over time). For brain-computer interfaces and medical applications, accurately decoding these signals is crucial but challenging.
