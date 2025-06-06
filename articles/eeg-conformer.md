@@ -27,5 +27,6 @@ spatial_conv = DepthwiseConv1D(groups=40)
 ````
 
 The temporal convolution is like having 40 different "detectors," each tuned to find specific patterns in the timing of brain activity. The spatial convolution then asks: "When this pattern appears in one brain region, what happens in the others?"
+
 Self-Attention:
 Through self-attention, the transformer creates a dynamic map where each point in the EEG signal can evaluate its relationship with every other point, assigning importance weights based on relevance. This comprehensive cross-referencing enables the detection of subtle long-term dependencies that unfold over extended time periods.
