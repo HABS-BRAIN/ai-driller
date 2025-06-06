@@ -93,9 +93,9 @@ The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG
 
 The computations inside one encoder layer are exactly the two equations shown below:
 
-$$h^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{t}_{\,l-1}) + z^{t}_{\,l-1}\bigr), \qquad l = 1,2,\dots,L$$
+$h^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{t}_{\,l-1}) + z^{t}_{\,l-1}\bigr), \qquad l = 1,2,\dots,L$
 
-$$z^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{t}_{\,l}) + h^{t}_{\,l}\bigr), \qquad l = 1,2,\dots,L$$
+$z^{t}_{l}= \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{t}_{\,l}) + h^{t}_{\,l}\bigr), \qquad l = 1,2,\dots,L$
 
 ## Symbol Legend
 
@@ -118,9 +118,9 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 
 A single spatial layer is described by:
 
-$$h^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{s}_{l-1}) + z^{s}_{l-1}\bigr), \qquad l = 1,2,\dots,L$$
+$h^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MHA}(z^{s}_{l-1}) + z^{s}_{l-1}\bigr), \qquad l = 1,2,\dots,L$
 
-$$z^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{s}_{l}) + h^{s}_{l}\bigr), \qquad l = 1,2,\dots,L$$
+$z^{s}_{l} = \operatorname{LN}\!\bigl(\operatorname{MLP}(h^{s}_{l}) + h^{s}_{l}\bigr), \qquad l = 1,2,\dots,L$
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
 
