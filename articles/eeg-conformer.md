@@ -19,9 +19,6 @@ What we're working with:
 • Signal strength: 10-100 microvolts (incredibly weak!)
 • Contaminated by artifacts (eye blinks, muscle tension, electrical noise)
 ```
-
-The challenge isn't just technical—it's about understanding how different brain regions coordinate over time to produce thoughts, movements, and emotions.
-
 ---
 
 Traditional approaches using CNNs excel at capturing local features in EEG data but struggle with long-term dependencies—those important patterns that unfold over longer time periods. Meanwhile, transformer models, famous for their success in natural language processing, are excellent at capturing these long-range relationships and a growing number of researchers are starting to employ them for EEG signal processing, as we previously mentioned in our previous post: [Attention Models Application in EEG Signal Processing]().
