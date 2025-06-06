@@ -11,9 +11,9 @@ Traditional approaches using CNNs excel at capturing local features in EEG data 
 ![EEG-Conformer Architecture](https://raw.githubusercontent.com/eeyhsong/EEG-Conformer/refs/heads/main/visualization/Fig1.png)
 
 The Three-Stage Pipeline:
-* CNN Module: First, convolutional layers scan through the EEG data identifying local patterns in both time and across brain regions. Think of it as recognizing individual "words" in the brain's language.
-* Transformer Module: Next, the transformer takes these local patterns and figures out how they relate to each other over longer time periods. It's like understanding how those "words" form meaningful "sentences" of neural activity.
-* Classifier: Finally, a simple classifier takes all this rich information and makes the final call about what the brain signal represents.
+* *CNN Module*: First, convolutional layers scan through the EEG data identifying local patterns in both time and across brain regions. Think of it as recognizing individual "words" in the brain's language.
+* *Transformer Module*: Next, the transformer takes these local patterns and figures out how they relate to each other over longer time periods. It's like understanding how those "words" form meaningful "sentences" of neural activity.
+* *Classifier*: Finally, a simple classifier takes all this rich information and makes the final call about what the brain signal represents.
 
 ## Convolution Module Details:
 Temporal convolution: learns patterns within each brain region
