@@ -9,7 +9,7 @@ Imagine if we could combine the best of two powerful AI architectures to better 
 
 EEG signals capture the electrical activity of our brains through electrodes placed on the scalp. These signals are incredibly complex, containing both spatial information (where the activity occurs) and temporal patterns (how the activity changes over time). For brain-computer interfaces and medical applications, accurately decoding these signals is crucial but challenging.
 
-<img src="https://videos.openai.com/vg-assets/assets%2Ftask_01jxabns64etarz0bdpzrppzvg%2F1749473341_img_0.webp?st=2025-06-09T11%3A27%3A22Z&se=2025-06-15T12%3A27%3A22Z&sks=b&skt=2025-06-09T11%3A27%3A22Z&ske=2025-06-15T12%3A27%3A22Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=ljuGIXZfyIgcvIfEAVVhWB2JswDdlFTFiVb5pzl7170%3D&az=oaivgprodscus" alt="noisy-restaurant" width=50%/>
+<img style="display: block; margin: auto;" src="https://videos.openai.com/vg-assets/assets%2Ftask_01jxabns64etarz0bdpzrppzvg%2F1749473341_img_0.webp?st=2025-06-09T11%3A27%3A22Z&se=2025-06-15T12%3A27%3A22Z&sks=b&skt=2025-06-09T11%3A27%3A22Z&ske=2025-06-15T12%3A27%3A22Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=ljuGIXZfyIgcvIfEAVVhWB2JswDdlFTFiVb5pzl7170%3D&az=oaivgprodscus" alt="noisy-restaurant" width=50%/>
 
 
 EEG signals are like trying to listen to whispered conversations in a noisy restaurant—while wearing earplugs. The brain's electrical activity is incredibly subtle, measured in microvolts, and contaminated by everything from eye blinks to muscle movements.
