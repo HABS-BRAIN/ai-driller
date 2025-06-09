@@ -38,8 +38,7 @@ graph LR
 ```
 
 ![EEG-Conformer Architecture](https://raw.githubusercontent.com/eeyhsong/EEG-Conformer/refs/heads/main/visualization/Fig1.png)
-
-The Three-Stage Pipeline:
+The EEG-Conformer Architecture comprises of a three-stage pipeline:
 * *CNN Module*: First, convolutional layers scan through the EEG data identifying local patterns in both time and across brain regions. Think of it as recognizing individual "words" in the brain's language.
 * *Transformer Module*: Next, the transformer takes these local patterns and figures out how they relate to each other over longer time periods. It's like understanding how those "words" form meaningful "sentences" of neural activity.
 * *Classifier*: Finally, a simple classifier takes all this rich information and makes the final call about what the brain signal represents.
@@ -91,7 +90,7 @@ Perhaps the most interesting feature of the EEG Conformer is its ability to show
 - **Parietal regions** (CP5, P7, P4): Critical for spatial awareness
 - **Central regions** (C3, C4): The motor cortex itself
 
-This isn't just technically impressive—it validates that the model is learning meaningful patterns that align with our neuroscientific understanding of how the brain works.
+This validates that the model is learning meaningful patterns that align with our neuroscientific understanding of how the brain works.
 
 The fact that the model's attention maps correspond to known brain anatomy gives us confidence that it's not just memorizing data but actually learning the underlying neural mechanisms. This interpretability is crucial for medical applications where understanding *why* a decision was made is as important as the decision itself.
 
