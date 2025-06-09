@@ -98,7 +98,7 @@ This validates that the model is learning meaningful patterns that align with ou
 
 The fact that the model's attention maps correspond to known brain anatomy gives us confidence that it's not just memorizing data but actually learning the underlying neural mechanisms. This interpretability is crucial for medical applications where understanding *why* a decision was made is as important as the decision itself.
 
-![CAM and CAT](images/Class_Activation_Mapping.png)
+![CAM and CAT](articles/images/Class_Activation_Mapping.png)
 Raw EEG topography averaged over all trials of each subject, Class Activation Mapping (CAM) of the Transformer module on the input EEG, Class Activation Topography (CAT) they designed to show CAM-weighted EEG.
 
 
