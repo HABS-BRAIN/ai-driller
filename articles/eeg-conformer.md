@@ -159,7 +159,7 @@ The EEG Conformer appears to be a promising approach, achieving something neithe
 - **📄 Original Paper**: [IEEE Transactions on Neural Systems and Rehabilitation Engineering](https://ieeexplore.ieee.org/document/9991178)
 - **💻 Open Source Code**: [GitHub Repository](https://github.com/eeyhsong/EEG-Conformer)
 - **🛠️ Framework Integration**: Available in [Braindecode](https://braindecode.org/)
-- **📊 Datasets**: BCI Competition IV, SEED, DEAP
+- **📊 Datasets**: [BCI Competition IV](https://www.bbci.de/competition/iv/), [SEED](https://bcmi.sjtu.edu.cn/home/seed/), [DEAP](https://www.eecs.qmul.ac.uk/mmv/datasets/deap/)
 
 ### Citation
 ```bibtex
