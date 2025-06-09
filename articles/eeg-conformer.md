@@ -29,7 +29,7 @@ What we're working with:
 
 Traditional approaches using CNNs excel at capturing local features in EEG data but struggle with long-term dependencies—those important patterns that unfold over longer time periods. Meanwhile, transformer models, famous for their success in natural language processing, are excellent at capturing these long-range relationships and a growing number of researchers are starting to employ them for EEG signal processing, as we previously mentioned in our previous post: [Attention Models Application in EEG Signal Processing]().
 
-```mermaid
+<pre class="mermaid">
 graph LR
     A[Raw Brain Signals] --> B[CNN Module<br/>Local Pattern Detection]
     B --> C[Transformer Module<br/>Global Relationship Modeling]
@@ -39,7 +39,7 @@ graph LR
     style B fill:#f3e5f5
     style C fill:#e8f5e8
     style D fill:#fff3e0
-```
+</pre>
 
 ![EEG-Conformer Architecture](https://raw.githubusercontent.com/eeyhsong/EEG-Conformer/refs/heads/main/visualization/Fig1.png)
 The EEG-Conformer Architecture comprises of a three-stage pipeline:
