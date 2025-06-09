@@ -96,6 +96,8 @@ The fact that the model's attention maps correspond to known brain anatomy gives
 
 ![CAM and CAT](images/Class_Activation_Mapping.png)
 Raw EEG topography averaged over all trials of each subject, Class Activation Mapping (CAM) of the Transformer module on the input EEG, Class Activation Topography (CAT) we designed to show CAM-weighted EEG.
+
+
 ---
 
 ## Implementation: Getting Your Hands Dirty
