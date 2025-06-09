@@ -81,7 +81,7 @@ One fascinating aspect of the results is how consistently the EEG Conformer impr
 - **Most challenging case**: Subject 2 still gained 2.7%
 - **Statistical significance**: p < 0.05 across all subjects
 
-This consistency matters because brain signals are highly individual—what works for one person might not work for another. The EEG Conformer's robust performance suggests it's learning something fundamental about how brains encode information.
+This consistency matters because brain signals are highly individual, i.e., what works for one person might not work for another. The EEG Conformer's robust performance suggests it's learning something fundamental about how brains encode information.
 
 ---
 
@@ -154,7 +154,7 @@ No method is perfect, and the EEG Conformer has its challenges:
 
 ## Conclusion
 
-The EEG Conformer appears to be a promising approach, achieving something neither CNNs nor Transformers could accomplish alone. However, several challenges remain for practical implementation: acquiring sufficient labeled data for training, establishing robust preprocessing protocols for effectively utilizing this architecture, and adapting the model to real-world scenarios where users have limited exposure to stimuli with few repetitions. Perhaps most critically, at HABS we face the challenge of developing experimental protocols that are more ecologically valid—closer to natural, everyday conditions—while still maintaining the controlled conditions necessary to achieve results comparable to those reported in state-of-the-art papers using ideal laboratory datasets.
+The EEG Conformer appears to be a promising approach, achieving something neither CNNs nor Transformers could accomplish alone. However, several challenges remain for practical implementation: acquiring sufficient labeled data for training, establishing robust preprocessing protocols for utilizing this architecture, and adapting the model to real-world scenarios where users have **limited exposure to stimuli with few repetitions**. Perhaps most critically, at HABS we face the challenge of developing **experimental protocols that are more ecologically valid—closer to natural**, everyday conditions, while still maintaining the controlled conditions necessary to achieve results comparable to those reported in state-of-the-art papers using ideal laboratory datasets.
 
 ---
 
