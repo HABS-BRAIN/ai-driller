@@ -185,13 +185,3 @@ function showPage(pageId) {
 function showResearchPage(pageId) {
     loadArticle(pageId);
 }
-
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
-script.onload = function() {
-    mermaid.initialize({ 
-        startOnLoad: true,
-        theme: 'default'
-    });
-};
-document.head.appendChild(script);
