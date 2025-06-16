@@ -39,8 +39,9 @@ For each vector **x̄ᵢ**, we construct three new vectors:
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
-
-$Q = XW^Q,    K = XW^K,    V = XW^V$
+$$
+Q = XW^Q, \quad K = XW^K, \quad V = XW^V
+$$
 
 
 Here, **W^Q**, **W^K**, **W^V** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
@@ -55,7 +56,8 @@ The idea is to have multiple sets of weight matrices for the queries, keys, and 
 
 ## Link with EEG Analysis
 
-Given an input matrix **X ∈ ℝ^(T×C)** where **C** represents our channels and **T** represents our total number of time points both outputted by our EEG receptor, our predictive objective is to find **X_(t+1)**.
+Given an input matrix $X \in \mathbb{R}^{T \times C}$ where $C$ is the number of EEG channels and $T$ is the number of time points, our predictive objective is to estimate $X_{t+1}$.
+
 
 ### Tokenization
 
@@ -73,10 +75,9 @@ The limitation of this approach arises from the FFT assumption that the signal i
 
 * **Self Attention with EEG**: similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
 
-
-$A = softmax(QK^T / √d_k) × V$
-
-
+$$
+A = \text{softmax}\left( \frac{QK^\top}{\sqrt{d_k}} \right) \cdot V
+$$
 Where:
 
 - **Query vector q̄ᵢ:** Contains the information about which other epoch/token carries information which is relevant for the current epoch/token **x̄ᵢ**.
@@ -94,9 +95,13 @@ The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG
 The computations inside one encoder layer are exactly the two equations shown below:
 
 
-$h^t_l = LN(MHA(z^t_(l-1)) + z^t_(l-1)),    for l = 1,2,...,L$
+$$
+h^t_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^t_{\ell-1}) + z^t_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
+$$
 
-$z^t_l = LN(MLP(h^t_l) + h^t_l),            for l = 1,2,...,L$
+$$
+z^t_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^t_\ell) + h^t_\ell \right), \quad \ell = 1, 2, \dots, L
+$$
 
 
 ### Symbol Legend
@@ -120,13 +125,12 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 
 A single spatial layer is described by:
 
+$$
+h^s_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^s_{\ell-1}) + z^s_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
+$$
 
 $$
-h^s_\ell = \mathrm{LN}\left( \mathrm{MHA}(z^s_{\ell-1}) + z^s_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
-$$
-
-$$
-z^s_\ell = \mathrm{LN}\left( \mathrm{MLP}(h^s_\ell) + h^s_\ell \right), \quad \ell = 1, 2, \dots, L
+z^s_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^s_\ell) + h^s_\ell \right), \quad \ell = 1, 2, \dots, L
 $$
 
 
