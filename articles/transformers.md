@@ -93,11 +93,11 @@ The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG
 
 The computations inside one encoder layer are exactly the two equations shown below:
 
-```
+
 $h^t_l = LN(MHA(z^t_(l-1)) + z^t_(l-1)),    for l = 1,2,...,L$
 
 $z^t_l = LN(MLP(h^t_l) + h^t_l),            for l = 1,2,...,L$
-```
+
 
 ### Symbol Legend
 
