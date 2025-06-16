@@ -141,7 +141,7 @@ The STE output can be concatenated or averaged with the TTE output before the fi
 
 ## Potential Limitations
 
-In order to achieve high accuracy, the EEG signal must be very well pre-processed, which is challenging due to the high level of noise and artifacts it contains.
+In order for the model to achieve a high accuracy, the EEG signal must be very well pre-processed, which is challenging due to the high level of noise and artifacts it contains.
 
 ## Conclusion
 
