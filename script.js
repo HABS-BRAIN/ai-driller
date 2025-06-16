@@ -27,7 +27,6 @@ document.querySelectorAll('.blog-card').forEach(card => {
       const contentDiv = document.getElementById("article-content");
       contentDiv.innerHTML = html;
 
-      // ✅ Render math with KaTeX
       renderMathInElement(contentDiv, {
         delimiters: [
           { left: "$$", right: "$$", display: true },
