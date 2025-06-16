@@ -111,7 +111,7 @@ $$
 | l | Index of the current layer (1 ≤ l ≤ L) |
 | L | Total number of Transformer layers in the temporal branch |
 | $^t$ | Superscript indicating the *temporal* path of ETST |
-| $z^t_(l-1)$ | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
+| $z^t__(l-1)$ | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
 | $h^t_l$ | Intermediate representation *after* MHA and *before* the MLP in layer l |
 | $z^t_l$ | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
 | **MHA** | *Multi-Head Self-Attention* (context mixing across time steps) |
