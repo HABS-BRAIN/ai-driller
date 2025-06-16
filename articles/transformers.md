@@ -40,11 +40,11 @@ For each vector **x̄ᵢ**, we construct three new vectors:
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
 
-$Q = XW^Q$, $\quad K = XW^K$, $\quad V = XW^V$
+$Q = XW^Q$,$\quad K = XW^K$,$\quad V = XW^V$
 
 
 
-Here, $W^Q$, $W^K$, $W^V$ are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
+Here,$W^Q$,$W^K$,$W^V$ are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
 
 Once we have the **Q** and **K** matrices, we compute the dot product of **Q** and the transpose of **K** to measure the similarities between words. We then apply the softmax function to these scores to obtain the attention weights. These weights indicate how much focus each word gives to every other word.
 
@@ -144,7 +144,7 @@ In order for the model to achieve a high accuracy, the EEG signal must be very w
 
 ## Conclusion
 
-The use of transformers appears to be a promising approach in EEG signal processing. The main current challenge lies in the pre-processing of the raw signal, which could be the focus of a future blog post.
+The use of transformers appears to be a promising approach in EEG signal processing. Indeed, the ETST architecture allows the NN to . The main current challenge lies in the pre-processing of the raw signal, which could be the focus of a future blog post.
 
 
 ---
