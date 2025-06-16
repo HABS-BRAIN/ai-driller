@@ -5,12 +5,9 @@
 
 ![CNN](https://miro.medium.com/v2/resize:fit:1086/format:webp/1*Ff6mG3aPdWFkjb6hZPy3Xw.gif)
 
-Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.
+Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks with transformer architectures to decode electroencephalogram (EEG) signals.
 
 EEG signals capture the electrical activity of our brains through electrodes placed on the scalp. These signals are incredibly complex, containing both spatial information (where the activity occurs) and temporal patterns (how the activity changes over time). For brain-computer interfaces and medical applications, accurately decoding these signals is crucial but challenging.
-<br>
-![noisy-restaurant](https://videos.openai.com/vg-assets/assets%2Ftask_01jxaendsfe1es8tbqq606n505%2F1749476531_img_0.webp?st=2025-06-09T12%3A22%3A27Z&se=2025-06-15T13%3A22%3A27Z&sks=b&skt=2025-06-09T12%3A22%3A27Z&ske=2025-06-15T13%3A22%3A27Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=SLJhDpm8g4DVIi9sWd8qRcGFMUkccGdm0ktRp5tn6Zk%3D&az=oaivgprodscus)
-<br>
 
 EEG signals are like trying to listen to whispered conversations in a noisy restaurant—while wearing earplugs. The brain's electrical activity is incredibly subtle, measured in microvolts, and contaminated by everything from eye blinks to muscle movements.
 
