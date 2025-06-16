@@ -39,9 +39,9 @@ For each vector **x̄ᵢ**, we construct three new vectors:
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
-$$
-Q = XW^Q, \quad K = XW^K, \quad V = XW^V
-$$
+
+$Q = XW^Q$, $\quad K = XW^K$, $\quad V = XW^V$
+
 
 
 Here, **W^Q**, **W^K**, **W^V** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
