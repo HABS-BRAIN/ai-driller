@@ -95,13 +95,13 @@ The TTE architecture is encoder-only. Once you have your filtered, tokenized EEG
 The computations inside one encoder layer are exactly the two equations shown below:
 
 
-$$
-h^t_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^t_{\ell-1}) + z^t_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
-$$
 
-$$
-z^t_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^t_\ell) + h^t_\ell \right), \quad \ell = 1, 2, \dots, L
-$$
+$h^t_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^t_{\ell-1}) + z^t_{\ell-1} \right), \quad \ell = 1, 2, \dots, L$
+
+
+
+$z^t_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^t_\ell) + h^t_\ell \right), \quad \ell = 1, 2, \dots, L$
+
 
 
 ### Symbol Legend
@@ -111,7 +111,7 @@ $$
 | l | Index of the current layer (1 ≤ l ≤ L) |
 | L | Total number of Transformer layers in the temporal branch |
 | $^t$ | Superscript indicating the *temporal* path of ETST |
-| $z^t_(l-1)$ | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
+| $z^t_{l-1}$ | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
 | $h^t_l$ | Intermediate representation *after* MHA and *before* the MLP in layer l |
 | $z^t_l$ | Final output of layer l (after MLP, residual addition, and LN) — becomes the input to layer l+1 |
 | **MHA** | *Multi-Head Self-Attention* (context mixing across time steps) |
@@ -125,13 +125,12 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 
 A single spatial layer is described by:
 
-$$
-h^s_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^s_{\ell-1}) + z^s_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
-$$
 
-$$
-z^s_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^s_\ell) + h^s_\ell \right), \quad \ell = 1, 2, \dots, L
-$$
+$h^s_\ell = \mathrm{LN} \left( \mathrm{MHA}(z^s_{\ell-1}) + z^s_{\ell-1} \right), \quad \ell = 1, 2, \dots, L$
+
+
+$z^s_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^s_\ell) + h^s_\ell \right), \quad \ell = 1, 2, \dots, L$
+
 
 
 
