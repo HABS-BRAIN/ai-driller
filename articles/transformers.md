@@ -135,11 +135,14 @@ $$
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
 
 
-## Potential limitations
-In oreder to reach a high accuracy, the EEG signal must be very well pre-processed which is challenging due to the high level of noiuse and artifacts in itself.
+## Potential Limitations
+
+In order to achieve high accuracy, the EEG signal must be very well pre-processed, which is challenging due to the high level of noise and artifacts it contains.
 
 ## Conclusion
-The use of transformers seems like a pormissing approach in EEG signal processing, the current main challenge linked to its use if the pre-processing of the raw signal which could be the topic of a next blog-post.
+
+The use of transformers appears to be a promising approach in EEG signal processing. The main current challenge lies in the pre-processing of the raw signal, which could be the focus of a future blog post.
+
 
 ---
 ## References
