@@ -121,9 +121,14 @@ The STE architecture is nearly identical to the TTE, but it focuses on dependenc
 A single spatial layer is described by:
 
 ```
-$h^s_l = LN(MHA(z^s_(l-1)) + z^s_(l-1)),    for l = 1,2,...,L$
+\[
+h^s_\ell = \mathrm{LN}\left( \mathrm{MHA}(z^s_{\ell-1}) + z^s_{\ell-1} \right), \quad \ell = 1, 2, \dots, L
+\]
 
-$z^s_l = LN(MLP(h^s_l) + h^s_l),            for l = 1,2,...,L$
+\[
+z^s_\ell = \mathrm{LN}\left( \mathrm{MLP}(h^s_\ell) + h^s_\ell \right), \quad \ell = 1, 2, \dots, L
+\]
+
 ```
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
