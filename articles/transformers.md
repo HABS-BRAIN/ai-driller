@@ -133,3 +133,11 @@ $$
 
 
 The STE output can be concatenated or averaged with the TTE output before the final prediction head. In this case, we talk about an ETST architecture.
+
+---
+
+## References
+
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). [Attention is all you need](https://arxiv.org/abs/1706.03762). *Advances in Neural Information Processing Systems (NeurIPS)*, 30, 5998–6008.
+
+- He, X., Yi, Y., Liu, H., Huang, Z., Tang, Y.-Y., & Tang, R. (2022). [Modulation of attention networks serving sustained attention in healthy young adults via EEG neurofeedback](https://www.nature.com/articles/s41598-022-18502-3). *Scientific Reports*, 12, 14691. https://doi.org/10.1038/s41598-022-18502-3
