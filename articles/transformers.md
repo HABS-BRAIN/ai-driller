@@ -75,9 +75,7 @@ The limitation of this approach arises from the FFT assumption that the signal i
 
 * **Self Attention with EEG**: similarly as for the language, with EEG it is important to understand which epoch of signal has which influence on another. To do this, proceed exactly as you would with words: first compute the **Q**, **K** and **V** projections, then build the attention matrix using the following formula:
 
-$$
-A = \text{softmax}\left( \frac{QK^\top}{\sqrt{d_k}} \right) \cdot V
-$$
+$A = softmax(QK^T / √d_k) × V$
 Where:
 
 - **Query vector q̄ᵢ:** Contains the information about which other epoch/token carries information which is relevant for the current epoch/token **x̄ᵢ**.
