@@ -144,9 +144,7 @@ In order for the model to achieve a high accuracy, the EEG signal must be very w
 
 ## Conclusion
 
-The use of transformers appears to be a promising approach in EEG signal processing. Indeed, the ETST architecture allows the NN to . The main current challenge lies in the pre-processing of the raw signal, which could be the focus of a future blog post.
-
-
+The use of transformers appears to be a promising approach in EEG signal processing. Indeed, the ETST architecture allows tokens to gain context in both spatial and temporal ways. Since the brain's electrical activity is heavily influenced by the area or zone in which the signal is originally emitted, it is crucial to embed such information before the predictive task. On the other hand, the main current challenge lies in the pre-processing of the raw signal. EEG signals are by nature very noisy and contain many artifacts; finding the correct pre-processing method would allow for a significant increase in accuracy. There are various filtering methods, each with its own attributes and trade-offs (such as aggressivity, passivity, and eye-blinking specialization). It would be interesting to discuss these methods in a future blog post.
 ---
 ## References
 
