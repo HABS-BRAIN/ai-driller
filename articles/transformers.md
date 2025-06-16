@@ -44,7 +44,7 @@ $Q = XW^Q$, $\quad K = XW^K$, $\quad V = XW^V$
 
 
 
-Here, **W^Q**, **W^K**, **W^V** are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
+Here, $**W^Q**$, $**W^K**$, $**W^V**$ are the weight matrices for the queries, keys, and values respectively. These weights are learned through backpropagation during the training of the neural network.
 
 Once we have the **Q** and **K** matrices, we compute the dot product of **Q** and the transpose of **K** to measure the similarities between words. We then apply the softmax function to these scores to obtain the attention weights. These weights indicate how much focus each word gives to every other word.
 
