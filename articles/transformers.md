@@ -33,9 +33,9 @@ We begin with an input matrix **X**, composed of vectors $\overrightarrow{xᵢ}$
 
 For each vector $\overrightarrow{xᵢ}$, we construct three new vectors:
 
-- **Query vector $\overrightarrow{qᵢ}$:Encodes information about which other words the model should attend to when representing $\overrightarrow{xᵢ}$.
-- **Key vector $\overrightarrow{kᵢ}$: Functions like a tag. It holds identifying information that allows other words to determine whether they should attend to this word.
-- **Value vector $\overrightarrow{vᵢ}$: Contains the actual information to be passed along in the attention mechanism.
+- **Query vector** $\overrightarrow{qᵢ}$:Encodes information about which other words the model should attend to when representing $\overrightarrow{xᵢ}$.
+- **Key vector** $\overrightarrow{kᵢ}$: Functions like a tag. It holds identifying information that allows other words to determine whether they should attend to this word.
+- **Value vector** $\overrightarrow{vᵢ}$: Contains the actual information to be passed along in the attention mechanism.
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
