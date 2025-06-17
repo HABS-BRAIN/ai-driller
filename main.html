@@ -1,126 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-driller Team | HABS AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
-    <!-- KaTeX for LaTeX rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI-driller Team | HABS AI</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Marked.js for Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- KaTeX for LaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">AI-driller</a>
-            <ul class="nav-links">
-                <li><a href="#" class="nav-link active" data-page="about">About</a></li>
-                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
-            </ul>
-        </div>
-    </nav>
-
+  <nav>
     <div class="container">
-        <!-- About Page -->
-        <div id="about" class="page-section active">
-            <div class="about-header">
-                <h1>About AI-driller</h1>
-            </div>
-            <div class="about-content">
-                <p>AI-driller is the AI research division of HABS. We are Silvia Tulli, Anton Orlovski and Arthur Deleusse. Our team closely interacts with the Data and Biometric teams of the company. Founded in April 2025 our core research areas include optimized signal processing and analysis of biometrics in real-world scenarios for identifying biometric signatures and building robust predictive models for authentication, emotion and pain detection. We aim to discover the "Biological Decision-Makers" behind each of us.</p>
-                <p>Join us as we share about our exploration in state-of-the-art research in the domain.</p>
-            </div>
-        </div>
+      <a href="#" class="logo">AI-driller</a>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-page="about">About</a></li>
+        <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <!-- Blog Page (Research Updates) -->
-        <div id="blog" class="page-section">
-            <div class="blog-header">
-                <h1>Research Updates</h1>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card" data-article="transformers">
-                    <h3 class="blog-title">Attention Models Application in EEG Signal Processing</h3>
-                    <p class="blog-excerpt">While working on neuromarker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of current state-of-the-art applications of the attention mechanism in EEG processing.</p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">transformers</span>
-                        <span class="blog-tag">eeg-signal-processing</span>
-                        <span class="blog-tag">attention-mechanisms</span>
-                    </div>
-                    <div class="blog-date">June 6, 2025</div>
-                </div>
-
-                <div class="blog-card" data-article="eeg-conformer">
-                    <h3 class="blog-title">EEG Conformer: CNNs and Transformers for Better Brain Signal Decoding</h3>
-                    <p class="blog-excerpt">Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.</p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">convolutionar-neural-networks</span>
-                        <span class="blog-tag">transformers</span>
-                        <span class="blog-tag">eeg-signal-processing</span>
-                    </div>
-                    <div class="blog-date">June 6, 2025</div>
-                </div>
-
-
-                <div class="blog-card" data-article="brain-network">
-                    <h3 class="blog-title">Brain Network</h3>
-                    <p class="blog-excerpt"></p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">brain-network</span>
-                        <span class="blog-tag">graph-models</span>
-                        <span class="blog-tag">feature-extraction</span>
-                    </div>
-                    <div class="blog-date">June 15, 2025</div>
-                </div>
-
-                <div class="blog-card" data-article="eegpt">
-                    <h3 class="blog-title">EEGPT</h3>
-                    <p class="blog-excerpt"></p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">transformerw</span>
-                        <span class="blog-tag">eeg-signal-processing</span>
-                        <span class="blog-tag">NIPS-2024</span>
-                    </div>
-                    <div class="blog-date">June 30, 2025</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Article Display Page -->
-        <div id="article-display" class="page-section">
-            <div class="research-page">
-                <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
-                <div id="article-content" class="research-content">
-                    <!-- Article content will be loaded here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Loading indicator -->
-        <div id="loading" class="loading-indicator" style="display: none;">
-            <div class="spinner"></div>
-            <p>Loading article...</p>
-        </div>
-
-        <!-- Error message -->
-        <div id="error-message" class="error-message" style="display: none;">
-            <h2>Article Not Found</h2>
-            <p>Sorry, the requested article could not be loaded. Please try again or go back to the research updates.</p>
-            <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
-        </div>
+  <div class="container">
+    <!-- About Page -->
+    <div id="about" class="page-section active">
+      <div class="about-header">
+        <h1>About AI-driller</h1>
+      </div>
+      <div class="about-content">
+        <p>AI-driller is the AI research division of HABS. We are Silvia Tulli, Anton Orlovski and Arthur Deleusse. Our team closely interacts with the Data and Biometric teams of the company. Founded in April 2025 our core research areas include optimized signal processing and analysis of biometrics in real-world scenarios for identifying biometric signatures and building robust predictive models for authentication, emotion and pain detection. We aim to discover the "Biological Decision-Makers" behind each of us.</p>
+        <p>Join us as we share about our exploration in state-of-the-art research in the domain.</p>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Blog Page -->
+    <div id="blog" class="page-section">
+      <div class="blog-header">
+        <h1>Research Updates</h1>
+      </div>
+      <div class="blog-grid">
+        <!-- Blog Cards -->
+        <!-- Repeat as needed -->
+        <div class="blog-card" data-article="transformers">
+          <h3 class="blog-title">Attention Models Application in EEG Signal Processing</h3>
+          <p class="blog-excerpt">While working on neuromarker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of current state-of-the-art applications of the attention mechanism in EEG processing.</p>
+          <div class="blog-tags">
+            <span class="blog-tag">transformers</span>
+            <span class="blog-tag">eeg-signal-processing</span>
+            <span class="blog-tag">attention-mechanisms</span>
+          </div>
+          <div class="blog-date">June 6, 2025</div>
+        </div>
+
+        <div class="blog-card" data-article="eeg-conformer">
+          <h3 class="blog-title">EEG Conformer: CNNs and Transformers for Better Brain Signal Decoding</h3>
+          <p class="blog-excerpt">Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.</p>
+          <div class="blog-tags">
+            <span class="blog-tag">convolutional-neural-networks</span>
+            <span class="blog-tag">transformers</span>
+            <span class="blog-tag">eeg-signal-processing</span>
+          </div>
+          <div class="blog-date">June 6, 2025</div>
+        </div>
+
+        <div class="blog-card" data-article="brain-network">
+          <h3 class="blog-title">Brain Network</h3>
+          <p class="blog-excerpt"></p>
+          <div class="blog-tags">
+            <span class="blog-tag">brain-network</span>
+            <span class="blog-tag">graph-models</span>
+            <span class="blog-tag">feature-extraction</span>
+          </div>
+          <div class="blog-date">June 15, 2025</div>
+        </div>
+
+        <div class="blog-card" data-article="eegpt">
+          <h3 class="blog-title">EEGPT</h3>
+          <p class="blog-excerpt"></p>
+          <div class="blog-tags">
+            <span class="blog-tag">transformers</span>
+            <span class="blog-tag">eeg-signal-processing</span>
+            <span class="blog-tag">NIPS-2024</span>
+          </div>
+          <div class="blog-date">June 30, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Display -->
+    <div id="article-display" class="page-section">
+      <div class="research-page">
+        <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+        <div id="article-content" class="research-content">
+          <!-- Markdown article content will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading & Error -->
+    <div id="loading" class="loading-indicator" style="display: none;">
+      <div class="spinner"></div>
+      <p>Loading article...</p>
+    </div>
+
+    <div id="error-message" class="error-message" style="display: none;">
+      <h2>Article Not Found</h2>
+      <p>Sorry, the requested article could not be loaded. Please try again or go back to the research updates.</p>
+      <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+    </div>
+  </div>
+
+  <!-- Your JS -->
+  <script src="script.js"></script>
+
+  <!-- KaTeX Render Trigger -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ]
+      });
+    });
+  </script>
 </body>
 </html>
