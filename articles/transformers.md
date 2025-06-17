@@ -29,13 +29,13 @@ We calculate to what extent each word in the sentence is related to all the word
 
 #### How Does It Work?
 
-We begin with an input matrix **X**, composed of vectors **x̄ᵢ**, where each **x̄ᵢ** corresponds to a word in the input sequence.
+We begin with an input matrix **X**, composed of vectors $vec{xᵢ}, where each $vec{xᵢ} corresponds to a word in the input sequence.
 
-For each vector **x̄ᵢ**, we construct three new vectors:
+For each vector $vec{xᵢ}, we construct three new vectors:
 
-- **Query vector q̄ᵢ:** Encodes information about which other words the model should attend to when representing **x̄ᵢ**.
-- **Key vector k̄ᵢ:** Functions like a tag. It holds identifying information that allows other words to determine whether they should attend to this word.
-- **Value vector v̄ᵢ:** Contains the actual information to be passed along in the attention mechanism.
+- **Query vector $vec{qᵢ}:Encodes information about which other words the model should attend to when representing $vec{xᵢ}.
+- **Key vector $vec{kᵢ}: Functions like a tag. It holds identifying information that allows other words to determine whether they should attend to this word.
+- **Value vector $vec{vᵢ}: Contains the actual information to be passed along in the attention mechanism.
 
 These vectors may have the same or different dimensionalities compared to the original input vectors, depending on the model design. They are computed by multiplying the input matrix **X** with the corresponding learned weight matrices:
 
@@ -67,7 +67,7 @@ To tackle the noise and variability, a common first step is to band-pass filter 
 
 The continuous nature of EEG data presents another major challenge. Two principal strategies address this:
 
-* **Temporal Segmentation**: segment the signal into short epochs (a few seconds) of fixed length **T**. This creates a matrix of shape **T × C**, where **T** is the number of time steps and **C** is the number of electrodes. Define vectors **v̄ᵢ**, where **i ∈ [0, T]**, and feed these vectors to the Transformer encoder.
+* **Temporal Segmentation**: segment the signal into short epochs (a few seconds) of fixed length **T**. This creates a matrix of shape **T × C**, where **T** is the number of time steps and **C** is the number of electrodes. Define vectors v̄ᵢ, where **i ∈ [0, T]**, and feed these vectors to the Transformer encoder.
 
 * **Frequency-Based Imaging**: apply the Fast Fourier Transform (FFT) to the signal, producing a matrix of shape **T × F**, where **F** represents frequency bins. Map the intensity of these frequencies to RGB values to generate an image, which can be processed by a Vision Transformer (ViT).
 
@@ -80,9 +80,9 @@ $A = softmax(QK^T / √d_k) × V$
 
 Where:
 
-- **Query vector q̄ᵢ:** Contains the information about which other epoch/token carries information which is relevant for the current epoch/token **x̄ᵢ**.
-- **Key vector k̄ᵢ:** Functions like a tag. It holds the signature of the sample.
-- **Value vector v̄ᵢ:** Contains the actual EEG features (e.g.: power, phase).
+- **Query vector $vec{qᵢ}:** Contains the information about which other epoch/token carries information which is relevant for the current epoch/token $vec{xᵢ}.
+- **Key vector $vec{kᵢ}:** Functions like a tag. It holds the signature of the sample.
+- **Value vector $vec{vᵢ}:** Contains the actual EEG features (e.g.: power, phase).
 
 ## Temporal Transformer Encoder (TTE)
 
