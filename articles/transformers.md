@@ -108,7 +108,7 @@ $z^t_\ell = \mathrm{LN} \left( \mathrm{MLP}(h^t_\ell) + h^t_\ell \right), \quad 
 
 | Symbol | Meaning / Role |
 |--------|----------------|
-| $^l$ | Index of the current layer (1 ≤ l ≤ L) |
+| $ell$ | Index of the current layer (1 ≤ l ≤ L) |
 | $^L$ | Total number of Transformer layers in the temporal branch |
 | $^t$ | Superscript indicating the *temporal* path of ETST |
 | $z^t_{l-1}$ | Input to layer l: final output of the previous layer (or embeddings + PE for l=1) |
