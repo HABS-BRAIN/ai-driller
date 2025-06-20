@@ -29,7 +29,7 @@ We calculate to what extent each word in the sentence is related to all the word
 
 #### How Does It Work?
 
-We begin with an input matrix **X**, composed of vectors $\overrightarrow{xᵢ}$ where each $\overrightarrow{xᵢ}$ corresponds to a word in the input sequence.
+We begin with an input matrix **X** composed of vectors $\overrightarrow{xᵢ}$ where each $\overrightarrow{xᵢ}$ corresponds to a word in the input sequence.
 
 For each vector $\overrightarrow{xᵢ}$ we construct three new vectors:
 
