@@ -64,11 +64,15 @@ The common approach to utilizing the brain network can be described follows:
 
 ## Discussion & Suggestions
 
-|                   **Brain Network**                                                                 |
-|------------------|-----------------------------------------------------------------------------------|
-| **Pros**         | Graph structure = interpretability + variety of features                         |
-| **Cons**         | Too many parameters to tune effectively                                          |
-| **Improvements** | - Better filtering/artifact removal  <br> - Tune: window, threshold, graph feats |
+| **Brain Network** |                                                                                   |
+|-------------------|-----------------------------------------------------------------------------------|
+| **Pros**          | Graph structure = interpretability and variety of features                        |
+| **Cons**          | Too many parameters to tune effectively                                           |
+| **Improvements**  | - Better filtering/artifact removal                                               |
+|                   | - Tune window size                                                                |
+|                   | - Set significance threshold in correlation matrix                                |
+|                   | - Try alternative graph features (e.g., modularity, path length, betweenness)     |
+
 
 ---
 
