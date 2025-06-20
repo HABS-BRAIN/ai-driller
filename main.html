@@ -54,7 +54,6 @@
       </div>
       <div class="blog-grid">
         <!-- Blog Cards -->
-        <!-- Repeat as needed -->
         <div class="blog-card" data-article="transformers">
           <h3 class="blog-title">Attention Models Application in EEG Signal Processing</h3>
           <p class="blog-excerpt">While working on neuromarker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of current state-of-the-art applications of the attention mechanism in EEG processing.</p>
@@ -90,7 +89,7 @@
 
         <div class="blog-card" data-article="eegpt">
           <h3 class="blog-title">EEGPT</h3>
-          <p class="blog-excerpt"></p>
+          <p class="blog-excerpt">Advanced transformer-based approach for EEG signal processing and analysis.</p>
           <div class="blog-tags">
             <span class="blog-tag">transformers</span>
             <span class="blog-tag">eeg-signal-processing</span>
@@ -104,7 +103,7 @@
     <!-- Article Display -->
     <div id="article-display" class="page-section">
       <div class="research-page">
-        <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+        <a href="#" class="back-button" onclick="showPage('blog')">&larr; Back to Research Updates</a>
         <div id="article-content" class="research-content">
           <!-- Markdown article content will be inserted here -->
         </div>
@@ -120,23 +119,8 @@
     <div id="error-message" class="error-message" style="display: none;">
       <h2>Article Not Found</h2>
       <p>Sorry, the requested article could not be loaded. Please try again or go back to the research updates.</p>
-      <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
+      <a href="#" class="back-button" onclick="showPage('blog')">&larr; Back to Research Updates</a>
     </div>
   </div>
-
-  <!-- Your JS -->
-  <script src="script.js"></script>
-
-  <!-- KaTeX Render Trigger -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
 </body>
 </html>
