@@ -10,19 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Marked.js for Markdown -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
   <!-- KaTeX for LaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous"/>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
+  <!-- Marked.js for Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <!-- Mermaid -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <nav>
@@ -103,7 +103,7 @@
     <!-- Article Display -->
     <div id="article-display" class="page-section">
       <div class="research-page">
-        <a href="#" class="back-button" onclick="showPage('blog')">&larr; Back to Research Updates</a>
+        <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
         <div id="article-content" class="research-content">
           <!-- Markdown article content will be inserted here -->
         </div>
@@ -119,8 +119,9 @@
     <div id="error-message" class="error-message" style="display: none;">
       <h2>Article Not Found</h2>
       <p>Sorry, the requested article could not be loaded. Please try again or go back to the research updates.</p>
-      <a href="#" class="back-button" onclick="showPage('blog')">&larr; Back to Research Updates</a>
+      <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
     </div>
   </div>
-</body>
-</html>
+
+  <!-- Your JS -->
+  <script src="script.js"></script>
