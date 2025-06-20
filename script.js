@@ -236,26 +236,3 @@ function showPage(pageId) {
       }
     };
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      // Wait for KaTeX to be ready
-      await waitForKaTeX();
-      
-      // Initial math rendering
-      renderMath();
-      
-      // Override the loadArticle function if it exists
-      if (window.loadArticle) {
-        window.loadArticle = window.loadArticleEnhanced;
-      }
-      
-      // Add enhanced click handlers to blog cards if the original script hasn't
-      setTimeout(() => {
-        document.querySelectorAll('.blog-card').forEach(card => {
-          // Remove existing listeners and add enhanced ones
-          const articleId = card.getAttribute('data-article');
-          if (articleId) {
-            card.onclick = () => window.loadArticleEnhanced(articleId);
-          }
-        });
-      }, 500);
-    });
