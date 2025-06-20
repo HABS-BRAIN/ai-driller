@@ -53,8 +53,8 @@
         <h1>Research Updates</h1>
       </div>
       <div class="blog-grid">
-        <!-- Blog Cards -->
-        <div class="blog-card" data-article="transformers">
+        <!-- Blog Cards with proper click handlers -->
+        <div class="blog-card" data-article="transformers" onclick="loadArticleEnhanced('transformers')" style="cursor: pointer;">
           <h3 class="blog-title">Attention Models Application in EEG Signal Processing</h3>
           <p class="blog-excerpt">While working on neuromarker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of current state-of-the-art applications of the attention mechanism in EEG processing.</p>
           <div class="blog-tags">
@@ -65,7 +65,7 @@
           <div class="blog-date">June 6, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="eeg-conformer">
+        <div class="blog-card" data-article="eeg-conformer" onclick="loadArticleEnhanced('eeg-conformer')" style="cursor: pointer;">
           <h3 class="blog-title">EEG Conformer: CNNs and Transformers for Better Brain Signal Decoding</h3>
           <p class="blog-excerpt">Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.</p>
           <div class="blog-tags">
@@ -76,7 +76,7 @@
           <div class="blog-date">June 6, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="brain-network">
+        <div class="blog-card" data-article="brain-network" onclick="loadArticleEnhanced('brain-network')" style="cursor: pointer;">
           <h3 class="blog-title">Brain Network</h3>
           <p class="blog-excerpt">During the work with EEG signals in the context of various HABS use cases, it became necessary to explore modern methods for signal processing, feature extraction, and model development. The AI Pillar team is dedicated to analyzing the existing methods by applying them to datasets collected by HABS. One of the state-of-the-art approaches — Brain Network.</p>
           <div class="blog-tags">
@@ -87,7 +87,7 @@
           <div class="blog-date">June 15, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="eegpt">
+        <div class="blog-card" data-article="eegpt" onclick="loadArticleEnhanced('eegpt')" style="cursor: pointer;">
           <h3 class="blog-title">EEGPT</h3>
           <p class="blog-excerpt">Advanced transformer-based approach for EEG signal processing and analysis.</p>
           <div class="blog-tags">
@@ -109,19 +109,30 @@
         </div>
       </div>
     </div>
-
-    <!-- Loading & Error -->
-    <div id="loading" class="loading-indicator" style="display: none;">
-      <div class="spinner"></div>
-      <p>Loading article...</p>
-    </div>
-
-    <div id="error-message" class="error-message" style="display: none;">
-      <h2>Article Not Found</h2>
-      <p>Sorry, the requested article could not be loaded. Please try again or go back to the research updates.</p>
-      <a href="#" class="back-button" onclick="showPage('blog')">← Back to Research Updates</a>
-    </div>
   </div>
+
+  <!-- Initialize Mermaid -->
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
 
   <!-- Your JS -->
   <script src="script.js"></script>
+
+  <!-- Enhanced article loading functionality -->
+  <script>
+    // Add event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click event listeners to blog cards (alternative to onclick)
+      document.querySelectorAll('.blog-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const articleId = this.getAttribute('data-article');
+          if (articleId && window.loadArticleEnhanced) {
+            window.loadArticleEnhanced(articleId);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
