@@ -13,11 +13,11 @@ During the work with EEG signals in the context of various HABS use cases, it be
 
 ## Brain Network
 
-**Brain Network** refers to a representation of the functional or effective connectivity of the brain — how different regions of the brain interact and communicate with each other over time. This network is typically modeled as a graph, where nodes represent specific brain regions or EEG electrodes, and edges represent the strength or nature of interactions between these regions.
+**Brain Network** refers to a representation of the functional or effective connectivity of the brain, how different regions of the brain interact and communicate with each other over time. This network is typically modeled as a graph, where nodes represent specific brain regions or EEG electrodes, and edges represent the strength or nature of interactions between these regions.
 
 ![Brain Network visualization](2004.01973v1.pdf-image-042%20(1).jpg)
 
-### Common Approach
+The common approach to utilizing the brain network can be described follows:
 
 1. **EEG input signal is processed** (Down sampling, Filtering, Artifact removal)
 
@@ -27,26 +27,22 @@ During the work with EEG signals in the context of various HABS use cases, it be
    $N_{\text{channels}} \times T_{\text{recordings}}$  
    is sampled into intervals of $t$ seconds.
 
-3. **Brain Network construction** for each sample of shape  
-   $N_{\text{channels}} \times t$.  
-   A connectivity metric (e.g., Pearson correlation, Coherence, Phase Locked Value) is used to compute the adjacency matrix $A_{ij}$ of size $N \times N$.  
-   In our implementation, **Pearson correlation** was used:
+3.  For each sample  ($N_{channels} \times t$) **Brain Network** is constructed using metric measuring connectivity between each pair of channels (Pearson correlation\cite{li_emotion_2020}, Coherence\cite{li_emotion_2020}, Phase Locked Value\cite{wu2020investigating}, etc.) resulting in a graph representation with an associated adjacency matrix $A_{ij}$ of size $N \times N$. In our implementation **Pearson correlation** was chosen as a metric, as in the reference literature, it gives the best results.
 
    $$
    \rho_{x,y} = \frac{\mathrm{cov}(x, y)}{\sigma_x \sigma_y}
    $$
 
-4. **Graph feature calculation**. From the constructed Brain Network, the following features are computed:
+4. **Graph feature calculation**. For obtained Brain Network of each sample graph, measures are calculated. Then these measures are used as features. In our implementation, we used the following features:
 
-   - **Graph Strength**: average sum of edge weights per node.
-
+   - **Graph Strength**:- is the sum of the weights (level of correlation in our case) of all edges connected to it, averaged over all nodes in the graph. This gives a sense of how strongly, on average, nodes are connected. This feature allows us to identify the time periods in which the brain was the most "activated".
      $$
      \bar{s} = \frac{1}{N} \sum_{i=1}^{N} \sum_{j \in \mathcal{N}(i)} w_{ij}
      $$
 
      Where $w_{ij}$ is the weight of the edge between the *i-th* and *j-th* node.
 
-   - **Clustering Coefficient**: measures the interconnectedness of a node’s neighbors.
+   - **Clustering Coefficient**: measures the extent to which node's neighbors  are interconnected to each other averaged over all nodes in the graph.
 
      $$
      c = \frac{1}{N} \sum_{i=1}^{N} \frac{2 e_i}{k_i(k_i - 1)}
@@ -54,8 +50,7 @@ During the work with EEG signals in the context of various HABS use cases, it be
 
      Where $e_i$ is the number of edges between neighbors of node *i*, and $k_i$ is the number of neighbors.
 
-   - **Eigenvector Centrality**: measures node influence recursively — nodes connected to high-scoring nodes contribute more.
-
+   - **Eigenvector Centrality**: measures the average node’s influence based on the principle that connections to high-scoring nodes contribute more to a node’s score. The formula is recursive.
      $$
      \bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{\lambda} \sum_{j=1}^{N} A_{ij} x_j
      $$
@@ -69,7 +64,7 @@ During the work with EEG signals in the context of various HABS use cases, it be
 
 ## Discussion & Suggestions
 
-|                  | **EEGPT**                                                                                   | **Brain Network**                                                                 |
+|                   **Brain Network**                                                                 |
 |------------------|-----------------------------------------------------------------------------------|
 | **Pros**         | Graph structure = interpretability + variety of features                         |
 | **Cons**         | Too many parameters to tune effectively                                          |
