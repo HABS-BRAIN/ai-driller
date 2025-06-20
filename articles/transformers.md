@@ -29,9 +29,9 @@ We calculate to what extent each word in the sentence is related to all the word
 
 #### How Does It Work?
 
-We begin with an input matrix **X**, composed of vectors $\overrightarrow{xᵢ}$, where each $\overrightarrow{xᵢ}$ corresponds to a word in the input sequence.
+We begin with an input matrix **X**, composed of vectors $\overrightarrow{xᵢ}$ where each $\overrightarrow{xᵢ}$ corresponds to a word in the input sequence.
 
-For each vector $\overrightarrow{xᵢ}$, we construct three new vectors:
+For each vector $\overrightarrow{xᵢ}$ we construct three new vectors:
 
 - **Query vector** $\overrightarrow{qᵢ}$:Encodes information about which other words the model should attend to when representing $\overrightarrow{xᵢ}$.
 - **Key vector** $\overrightarrow{kᵢ}$: Functions like a tag. It holds identifying information that allows other words to determine whether they should attend to this word.
