@@ -3,7 +3,6 @@
 **Author**: Anton Orlovskii  
 **Date**: June 20th 2026
 
----
 
 ## Introduction
 
