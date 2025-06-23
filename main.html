@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
-  <!-- KaTeX for LaTeX -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous"/>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <!-- KaTeX for LaTeX - Updated to use cdnjs for better reliability -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
   <!-- Marked.js for Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -21,29 +21,13 @@
   <!-- Mermaid -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 
-    <!-- Initialize Mermaid -->
+  <!-- Initialize Mermaid -->
   <script>
     mermaid.initialize({ startOnLoad: true });
   </script>
 
   <!-- Your JS -->
   <script src="script.js"></script>
-
-  <!-- Enhanced article loading functionality -->
-  <script>
-    // Add event listeners after DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add click event listeners to blog cards (alternative to onclick)
-      document.querySelectorAll('.blog-card').forEach(card => {
-        card.addEventListener('click', function() {
-          const articleId = this.getAttribute('data-article');
-          if (articleId && window.loadArticleEnhanced) {
-            window.loadArticleEnhanced(articleId);
-          }
-        });
-      });
-    });
-  </script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -78,7 +62,7 @@
       </div>
       <div class="blog-grid">
         <!-- Blog Cards with proper click handlers -->
-        <div class="blog-card" data-article="transformers" onclick="loadArticleEnhanced('transformers')" style="cursor: pointer;">
+        <div class="blog-card" data-article="transformers" style="cursor: pointer;">
           <h3 class="blog-title">Attention Models Application in EEG Signal Processing</h3>
           <p class="blog-excerpt">While working on neuromarker identification through EEG signal processing, we came across attention models. This post aims to provide a comprehensive overview of current state-of-the-art applications of the attention mechanism in EEG processing.</p>
           <div class="blog-tags">
@@ -89,7 +73,7 @@
           <div class="blog-date">June 6, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="eeg-conformer" onclick="loadArticleEnhanced('eeg-conformer')" style="cursor: pointer;">
+        <div class="blog-card" data-article="eeg-conformer" style="cursor: pointer;">
           <h3 class="blog-title">EEG Conformer: CNNs and Transformers for Better Brain Signal Decoding</h3>
           <p class="blog-excerpt">Imagine if we could combine the best of two powerful AI architectures to better understand the complex signals our brains produce. That's exactly what researchers accomplished with the EEG Conformer, a neural network that merges convolutional neural networks (CNNs) with transformer architectures to decode electroencephalogram (EEG) signals.</p>
           <div class="blog-tags">
@@ -100,7 +84,7 @@
           <div class="blog-date">June 6, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="brain-network" onclick="loadArticleEnhanced('brain-network')" style="cursor: pointer;">
+        <div class="blog-card" data-article="brain-network" style="cursor: pointer;">
           <h3 class="blog-title">Brain Network</h3>
           <p class="blog-excerpt">During the work with EEG signals in the context of various HABS use cases, it became necessary to explore modern methods for signal processing, feature extraction, and model development. The AI Pillar team is dedicated to analyzing the existing methods by applying them to datasets collected by HABS. One of the state-of-the-art approaches — Brain Network.</p>
           <div class="blog-tags">
@@ -111,7 +95,7 @@
           <div class="blog-date">June 15, 2025</div>
         </div>
 
-        <div class="blog-card" data-article="eegpt" onclick="loadArticleEnhanced('eegpt')" style="cursor: pointer;">
+        <div class="blog-card" data-article="eegpt" style="cursor: pointer;">
           <h3 class="blog-title">EEGPT</h3>
           <p class="blog-excerpt">Neural network architectures based on Transformers and the Attention mechanism have demonstrated their effectiveness and potential in text and image processing tasks. In recent years, multiple attempts have been made to apply such architectures to EEG signal analysis. The authors of the model in question provide a pretrained encoder, which they claim to be universal — capable of handling EEG signals recorded from different devices, with varying numbers of channels and signal lengths. Furthermore, it is considered reliable, as the model architecture emphasizes encoder training to produce robust representations in the latent space.</p>
           <div class="blog-tags">
@@ -134,7 +118,6 @@
       </div>
     </div>
   </div>
-
 
 </body>
 </html>
