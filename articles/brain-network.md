@@ -1,7 +1,7 @@
 # Brain Network
 
 **Author**: Anton Orlovskii  
-**Date**: June 20th 2026
+**Date**: June 20th 2026\
 **Contact**: adorlovskii@gmail.com
 
 ---
