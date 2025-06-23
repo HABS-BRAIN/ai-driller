@@ -9,6 +9,7 @@ Neural network architectures based on Transformers and the Attention mechanism h
 
 **Such an architecture appears promising for HABS-related tasks, as in some use cases there is a lack of clear intuition behind the data as well as an ambiguous ground truth. In this context, a pretrained self-supervised algorithm (like attention mechanism) could enable the extraction of latent representations that may help uncover previously unknown patterns within the data.**
 
+
 ---
 
 ### Method
@@ -17,52 +18,36 @@ Neural network architectures based on Transformers and the Attention mechanism h
 
 In a general case, the masked autoencoder learns features through a form of denoising autoencoder: input signals occluded with random patch masks are fed into the encoder, and the decoder predicts the original embeddings of the masked patches.
 
-$
-\min_{\theta, \phi} \; \mathbb{E}_{x \sim \mathcal{D}} \; \mathcal{H}(d_{\phi}(z),\, x \odot (1 - \mathbf{M})), \quad 
-\text{where } z = f_{\theta}(x \odot \mathbf{M})
-$
+$$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\; \\mathcal{H}(d_{\\phi}(z),\\, x \\odot (1 - \\mathbf{M})), \\quad 
+\\text{where } z = f_{\\theta}(x \\odot \\mathbf{M})$$
 
 To improve representational quality, an auxiliary loss aligns masked and unmasked encodings:
 
-$
-\min_{\theta, \phi} \; \mathbb{E}_{x \sim \mathcal{D}} \left[ 
-\mathcal{H}(d_{\phi}(z),\, x \odot (1 - \mathbf{M})) + \mathcal{H}(z,\, f_{\theta}(x))
-\right]
-$
+$$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\left[ 
+\\mathcal{H}(d_{\\phi}(z),\\, x \\odot (1 - \\mathbf{M})) + \\mathcal{H}(z,\\, f_{\\theta}(x))
+\\right]$$
 
 ---
 
-### Input
+## Input
 
-Input to the model: filtered and artifact-removed EEG tensor of shape  
-`[Batches × N_channels × T_recordings]`.
+Input to the model: filtered and artifact-removed EEG tensor of shape **[Batches × N_channels × T_recordings]**.
 
 ---
 
-### Local Spatio-Temporal Embedding
-
-![Local spatio-temporal embedding](articles/images/EEGPT_patches.png)
+## Local Spatio-Temporal Embedding
 
 Steps:
 
-1. Assign a learnable embedding vector $\sigma_i$ to each EEG channel $c_i$.
+1. Assign a learnable embedding vector $\\sigma_i$ to each EEG channel $c_i$.
 2. Divide signal into patches $p_{i,j}$:
-
-   $
-   p_{i,j} = x_{i,(j-1)d:jd}
-   $
+   $$p_{i,j} = x_{i,(j-1)d:jd}$$
 
 3. Generate embeddings:
-
-   $
-   \text{Embed}(p_{i,j}) = W_p^T p_{i,j} + b_p
-   $
+   $$\\text{Embed}(p_{i,j}) = W_p^T p_{i,j} + b_p$$
 
 4. Construct tokens:
-
-   $
-   \text{token}_{i,j} = \text{Embed}(p_{i,j}) + \sigma_i
-   $
+   $$\\text{token}_{i,j} = \\text{Embed}(p_{i,j}) + \\sigma_i$$
 
 ---
 
@@ -76,10 +61,11 @@ For training:
 
 Are masked using binary mask $M$.
 
-Masked input: $x \odot M$  
-Unmasked part: $x \odot \bar{M}$
+Masked input: $x \\odot M$  
+Unmasked part: $x \\odot \\bar{M}$
 
 ---
+
 
 ### Encoder
 
@@ -87,50 +73,36 @@ Unmasked part: $x \odot \bar{M}$
 
 - **Input**: masked tokens + summary tokens (like [CLS] in BERT).
 - **Computation**:
-
-  $
-  \text{enc}_j = \mathrm{ENC} \left( \left\{ \text{token}_{i,j} \right\}_{(i,j) \in \mathcal{M}} \right)
-  $
+  $$\\text{enc}_j = \\mathrm{ENC} \\left( \\left\\{ \\text{token}_{i,j} \\right\\}_{(i,j) \\in \\mathcal{M}} \\right)$$
 
 - **Output**: hidden vector of dimension $h$ per patch $j$.
 
 ---
+
 
 ### Predictor
 
 ![EEGPT Predictor](articles/images/EEGPT_predictor.png)
 
 - **Rotary positional encoding**:
-
-  $
-  \text{pos}_j = \text{Rotation}_\theta(\text{token}_j)
-  $
+  $$\\text{pos}_j = \\text{Rotation}_\\theta(\\text{token}_j)$$
 
 - **Input**: encoded patches + queries (random vectors)
 - **Computation**:
-
-  $
-  \left\{ \text{pred}_t \right\}_{t=1}^{N} = \mathrm{PRED} \left( \left\{ \text{enc}_j + \text{pos}_j \right\}_{(i,j) \in \mathcal{M}} \right)
-  $
+  $$\\left\\{ \\text{pred}_t \\right\\}_{t=1}^{N} = \\mathrm{PRED} \\left( \\left\\{ \\text{enc}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\mathcal{M}} \\right)$$
 
 - **Output**: predicted embeddings of masked tokens.
 
 ---
 
-### Momentum Encoder
+## Momentum Encoder
 
 - **Input**: full (unmasked) tokens
 - **Computation**:
-
-  $
-  \text{menc}_j = \mathrm{MENC} \left( \left\{ \text{token}_{i,j} \right\}_{(i,j) \in \overline{\mathcal{M} \cup \mathcal{U}}} \right)
-  $
+  $$\\text{menc}_j = \\mathrm{MENC} \\left( \\left\\{ \\text{token}_{i,j} \\right\\}_{(i,j) \\in \\overline{\\mathcal{M} \\cup \\mathcal{U}}} \\right)$$
 
 - **Loss**:
-
-  $
-  \mathcal{L}_A = -\frac{1}{N} \sum_{j=1}^{N} \left\| \text{pred}_j,\, \mathrm{LN}(\text{menc}_j) \right\|_2^2
-  $
+  $$\\mathcal{L}_A = -\\frac{1}{N} \\sum_{j=1}^{N} \\left\\| \\text{pred}_j,\\, \\mathrm{LN}(\\text{menc}_j) \\right\\|_2^2$$
 
 ---
 
@@ -138,46 +110,39 @@ Unmasked part: $x \odot \bar{M}$
 
 ![EEGPT Reconstructor](articles/images/EEGPT_Reconstructor.png)
 
-- **Input**: encoded unmasked ($\text{enc}_j$) + predicted masked ($\text{pred}_j$), both with $\text{pos}_j$.
+- **Input**: encoded unmasked ($\\text{enc}_j$) + predicted masked ($\\text{pred}_j$), both with $\\text{pos}_j$.
 - **Computation**:
-
-  $
-  \left\{ \text{rec}_{u,t} \right\}_{(u,t) \in \overline{\mathcal{M}}} =
-  \mathrm{REC} \left(
-  \left\{ \text{enc}_j + \text{pos}_j \right\}_{(i,j) \in \mathcal{M}} \cup
-  \left\{ \text{pred}_j + \text{pos}_j \right\}_{(i,j) \in \overline{\mathcal{M}}}
-  \right)
-  $
+  $$\\left\\{ \\text{rec}_{u,t} \\right\\}_{(u,t) \\in \\overline{\\mathcal{M}}} =
+  \\mathrm{REC} \\left(
+  \\left\\{ \\text{enc}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\mathcal{M}} \\cup
+  \\left\\{ \\text{pred}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\overline{\\mathcal{M}}}
+  \\right)$$
 
 - **Loss**:
-
-  $
-  \mathcal{L}_R = -\frac{1}{|\overline{\mathcal{M}}|} 
-  \sum_{(i,j) \in \overline{\mathcal{M}}} 
-  \left\| \text{rec}_{i,j},\, \mathrm{LN}(p_{i,j}) \right\|_2^2
-  $
+  $$\\mathcal{L}_R = -\\frac{1}{|\\overline{\\mathcal{M}}|} 
+  \\sum_{(i,j) \\in \\overline{\\mathcal{M}}} 
+  \\left\\| \\text{rec}_{i,j},\\, \\mathrm{LN}(p_{i,j}) \\right\\|_2^2$$
 
 ---
 
-### Combined Loss Function
+## Combined Loss Function
 
 Final loss function:
-
-$
-\mathcal{L} = \mathcal{L}_A + \mathcal{L}_R
-$
+$$\\mathcal{L} = \\mathcal{L}_A + \\mathcal{L}_R$$
 
 This design allows using the pretrained encoder **without retraining**, by improving its representation capability via self-supervised learning.
 
 ---
 
-### Linear Probing Method
+## Linear Probing Method
 
 To apply the pretrained encoder to new data, the **linear probing** scheme is used:
 
 - Pretrained encoder (frozen)
 - Spatial filter
 - Linear classifier on top
+
+---
 
 ![EEGPT Linear probing method](articles/images/EEGPT_lin_prob.png)
 
