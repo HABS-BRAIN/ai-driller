@@ -53,13 +53,30 @@ temporal_conv = Conv1D(channels=22, filters=40, kernel_size=64)
 spatial_conv = DepthwiseConv1D(groups=40)
 ```
 
-The temporal convolution is like having 40 different "detectors," each tuned to find specific patterns in the timing of brain activity. The spatial convolution then asks: "When this pattern appears in one brain region, what happens in the others?"
+The temporal convolution is like having 40 different "detectors," each tuned to find specific patterns in the timing of brain activity. The temporal convolution takes $1 × channels × number of time samples (sp)$ as input, and $k kernels of size (1, 25)$. The output is $k × ch × (sp-24)$.
+The spatial convolution then asks: "When this pattern appears in one brain region, what happens in the others?". The spatial convolution takes as input the output of the temporal convolution $k × ch × (sp-24)$ and $k kernels of size (ch, 1)$. The output is $k × 1 × (sp-24)$. 
+After spatial convolution batch normalization + ELU activation are applied. For the average pooling, the kernel size is $(1, 75)$ and the output dimensions is $k × 1 × T\_out$, where T $T_out = floor((sp-24-75)/15) + 1$.
+Before Self-attention is applied, feature rearrangement is performed: squeezing electrode channel dimension, transposing convolution channels with time dimension and finally getting a shape: $T_out × k$ (tokens × features per token).
+
 
 Self-Attention:
 Through self-attention, the transformer creates a dynamic map where each point in the EEG signal can evaluate its relationship with every other point, assigning importance weights based on relevance. This comprehensive cross-referencing enables the detection of subtle long-term dependencies that unfold over extended time periods.
+The attention module takes $X ∈ ℝ^(m×d)$ as input. $m$ is the number of tokens ($T\_out$) and $d$ is the feature dimension per token (k = 40).
+For each attention head $Q_l = X W_Q^l,  K_l = X W_K^l,  V_l = X W_V^l$, where $W_Q^l, W_K^l, W_V^l ∈ ℝ^(d×(d/h))$. Then Scaled Dot-Product Attention and Multi-Head Attention are performed (as explained in our previous post).
+
+After self-attention, two fully-connected layers are applied (Feed-Forward Network). The self-attention computation is repeated 6 times.
+
+Then, two fully-connected layers output an M-dimensional vector followed by Softmax are used for the final classification. Cross-entropy loss $L = -1/N_b ∑_{i=1}^{N_b} ∑_{c=1}^M y log(ŷ)$ is used, where $N\_b$ is batch size, $M$ is the number of categories, $y$ is the ground truth label and $ŷ$ is the predicted probability.
+
+The parameters used for training are: 
+- Optimizer: Adam
+- Learning rate: 0.0002
+- $β₁$: 0.5
+- $β₂$: 0.999
+
 
 # Evaluation
-The EEG Conformer was tested on the BCI Competition IV Dataset 2a—the standard for motor imagery classification (detecting when someone imagines moving their left hand vs. right hand or feet vs tongue).
+The EEG Conformer was tested on the BCI Competition IV Dataset 2a—the standard for motor imagery classification (detecting when someone imagines moving their left hand vs. right hand or feet vs tongue). Kappa coefficient is used as evaluation metric: $kappa = (p_o - p_e) / (1 - p_e)$.
 
 | Method | Accuracy | What This Means |
 |--------|----------|-----------------|
@@ -103,26 +120,7 @@ The fact that the model's attention maps correspond to known brain anatomy gives
 
 ## Implementation: Getting Your Hands Dirty
 
-The beauty of the EEG Conformer is that the researchers made everything open source. Here's how to get started:
-
-```python
-# Install the framework
-pip install braindecode torch
-
-# Import the model
-from braindecode.models import EEGConformer
-
-# Create and train your model
-model = EEGConformer(
-    n_outputs=4,     # Number of classes (e.g., left hand, right hand, feet, tongue)
-    n_chans=22,      # Number of EEG channels
-    n_times=1000     # Number of time points
-)
-
-# Train on your data
-model.fit(X_train, y_train)
-predictions = model.predict(X_test)
-```
+The beauty of the EEG Conformer is that the researchers made everything open source. You can find the code linked below.
 
 ### Preprocessing: The Foundation Matters
 
@@ -133,6 +131,7 @@ Before feeding data to the model, proper preprocessing is necessary:
 3. **Artifact removal**: Clean out eye blinks, muscle tension, and other contamination
 
 The model is relatively forgiving, but good preprocessing can make the difference between mediocre and excellent results.
+The raw EEG input has dimensions channels × number of time samples. A Z-score standardization is used $x_o = (x_i - μ) / √σ²$. where: $x_i$ is band-pass filtered data, $x_o$ is the standardized output $\mu$ is the mean calculated from training data and $σ²$ is the variance calculated from training data.
 
 ---
 
