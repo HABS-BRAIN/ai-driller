@@ -16,12 +16,12 @@ Neural network architectures based on Transformers and the Attention mechanism h
 
 ![EEGPT Architecture](articles/images/EEGPT_architecture.png)
 
-In a general case, the masked autoencoder learns features through a form of denoising autoencoder: input signals occluded with random patch masks are fed into the encoder, and the decoder predicts the original embeddings of the masked patches.
+In a general case, the masked autoencoder learns features through a form of denoising autoencoder: input signals occluded with random patch masks are fed into the encoder, and the decoder predicts the original embeddings of the masked patches. 
 
 $$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\; \\mathcal{H}(d_{\\phi}(z),\\, x \\odot (1 - \\mathbf{M})), \\quad 
 \\text{where } z = f_{\\theta}(x \\odot \\mathbf{M})$$
 
-To improve representational quality, an auxiliary loss aligns masked and unmasked encodings:
+By minimizing the loss function, the model learns the optimal representation $z$ of the input signal. However, in practice, there is no explicit representation $z$ (no split of encoder and decoder) in the BERT-style model, and the model must be fine-tuned to locate effective representations. Thus, a spatio-temporal representation alignment branch ($ \mathcal{H}(z,\, f_{\theta}(x))$) is added to explicitly represent $z$:
 
 $$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\left[ 
 \\mathcal{H}(d_{\\phi}(z),\\, x \\odot (1 - \\mathbf{M})) + \\mathcal{H}(z,\\, f_{\\theta}(x))
@@ -31,13 +31,13 @@ $$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\left[
 
 ## Input
 
-Input to the model: filtered and artifact-removed EEG tensor of shape **[Batches × N_channels × T_recordings]**.
+The expected input of the model is the discretized filtered and artifact-removed EEG data presented as a tensor of shape **[Batches × N_channels × T_recordings]** (Visualization of input for one batch is presented below).
 
 ---
 
 ## Local Spatio-Temporal Embedding
 
-Steps:
+Before feeding data as input to the transformer architecture, it is necessary to embed it into tokens. In order to take into account signal variations, the source data is split into sequential patches, for each of which embedding is calculated. It is also necessary to take into account that in the EEG context different channels contain different information, and for the universality of the model, the input data are allowed to contain a variable number of channels, which should also be taken into account when calculating tokens. Thus, patch creation for further preparation of the input signal is performed as follows : 
 
 1. Assign a learnable embedding vector $\\sigma_i$ to each EEG channel $c_i$.
 2. Divide signal into patches $p_{i,j}$:
