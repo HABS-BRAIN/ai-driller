@@ -12,7 +12,6 @@ Such an architecture appears promising for HABS-related tasks, as in some use ca
 ![EEGPT Architecture](images/EEGPT_architecture.png)
 
 In a general case, the masked autoencoder learns features through a form of denoising autoencoder: input signals occluded with random patch masks are fed into the encoder, and the decoder predicts the original embeddings of the masked patches. 
-
 $$
 \min_{\theta, \phi} \; \mathbb{E}_{x \sim \mathcal{D}} \; \mathcal{H}(d_{\phi}(z),\, x \odot (1 - \mathbf{M})), \quad 
 \text{where } z = f_{\theta}(x \odot \mathbf{M})
