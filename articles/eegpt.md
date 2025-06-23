@@ -2,22 +2,16 @@
 
 ### Context
 
-Neural network architectures based on Transformers and the Attention mechanism have demonstrated their effectiveness in text and image processing. Recently, similar architectures have been applied to EEG signal analysis.
+Neural network architectures based on Transformers and the Attention mechanism have demonstrated their effectiveness and potential in text and image processing tasks. In recent years, multiple attempts have been made to apply such architectures to EEG signal analysis. The authors of the model in question provide a pretrained encoder, which they claim to be universal — capable of handling EEG signals recorded from different devices, with varying numbers of channels and signal lengths. Furthermore, it is considered reliable, as the model architecture emphasizes encoder training to produce robust representations in the latent space.
 
-The EEGPT model provides a **pretrained encoder** designed to be:
-
-- **Universal**: supports EEG from different devices with varying channels and lengths.
-- **Reliable**: trained to produce robust latent representations.
-
-This architecture is promising for HABS use cases, especially when there is ambiguity in the ground truth or lack of data intuition. A pretrained self-supervised model (like EEGPT) may help reveal hidden patterns.
-
+Such an architecture appears promising for HABS-related tasks, as in some use cases there is a lack of clear intuition behind the data as well as an ambiguous ground truth. In this context, a pretrained self-supervised algorithm (like attention mechanism) could enable the extraction of latent representations that may help uncover previously unknown patterns within the data.
 ---
 
 ### Method
 
-![EEGPT Architecture](EEGPT_architecture.png)
+![EEGPT Architecture](images/EEGPT_architecture.png)
 
-EEGPT uses a **masked autoencoder** to learn robust features. It applies random masks to EEG signals and trains the model to reconstruct the original embeddings of the masked parts.
+In a general case, the masked autoencoder learns features through a form of denoising autoencoder: input signals occluded with random patch masks are fed into the encoder, and the decoder predicts the original embeddings of the masked patches. 
 
 $$
 \min_{\theta, \phi} \; \mathbb{E}_{x \sim \mathcal{D}} \; \mathcal{H}(d_{\phi}(z),\, x \odot (1 - \mathbf{M})), \quad 
@@ -43,7 +37,7 @@ Input to the model: filtered and artifact-removed EEG tensor of shape
 
 ### Local Spatio-Temporal Embedding
 
-![Local spatio-temporal embedding](EEGPT_patches.png)
+![Local spatio-temporal embedding](images/EEGPT_patches.png)
 
 Steps:
 
@@ -70,7 +64,7 @@ Steps:
 
 ### Masking
 
-![Token Masking](EEGPT_masking.png)
+![Token Masking](images/EEGPT_masking.png)
 
 For training:
 - 50% of time patches
@@ -85,7 +79,7 @@ Unmasked part: $x \odot \bar{M}$
 
 ### Encoder
 
-![EEGPT Encoder](EEGPT_Encoder.png)
+![EEGPT Encoder](images/EEGPT_Encoder.png)
 
 - **Input**: masked tokens + summary tokens (like [CLS] in BERT).
 - **Computation**:
@@ -100,7 +94,7 @@ Unmasked part: $x \odot \bar{M}$
 
 ### Predictor
 
-![EEGPT Predictor](EEGPT_predictor.png)
+![EEGPT Predictor](images/EEGPT_predictor.png)
 
 - **Rotary positional encoding**:
 
@@ -138,7 +132,7 @@ Unmasked part: $x \odot \bar{M}$
 
 ### Reconstructor
 
-![EEGPT Reconstructor](EEGPT_Reconstructor.png)
+![EEGPT Reconstructor](images/EEGPT_Reconstructor.png)
 
 - **Input**: encoded unmasked ($\text{enc}_j$) + predicted masked ($\text{pred}_j$), both with $\text{pos}_j$.
 - **Computation**:
@@ -181,7 +175,7 @@ To apply the pretrained encoder to new data, the **linear probing** scheme is us
 - Spatial filter
 - Linear classifier on top
 
-![EEGPT Linear probing method](EEGPT_lin_prob.png)
+![EEGPT Linear probing method](images/EEGPT_lin_prob.png)
 
 ---
 
