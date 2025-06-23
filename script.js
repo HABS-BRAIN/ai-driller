@@ -151,6 +151,7 @@ async function renderMath(element = document.body) {
     
     if (typeof renderMathInElement !== 'undefined') {
         try {
+            // First pass: render with standard delimiters
             renderMathInElement(element, {
                 delimiters: [
                     {left: '$$', right: '$$', display: true},
@@ -162,21 +163,120 @@ async function renderMath(element = document.body) {
                 errorColor: '#cc0000',
                 ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
                 trust: true,
+                strict: false, // Allow more flexible parsing
                 macros: {
                     "\\RR": "\\mathbb{R}",
                     "\\NN": "\\mathbb{N}",
                     "\\ZZ": "\\mathbb{Z}",
-                    "\\CC": "\\mathbb{C}"
+                    "\\CC": "\\mathbb{C}",
+                    "\\text": "\\textrm"
                 }
             });
+
+            // Second pass: handle any remaining math that might be in different formats
+            setTimeout(() => {
+                // Look for any remaining math patterns and try to render them
+                const mathElements = element.querySelectorAll('*');
+                mathElements.forEach(el => {
+                    if (el.textContent && el.textContent.includes('\\text{') && !el.classList.contains('katex')) {
+                        // Try to render individual math expressions that might have been missed
+                        try {
+                            renderMathInElement(el, {
+                                delimiters: [
+                                    {left: '$$', right: '$$', display: true},
+                                    {left: '$', right: '$', display: false}
+                                ],
+                                throwOnError: false,
+                                trust: true,
+                                strict: false
+                            });
+                        } catch (err) {
+                            console.warn('Secondary math rendering failed for element:', err);
+                        }
+                    }
+                });
+            }, 100);
+
             console.log('Math rendered successfully');
         } catch (error) {
             console.error('KaTeX rendering error:', error);
+            
+            // Fallback: try alternative rendering approach
+            setTimeout(() => {
+                try {
+                    renderMathInElement(element, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true}
+                        ],
+                        throwOnError: false,
+                        trust: true,
+                        strict: false
+                    });
+                    console.log('Fallback math rendering completed');
+                } catch (fallbackError) {
+                    console.error('Fallback math rendering also failed:', fallbackError);
+                }
+            }, 200);
         }
     } else {
         console.warn('KaTeX renderMathInElement not available');
     }
 }
+
+// Also update your loadArticleEnhanced function to include better image handling:
+// Add this section after you set articleContentDiv.innerHTML = htmlContent;
+
+// Improved image processing
+const images = articleContentDiv.querySelectorAll('img');
+images.forEach(img => {
+    // Set loading attributes for better performance
+    img.loading = 'lazy';
+    
+    // Handle image loading errors
+    img.onerror = function() {
+        console.warn('Image failed to load:', this.src);
+        this.style.border = '2px dashed #ccc';
+        this.style.padding = '20px';
+        this.style.background = '#f9f9f9';
+        this.style.maxWidth = '100%';
+        this.style.height = 'auto';
+        this.alt = 'Image failed to load: ' + this.src;
+        this.title = 'Failed to load: ' + this.src;
+    };
+    
+    // Ensure images are responsive
+    img.style.maxWidth = '100%';
+    img.style.height = 'auto';
+    img.style.display = 'block';
+    img.style.margin = '20px auto';
+    
+    // Handle relative paths
+    if (img.src && !img.src.startsWith('http') && !img.src.startsWith('data:')) {
+        if (!img.src.startsWith('images/') && !img.src.startsWith('assets/')) {
+            const originalSrc = img.getAttribute('src');
+            img.src = `articles/images/${originalSrc}`;
+        }
+    }
+    
+    // Add load event listener to ensure proper display
+    img.onload = function() {
+        this.style.opacity = '1';
+        console.log('Image loaded successfully:', this.src);
+    };
+    
+    // Set initial opacity for fade-in effect
+    img.style.opacity = '0.8';
+    img.style.transition = 'opacity 0.3s ease';
+});
+
+// Add this to ensure math rendering happens with multiple attempts:
+// Replace the math rendering section in loadArticleEnhanced:
+
+// FIXED: Ensure KaTeX is ready before rendering math
+await waitForKaTeX();
+
+// Multiple attempts at math rendering for better reliability
+let mathRenderAttempts = 0;
 
 // Simple loading/error display functions
 function showLoading(show) {
