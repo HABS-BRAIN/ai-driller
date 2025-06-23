@@ -16,13 +16,13 @@ During the work with EEG signals in the context of various HABS use cases, it be
 
 **Brain Network** refers to a representation of the functional or effective connectivity of the brain, how different regions of the brain interact and communicate with each other over time. This network is typically modeled as a graph, where nodes represent specific brain regions or EEG electrodes, and edges represent the strength or nature of interactions between these regions.
 
-![Brain Network visualization](images/brain-network.jpg)
+![Brain Network visualization](articles/images/brain-network.jpg)
 
 The common approach to utilizing the brain network can be described follows:
 
 1. **EEG input signal is processed** (Down sampling, Filtering, Artifact removal)
 
-    ![Data pre-processing steps visualization](images/raw_filt_artif.png)
+    ![Data pre-processing steps visualization](articles/images/raw_filt_artif.png)
 
 2. **Pre-processed signal** of shape $N_{\text{channels}} \times T_{\text{recordings}}$ is sampled into intervals of $t$ seconds.
 
