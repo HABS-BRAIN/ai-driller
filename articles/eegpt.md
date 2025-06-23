@@ -45,21 +45,21 @@ Steps:
 1. Assign a learnable embedding vector $\sigma_i$ to each EEG channel $c_i$.
 2. Divide signal into patches $p_{i,j}$:
 
-   $$
+   $
    p_{i,j} = x_{i,(j-1)d:jd}
-   $$
+   $
 
 3. Generate embeddings:
 
-   $$
+   $
    \text{Embed}(p_{i,j}) = W_p^T p_{i,j} + b_p
-   $$
+   $
 
 4. Construct tokens:
 
-   $$
+   $
    \text{token}_{i,j} = \text{Embed}(p_{i,j}) + \sigma_i
-   $$
+   $
 
 ---
 
@@ -85,9 +85,9 @@ Unmasked part: $x \odot \bar{M}$
 - **Input**: masked tokens + summary tokens (like [CLS] in BERT).
 - **Computation**:
 
-  $$
+  $
   \text{enc}_j = \mathrm{ENC} \left( \left\{ \text{token}_{i,j} \right\}_{(i,j) \in \mathcal{M}} \right)
-  $$
+  $
 
 - **Output**: hidden vector of dimension $h$ per patch $j$.
 
@@ -99,16 +99,16 @@ Unmasked part: $x \odot \bar{M}$
 
 - **Rotary positional encoding**:
 
-  $$
+  $
   \text{pos}_j = \text{Rotation}_\theta(\text{token}_j)
-  $$
+  $
 
 - **Input**: encoded patches + queries (random vectors)
 - **Computation**:
 
-  $$
+  $
   \left\{ \text{pred}_t \right\}_{t=1}^{N} = \mathrm{PRED} \left( \left\{ \text{enc}_j + \text{pos}_j \right\}_{(i,j) \in \mathcal{M}} \right)
-  $$
+  $
 
 - **Output**: predicted embeddings of masked tokens.
 
@@ -119,15 +119,15 @@ Unmasked part: $x \odot \bar{M}$
 - **Input**: full (unmasked) tokens
 - **Computation**:
 
-  $$
+  $
   \text{menc}_j = \mathrm{MENC} \left( \left\{ \text{token}_{i,j} \right\}_{(i,j) \in \overline{\mathcal{M} \cup \mathcal{U}}} \right)
-  $$
+  $
 
 - **Loss**:
 
-  $$
+  $
   \mathcal{L}_A = -\frac{1}{N} \sum_{j=1}^{N} \left\| \text{pred}_j,\, \mathrm{LN}(\text{menc}_j) \right\|_2^2
-  $$
+  $
 
 ---
 
@@ -138,21 +138,21 @@ Unmasked part: $x \odot \bar{M}$
 - **Input**: encoded unmasked ($\text{enc}_j$) + predicted masked ($\text{pred}_j$), both with $\text{pos}_j$.
 - **Computation**:
 
-  $$
+  $
   \left\{ \text{rec}_{u,t} \right\}_{(u,t) \in \overline{\mathcal{M}}} =
   \mathrm{REC} \left(
   \left\{ \text{enc}_j + \text{pos}_j \right\}_{(i,j) \in \mathcal{M}} \cup
   \left\{ \text{pred}_j + \text{pos}_j \right\}_{(i,j) \in \overline{\mathcal{M}}}
   \right)
-  $$
+  $
 
 - **Loss**:
 
-  $$
+  $
   \mathcal{L}_R = -\frac{1}{|\overline{\mathcal{M}}|} 
   \sum_{(i,j) \in \overline{\mathcal{M}}} 
   \left\| \text{rec}_{i,j},\, \mathrm{LN}(p_{i,j}) \right\|_2^2
-  $$
+  $
 
 ---
 
@@ -160,9 +160,9 @@ Unmasked part: $x \odot \bar{M}$
 
 Final loss function:
 
-$$
+$
 \mathcal{L} = \mathcal{L}_A + \mathcal{L}_R
-$$
+$
 
 This design allows using the pretrained encoder **without retraining**, by improving its representation capability via self-supervised learning.
 
