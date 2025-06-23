@@ -59,7 +59,7 @@ Self-Attention:
 Through self-attention, the transformer creates a dynamic map where each point in the EEG signal can evaluate its relationship with every other point, assigning importance weights based on relevance. This comprehensive cross-referencing enables the detection of subtle long-term dependencies that unfold over extended time periods.
 
 # Evaluation
-The EEG Conformer was tested on the BCI Competition IV Dataset 2a—the standard for motor imagery classification (detecting when someone imagines moving their left hand vs. right hand).
+The EEG Conformer was tested on the BCI Competition IV Dataset 2a—the standard for motor imagery classification (detecting when someone imagines moving their left hand vs. right hand or feet vs tongue).
 
 | Method | Accuracy | What This Means |
 |--------|----------|-----------------|
