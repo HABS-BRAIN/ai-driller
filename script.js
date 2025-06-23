@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('JavaScript loaded successfully');
     
+    // Initialize KaTeX
+    waitForKaTeX().then(() => {
+        console.log('KaTeX initialization complete');
+    }).catch(error => {
+        console.error('KaTeX initialization failed:', error);
+    });
+    
     // Navigation functionality
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -118,20 +125,30 @@ function showPage(pageId) {
 // Global variable to track KaTeX initialization
 let katexReady = false;
 
-// Wait for KaTeX to be fully loaded
+// Wait for KaTeX to be fully loaded - FIXED VERSION
 function waitForKaTeX() {
     return new Promise((resolve) => {
-        if (typeof renderMathInElement !== 'undefined') {
-            katexReady = true;
-            resolve();
-        } else {
-            setTimeout(() => waitForKaTeX().then(resolve), 100);
-        }
+        const checkKaTeX = () => {
+            if (typeof renderMathInElement !== 'undefined' && typeof katex !== 'undefined') {
+                katexReady = true;
+                console.log('KaTeX is ready');
+                resolve();
+            } else {
+                console.log('Waiting for KaTeX...');
+                setTimeout(checkKaTeX, 100);
+            }
+        };
+        checkKaTeX();
     });
 }
 
-// Improved math rendering function
-function renderMath(element = document.body) {
+// Improved math rendering function - FIXED VERSION
+async function renderMath(element = document.body) {
+    // Ensure KaTeX is ready
+    if (!katexReady) {
+        await waitForKaTeX();
+    }
+    
     if (typeof renderMathInElement !== 'undefined') {
         try {
             renderMathInElement(element, {
@@ -143,6 +160,8 @@ function renderMath(element = document.body) {
                 ],
                 throwOnError: false,
                 errorColor: '#cc0000',
+                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                trust: true,
                 macros: {
                     "\\RR": "\\mathbb{R}",
                     "\\NN": "\\mathbb{N}",
@@ -150,6 +169,7 @@ function renderMath(element = document.body) {
                     "\\CC": "\\mathbb{C}"
                 }
             });
+            console.log('Math rendered successfully');
         } catch (error) {
             console.error('KaTeX rendering error:', error);
         }
@@ -239,10 +259,18 @@ window.loadArticleEnhanced = async function(articleId) {
             }
         });
         
-        // Render math with a small delay to ensure DOM is ready
-        setTimeout(() => {
-            renderMath(articleContentDiv);
-        }, 100);
+        // FIXED: Ensure KaTeX is ready before rendering math
+        await waitForKaTeX();
+        
+        // Render math with proper delay and error handling
+        setTimeout(async () => {
+            try {
+                await renderMath(articleContentDiv);
+                console.log('Math rendering completed for article:', articleId);
+            } catch (error) {
+                console.error('Math rendering failed:', error);
+            }
+        }, 200); // Increased delay for better reliability
         
         // Initialize Mermaid diagrams if present
         if (typeof mermaid !== 'undefined') {
