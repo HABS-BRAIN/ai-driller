@@ -1,4 +1,7 @@
-## EEGPT: Pretrained Transformer for Universal and Reliable Representation of EEG Signals [Wang et al., 2024]
+## EEGPT: Pretrained Transformer for Universal and Reliable Representation of EEG Signals
+
+**Author**: Anton Orlovskii  
+**Date**: June 20th 2026
 
 ### Context
 
