@@ -39,14 +39,14 @@ The expected input of the model is the discretized filtered and artifact-removed
 
 Before feeding data as input to the transformer architecture, it is necessary to embed it into tokens. In order to take into account signal variations, the source data is split into sequential patches, for each of which embedding is calculated. It is also necessary to take into account that in the EEG context different channels contain different information, and for the universality of the model, the input data are allowed to contain a variable number of channels, which should also be taken into account when calculating tokens. Thus, patch creation for further preparation of the input signal is performed as follows : 
 
-1. Assign a learnable embedding vector $\\sigma_i$ to each EEG channel $c_i$.
-2. Divide signal into patches $p_{i,j}$:
+1. First, the Codax Book is costructed to assosiate channel $c_{i}$ to the learnable embedding vector $\sigma_{i}$
+2. Second, the EEG signal is divided into equally sized patches in the spatio-temporal dimensions denoted as $p_{i,j}$:
    $$p_{i,j} = x_{i,(j-1)d:jd}$$
 
-3. Generate embeddings:
+3. Third, the embeddings are created with learnable weight-matrix and bias:
    $$\\text{Embed}(p_{i,j}) = W_p^T p_{i,j} + b_p$$
 
-4. Construct tokens:
+4. Finally, the resulting tokens are created to be fed into the model:
    $$\\text{token}_{i,j} = \\text{Embed}(p_{i,j}) + \\sigma_i$$
 
 ---
@@ -55,14 +55,7 @@ Before feeding data as input to the transformer architecture, it is necessary to
 
 ![Token Masking](articles/images/EEGPT_masking.png)
 
-For training:
-- 50% of time patches
-- 80% of channel patches
-
-Are masked using binary mask $M$.
-
-Masked input: $x \\odot M$  
-Unmasked part: $x \\odot \\bar{M}$
+For Encoder-Decoder scheme training purposes it is necessary to mask the input tokens by application of binary (1-s and 0-s) mask $M$ (Masking 50\% time and 80\% channel patches). Resulting in masked part $x \odot M$ and unmasked one $x \odot \bar{M}$.
 
 ---
 
@@ -71,7 +64,7 @@ Unmasked part: $x \\odot \\bar{M}$
 
 ![EEGPT Encoder](articles/images/EEGPT_Encoder.png)
 
-- **Input**: masked tokens + summary tokens (like [CLS] in BERT).
+- **Input**: Receives masked tokens concatenated with summary tokens. Summary tokens are randomly initialized and added to the Tokens (similarly as [CLS] in BERT, The which specifically does not represent any actual word; rather, it’s a placeholder that captures a summary of the entire input sequence. Since the [CLS] token is the first position in the sequence, it captures a summary representation of the entire sentence (or sentences) after passing through all the transformer layers. This means that the final vector representation of [CLS] contains the context of the whole sentence, making it highly useful for classification tasks or tasks requiring sentence-level understanding).
 - **Computation**:
   $$\\text{enc}_j = \\mathrm{ENC} \\left( \\left\\{ \\text{token}_{i,j} \\right\\}_{(i,j) \\in \\mathcal{M}} \\right)$$
 
@@ -84,24 +77,24 @@ Unmasked part: $x \\odot \\bar{M}$
 
 ![EEGPT Predictor](articles/images/EEGPT_predictor.png)
 
-- **Rotary positional encoding**:
+- **Rotary positional encoding** - Rotary position encoding: to pass positional information to the model, for each token Rotation was used as positional encoding:
   $$\\text{pos}_j = \\text{Rotation}_\\theta(\\text{token}_j)$$
 
 - **Input**: encoded patches + queries (random vectors)
-- **Computation**:
+- **Computation** -$enc_{j}$ combined with query-vectors (randomly initialized), served to “collect” the aggregated information from tokens in the learning process. Both have positional encoding.
   $$\\left\\{ \\text{pred}_t \\right\\}_{t=1}^{N} = \\mathrm{PRED} \\left( \\left\\{ \\text{enc}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\mathcal{M}} \\right)$$
 
-- **Output**: predicted embeddings of masked tokens.
+- **Output**: recovered (prediced) patterns $pred_{t}$ of masked signal
 
 ---
 
 ## Momentum Encoder
 
-- **Input**: full (unmasked) tokens
+- **Input**: initial unmasked signal patched into $token_{i,j}$
 - **Computation**:
   $$\\text{menc}_j = \\mathrm{MENC} \\left( \\left\\{ \\text{token}_{i,j} \\right\\}_{(i,j) \\in \\overline{\\mathcal{M} \\cup \\mathcal{U}}} \\right)$$
-
-- **Loss**:
+- **Output**: Initial signal patches encoded into hidden space of dimension $h$
+- **Loss** - Momentum encoder calculates the hidden representation of original (unmasked) EEG to align hidden representation of masked input with it, using the following Loss-function:
   $$\\mathcal{L}_A = -\\frac{1}{N} \\sum_{j=1}^{N} \\left\\| \\text{pred}_j,\\, \\mathrm{LN}(\\text{menc}_j) \\right\\|_2^2$$
 
 ---
@@ -110,15 +103,15 @@ Unmasked part: $x \\odot \\bar{M}$
 
 ![EEGPT Reconstructor](articles/images/EEGPT_Reconstructor.png)
 
-- **Input**: encoded unmasked ($\\text{enc}_j$) + predicted masked ($\\text{pred}_j$), both with $\\text{pos}_j$.
+- **Input**: encoded features corresponding to unmasked part of initial masked signal $enc_{j}$ and predicted features corresponding to masked part of initial signal $pred_{j}$. Both with positional encoding $pos_{j}$
 - **Computation**:
   $$\\left\\{ \\text{rec}_{u,t} \\right\\}_{(u,t) \\in \\overline{\\mathcal{M}}} =
   \\mathrm{REC} \\left(
   \\left\\{ \\text{enc}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\mathcal{M}} \\cup
   \\left\\{ \\text{pred}_j + \\text{pos}_j \\right\\}_{(i,j) \\in \\overline{\\mathcal{M}}}
   \\right)$$
-
-- **Loss**:
+- **Output**: Reconstructed patches corresponding to unmasked part of initial masked signal.
+- **Loss** -econstructor’s goal is to align the reconstructed patches generated by the reconstructor with the raw patches $p_{i,j}$ of unmasked signal $\bar{M}$. Masked-based reconstruction uses the following loss function: 
   $$\\mathcal{L}_R = -\\frac{1}{|\\overline{\\mathcal{M}}|} 
   \\sum_{(i,j) \\in \\overline{\\mathcal{M}}} 
   \\left\\| \\text{rec}_{i,j},\\, \\mathrm{LN}(p_{i,j}) \\right\\|_2^2$$
@@ -127,20 +120,13 @@ Unmasked part: $x \\odot \\bar{M}$
 
 ## Combined Loss Function
 
-Final loss function:
-$$\\mathcal{L} = \\mathcal{L}_A + \\mathcal{L}_R$$
-
-This design allows using the pretrained encoder **without retraining**, by improving its representation capability via self-supervised learning.
+The resulting Loss-function of a model is composed of the two: $\mathcal{L}_A + \mathcal{L}_R$. The proposed combined loss-function apart from learning Encoder-Decoder architecture in general, also improves the encoded quality which allows to use the pretrained Encoder on various dataset even **without pre-training**. 
 
 ---
 
 ## Linear Probing Method
 
-To apply the pretrained encoder to new data, the **linear probing** scheme is used:
-
-- Pretrained encoder (frozen)
-- Spatial filter
-- Linear classifier on top
+To apply the pretrained encoder to new datasets that were not used during model training, the authors propose a Linear Probe scheme, as illustrated below. In addition to the pretrained encoder (with frozen parameters), the scheme includes a spatial filter to align the EEG channels with the model's input format, followed by linear layers that map the encoder's output features to logits corresponding to the target classes.
 
 ---
 
@@ -150,7 +136,7 @@ To apply the pretrained encoder to new data, the **linear probing** scheme is us
 
 ### Evaluation
 
-The model was evaluated on datasets from different EEG paradigms:
+Evaluation of the model was performed on a set of datasets of a different paradigms. The list of the  paradigms refered in the original paper is presented below: 
 
 - **MI** – Motor imagery  
 - **ME** – Motor execution  
