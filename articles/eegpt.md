@@ -21,11 +21,11 @@ $
 
 To improve representational quality, an auxiliary loss aligns masked and unmasked encodings:
 
-$$
+$
 \min_{\theta, \phi} \; \mathbb{E}_{x \sim \mathcal{D}} \left[ 
 \mathcal{H}(d_{\phi}(z),\, x \odot (1 - \mathbf{M})) + \mathcal{H}(z,\, f_{\theta}(x))
 \right]
-$$
+$
 
 ---
 
