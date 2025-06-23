@@ -372,3 +372,93 @@
             font-size: 1.2em;
         }
     }
+/* Fix image overflow issues */
+.research-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto !important;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    object-fit: contain; /* Ensures images maintain aspect ratio */
+}
+
+/* Ensure the container doesn't overflow */
+.research-content {
+    overflow-x: auto;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Fix for very wide content */
+.research-page {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Container improvements */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow-x: hidden; /* Prevent container overflow */
+}
+
+/* Math equation containers */
+.research-content .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    margin: 1.5em 0;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.research-content .katex {
+    font-size: 1.1em;
+    max-width: 100%;
+}
+
+/* Ensure tables don't overflow */
+.research-content table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+.research-content table {
+    display: table;
+    white-space: normal;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .research-content {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+    
+    .research-content img {
+        margin: 15px auto;
+        border-radius: 4px;
+    }
+    
+    .research-page {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .katex {
+        font-size: 0.9em !important;
+    }
+    
+    .katex-display {
+        font-size: 1em !important;
+        overflow-x: auto;
+        text-align: left;
+    }
+}
