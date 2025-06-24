@@ -68,11 +68,7 @@ After self-attention, two fully-connected layers are applied (Feed-Forward Netwo
 
 Then, two fully-connected layers output an M-dimensional vector followed by Softmax are used for the final classification. Cross-entropy loss $$L = -1/N_b \sum_{i=1}^{N_b} \sum_{c=1}^M y log(ŷ)$$ is used, where $N_b$ is batch size, $M$ is the number of categories, $y$ is the ground truth label and $ŷ$ is the predicted probability.
 
-The parameters used for training are: 
-- Optimizer: Adam
-- Learning rate: 0.0002
-- $β₁$: 0.5
-- $β₂$: 0.999
+For training, they are using an Adam optimizer, a learning rate of 0.0002, $β₁$: 0.5 (the optimizer gives equal weight to the current gradient and the exponentially weighted average of past gradients), $β₂$: 0.999 (β₂ adapts the learning rate for each parameter based on the variance of the gradients, this value is a standard one).
 
 
 # Evaluation
