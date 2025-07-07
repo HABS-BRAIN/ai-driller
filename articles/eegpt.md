@@ -29,13 +29,13 @@ $$\\min_{\\theta, \\phi} \\; \\mathbb{E}_{x \\sim \\mathcal{D}} \\left[
 
 ---
 
-## Input
+### Input
 
 The expected input of the model is the discretized filtered and artifact-removed EEG data presented as a tensor of shape **[Batches × N_channels × T_recordings]**.(Visualization of input for one batch is presented below).
 
 ---
 
-## Local Spatio-Temporal Embedding
+### Local Spatio-Temporal Embedding
 
 Before feeding data as input to the transformer architecture, it is necessary to embed it into tokens. In order to take into account signal variations, the source data is split into sequential patches, for each of which embedding is calculated. It is also necessary to take into account that in the EEG context different channels contain different information, and for the universality of the model, the input data are allowed to contain a variable number of channels, which should also be taken into account when calculating tokens. Thus, patch creation for further preparation of the input signal is performed as follows : 
 
@@ -56,6 +56,7 @@ Before feeding data as input to the transformer architecture, it is necessary to
 ![Token Masking](articles/images/EEGPT_masking.png)
 
 For Encoder-Decoder scheme training purposes it is necessary to mask the input tokens by application of binary (1-s and 0-s) mask $M$ (Masking 50% time and 80% channel patches). Resulting in masked part $x \\odot M$ and unmasked one $x \\odot \\bar{M}$.
+
 ---
 
 
@@ -87,7 +88,7 @@ For Encoder-Decoder scheme training purposes it is necessary to mask the input t
 
 ---
 
-## Momentum Encoder
+### Momentum Encoder
 
 - **Input**: initial unmasked signal patched into $token_{i,j}$
 - **Computation**:
@@ -117,13 +118,13 @@ For Encoder-Decoder scheme training purposes it is necessary to mask the input t
 
 ---
 
-## Combined Loss Function
+### Combined Loss Function
 
 The resulting Loss-function of a model is composed of the two: $\\mathcal{L}_A + \\mathcal{L}_R$. The proposed combined loss-function apart from learning Encoder-Decoder architecture in general, also improves the encoded quality which allows to use the pretrained Encoder on various dataset even **without pre-training**. 
 
 ---
 
-## Linear Probing Method
+### Linear Probing Method
 
 To apply the pretrained encoder to new datasets that were not used during model training, the authors propose a Linear Probe scheme. In addition to the pretrained encoder (with frozen parameters), the scheme includes a spatial filter to align the EEG channels with the model's input format, followed by linear layers that map the encoder's output features to logits corresponding to the target classes.
 
