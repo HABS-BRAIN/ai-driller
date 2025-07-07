@@ -163,5 +163,13 @@ Using EEGPT, results achieved:
 
 These results were successfully reproduced in-house, confirming reliability.
 
-### Conclusions
+### Discussion & Suggestions
+
+|                          | **EEGPT** |
+|--------------------------|-----------|
+| **Pros**                 | Pre-trained encoder based on Attention mechanism. Susceptible to EEG data of any length and number of channels without fine-tuning the pre-trained model |
+| **Cons**                 | Computationally expensive, requires parameters adaptations for each problem and dataset |
+| **Improvement suggestions** | - Search for more optimal filtering parameters and artifact removal algorithms to get the most informative signal  <br> - Search optimal values for the following configurations of model:  <br> &nbsp;&nbsp;&nbsp;• Size of patches  <br> &nbsp;&nbsp;&nbsp;• Batch size  <br> &nbsp;&nbsp;&nbsp;• Learning rate |
+
+
 
