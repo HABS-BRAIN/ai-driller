@@ -174,7 +174,7 @@ These results were successfully reproduced in-house, confirming reliability.
 
 ---
 
-## References
+### References
 
 - Wang et al. (2024). *EEGPT: Pretrained Transformer for Universal and Reliable Representation of EEG Signals*. NeurIPS.  
 > https://openreview.net/forum?id=lvS2b8CjG5
