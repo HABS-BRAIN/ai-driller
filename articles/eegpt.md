@@ -171,5 +171,15 @@ These results were successfully reproduced in-house, confirming reliability.
 | **Cons**                 | Computationally expensive, requires parameters adaptations for each problem and dataset |
 | **Improvement suggestions** | - Search for more optimal filtering parameters and artifact removal algorithms to get the most informative signal  <br> - Search optimal values for the following configurations of model:  <br> &nbsp;&nbsp;&nbsp;• Size of patches  <br> &nbsp;&nbsp;&nbsp;• Batch size  <br> &nbsp;&nbsp;&nbsp;• Learning rate |
 
+---
+
+## References
+
+- Wang et al. (2024). *EEGPT: Pretrained Transformer for Universal and Reliable Representation of EEG Signals*. NeurIPS.  
+> https://openreview.net/forum?id=lvS2b8CjG5
+
+- BINE022 (2024). *EEGPT: Transformer-Based Framework for EEG Signal Processing*.  
+> https://github.com/BINE022/EEGPT
+
 
 
