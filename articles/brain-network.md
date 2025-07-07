@@ -67,7 +67,7 @@ $$
 |-------------------|----------------------------------------------------------------------------------|
 | **Pros**          | Graph structure = interpretability + variety of features                        |
 | **Cons**          | Too many parameters to tune effectively                                         |
-| **Improvements**  | - Better filtering/artifact removal  <br> - Tune: window, threshold, graph feats |
+| **Improvements**  | - Better filtering/artifact removal  <br> - Tune: window, threshold, graph features |
 
 
 
