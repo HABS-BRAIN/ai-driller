@@ -163,4 +163,5 @@ Using EEGPT, results achieved:
 
 These results were successfully reproduced in-house, confirming reliability.
 
+### Conclusions
 
