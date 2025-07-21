@@ -213,6 +213,10 @@ on pre-processing. However, there are no magical methods to perfectly extract
 the electric activity of the brain. Therefore, the best way found is to build a
 dedicated pipeline for this purpose and we remark that these pipelines often
 have ICA and WT as bricks.
+
+
+![Wavelet Transform Example](articles/images/happe_filtering.png)
+
 # 6 Sources
  
 
