@@ -64,3 +64,33 @@ We can squeeze the wavelets with a scaling coefficient a. Thus, for all values o
 for all values of a and see which is the one that returns the highest value. This
 gives us a duality for time and frequency.
 
+## 3 Independent component analysis (ICA)
+We are going to explain this method through the cocktail party problem. Let’s
+imagine that we have a room with some microphones and people enjoying a
+party. We would like to extract from the ambient noise a specific conversation.
+To do so, we will have some important assumptions.
+
+# 3.1 Original setup for ICA
+First, we assume that the observed sources are built through a mixing matrix
+and a set of source vectors. Mixing model:
+
+$\mathbf{X} = \mathbf{A}\mathbf{S}$  
+
+* $\mathbf{X} \in \mathbb{R}^{n \times T}$ : observed signals ( $n$ sensors, $T$ time points)  
+* $\mathbf{A} \in \mathbb{R}^{n \times m}$ : mixing matrix  
+* $\mathbf{S} \in \mathbb{R}^{m \times T}$ : source signals (independent components)  
+
+Independent Component Analysis assumes the sources  
+$\displaystyle \mathbf{S} = [s_1(t),\, s_2(t),\, \dots,\, s_m(t)]^{\top}$ are  
+
+* **Statistically independent**:  
+  \[
+    p(s_1, s_2, \dots, s_m) \;=\; \prod_{i=1}^{m} p(s_i)
+  \]
+
+* **Non‑Gaussian**:  
+  \[
+    \exists\, i \in \{1,\dots,m\} \quad\text{such that}\quad
+    s_i(t) \not\sim \mathcal{N}\bigl(0,\sigma^{2}\bigr)
+  \]
+
