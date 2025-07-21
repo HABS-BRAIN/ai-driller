@@ -49,9 +49,7 @@ must satisfy the following two conditions:
 
 # What do we do with these proper wavelets ?
 
-We can squeeze the wavelets with a scaling coefficient a. Thus, for all values of t, we compute the dot product
-for all values of a and see which is the one that returns the highest value. This
-gives us a duality for time and frequency.
+ The idea is to find the best fitting wavelet for each time point t. To do so, we compute the dot product of the signal and of the wavelet associated to a certain time interval. The interpretation of this dot product result is in the following table
 
 | Magnitude \\ Sign | **Positive** | **Negative** |
 |-------------------|--------------|--------------|
