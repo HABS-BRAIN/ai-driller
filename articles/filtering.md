@@ -195,9 +195,53 @@ $\displaystyle
 \text{Current Density Norm}^{\,6}
 \end{bmatrix}$
 
+### Feature Footnotes  
+
 1 Detects temporal outliers in the time series.  
-2 Average log power in the 8–13 Hz alpha band.  
-3 Deviation from the $1/f$ spectral profile.  
-4 Error of spectral fit in the 8–15 Hz range.  
+2 Average log power in the 8 – 13 Hz alpha band.  
+3 Deviation from the 1 / $f$ spectral profile.  
+4 Error of spectral fit in the 8 – 15 Hz range.  
 5 Topographic spread across the scalp.  
 6 Inverse model‑complexity estimate.
+
+Finally, these vectors are passed through a DNN with binary output: noise
+and brain activity which has been trained on hand-labeled data. Leaving us
+with a set of brain coming sources.
+# 5 Conclusion
+Identification of neuro markers is an endeavor which requires an important focus
+on pre-processing. However, there are no magical methods to perfectly extract
+the electric activity of the brain. Therefore, the best way found is to build a
+dedicated pipeline for this purpose and we remark that these pipelines often
+have ICA and WT as bricks.
+# 6 Sources
+ 
+
+- **Kirsanov, A.** (2021). *EEG Signal Processing in Python: Wavelet Transform and ICA* \[Video\]. YouTube.  
+  <https://www.youtube.com/watch?v=jnxqHcObNK4>
+
+- **Ramachandran, R. P., & Joseph, P. K.** (2020). *Disadvantages of Discrete Wavelet Transform*. ResearchGate.  
+  <https://www.researchgate.net/figure/Disadvantages-of-Discrete-Wavelet-Transform_tbl1_344154917>
+
+- **Makeig, S., Debener, S., Onton, J., & Delorme, A.** (2004). *Mining event‑related brain dynamics.* **Trends in Cognitive Sciences, 8** (5), 204–210.  
+  <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2666412/>
+
+- **Wikipedia contributors.** (2024). *Independent component analysis – Mathematical definitions*. Wikipedia.  
+  <https://en.wikipedia.org/wiki/Independent_component_analysis#Mathematical_definitions>
+
+- **Ng, A.** (2020). *CS229 Lecture Notes – Part XI: ICA and PCA.* Stanford University.  
+  <https://cs229.stanford.edu/notes2020spring/cs229-notes11.pdf>
+
+- **Michel, C. M., & Murray, M. M.** (2012). *Towards the utilization of EEG as a brain imaging tool.* **NeuroImage, 61** (2), 371–385.  
+  <https://pubmed.ncbi.nlm.nih.gov/26465549/>
+
+- **Sanei, S., & Chambers, J. A.** (2018). *EEG signal processing.* **Frontiers in Neuroscience, 12**, Article 97.  
+  <https://www.frontiersin.org/articles/10.3389/fnins.2018.00097/full>
+
+- **Jung, T.‑P., Makeig, S., Humphries, C., Lee, T.‑W., McKeown, M. J., Iragui, V., & Sejnowski, T. J.** (2000).  
+  *Removing electroencephalographic artifacts by blind source separation.* **Psychophysiology, 37** (2), 163–178.  
+  <https://pubmed.ncbi.nlm.nih.gov/16828877/>
+
+- **Bell, A. J., & Sejnowski, T. J.** (1997). *The “independent components” of natural scenes are edge filters.* **Vision Research, 37** (23), 3327–3338.  
+  <https://doi.org/10.1016/S0042-6989(97)00121-1>
+
+
