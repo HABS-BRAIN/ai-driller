@@ -3,7 +3,7 @@
 **Author:** Arthur de Leusse  
 **Date:** July 15th 2025
 
-##1) Motivations
+## 1) Motivations
 
 As discussed in our previous blog “Attention models for EEG signals processing”
 EEG signals are hard to work with. Indeed, they have a low signal to noise
@@ -12,9 +12,9 @@ and movement artifacts. Hence, finding a good pre-processing method is crucial
 in neuro-markers identification. This post aims to provide an overview of the
 state-of the art methods for EEG filtering.
 
-##2 Wavelet Transfrom (wt)
+## 2 Wavelet Transfrom (wt)
 
-#2.1 Time and Frequency Duality
+# s2.1 Time and Frequency Duality
 
 In 1807 Jean Baptiste Joseph Fourier, a French mathematician, introduced the
 Fourier series, a way of representing any periodic function as a sum of sine and
