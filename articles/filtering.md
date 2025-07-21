@@ -93,9 +93,9 @@ $\displaystyle \mathbf{S} = [s_1(t),\, s_2(t),\, \dots,\, s_m(t)]^{\top}$ are
 The goal of ICA is to find a matrix $W$ such that  
 $\mathbf{s} = W\mathbf{x}$, with $\mathbf{x}=A\mathbf{s}$, hence $W = A^{-1}$.  
 
-Finding $W$ thereby recovers the matrix of independent sources $\mathbf{s}$.  
-In our example, the different sources are the voices of our guests. Nevertheless, recovery is subject to certain ambiguities.
-
+Finding $W$ would thus allow us to recover the matrix of independent sources
+s. In our example the different sources are the voices of our guests. However,
+there is a degree to which we can recover the signals.
 
 # 3.3 Ambiguities of ICA  
 
