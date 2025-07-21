@@ -14,7 +14,7 @@ state-of the art methods for EEG filtering.
 
 ## 2 Wavelet Transfrom (wt)
 
-# 2.1 Time and Frequency Duality
+### 2.1 Time and Frequency Duality
 
 In 1807 Jean Baptiste Joseph Fourier, a French mathematician, introduced the
 Fourier series, a way of representing any periodic function as a sum of sine and
@@ -25,7 +25,7 @@ The Fourier Transform is a massive revolution in signal processing. However,
 it has one main challenge, the loss of the time information. This is where the
 wavelet transform kicks in.
 
-# 2.1.1 Wavelet transform
+### 2.1.1 Wavelet transform
 
 The wavelet transform is a tool that allows us to decompose a signal into a set
 of simple oscillating functions, called a proper wavelet.
