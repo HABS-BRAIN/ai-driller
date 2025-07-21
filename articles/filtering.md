@@ -47,7 +47,7 @@ must satisfy the following two conditions:
    It captures local variations in the signal, being sensitive to changes but not to constant trends.
 
 
-# What do we mean by best fitting wavelet? 
+# What do we do with these proper wavelets ?
 
 We can squeeze the wavelets with a scaling coefficient a. Thus, for all values of t, we compute the dot product
 for all values of a and see which is the one that returns the highest value. This
