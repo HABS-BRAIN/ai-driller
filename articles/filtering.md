@@ -88,3 +88,24 @@ $\displaystyle \mathbf{S} = [s_1(t),\, s_2(t),\, \dots,\, s_m(t)]^{\top}$ are
 
 * **Non‑Gaussian**:  
  $\exists, i \in {1,\dots,m}\ \text{such that}\ s_i(t) \not\sim \mathcal{N}(0,\sigma^{2})$
+
+# 3.2 Goal of ICA  
+
+The goal of ICA is to find a matrix $W$ such that  
+$\mathbf{s} = W\mathbf{x}$, with $\mathbf{x}=A\mathbf{s}$, hence $W = A^{-1}$.  
+
+Finding $W$ thereby recovers the matrix of independent sources $\mathbf{s}$.  
+In our example, the different sources are the voices of our guests. Nevertheless, recovery is subject to certain ambiguities.
+
+---
+
+# 3.3 Ambiguities of ICA  
+
+ICA has two main ambiguities.
+
+# 3.3.1 Permutation ambiguity  
+
+Let $P$ be a permutation matrix (each row and column contains exactly one $1$).  
+For any vector $\mathbf{z}$, $P\mathbf{z}$ is obtained by permuting the coordinates of $\mathbf{z}$.  
+Therefore, given only $\mathbf{X}$, one cannot distinguish between $W$ and $PW$; the ordering of the recovered sources is arbitrary.
+
