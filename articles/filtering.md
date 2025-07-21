@@ -99,7 +99,7 @@ there is a degree to which we can recover the signals.
 
 # 3.3 Ambiguities of ICA  
 
-ICA has two main ambiguities.
+There are two main ambiguities due to the use of ICA.
 
 # 3.3.1 Permutation ambiguity  
 
