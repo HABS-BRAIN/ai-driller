@@ -3,7 +3,7 @@
 **Author:** Arthur de Leusse  
 **Date:** July 15th 2025
 
-## 1) Motivations
+## 1 Motivations
 
 As discussed in our previous blog “Attention models for EEG signals processing”
 EEG signals are hard to work with. Indeed, they have a low signal to noise
