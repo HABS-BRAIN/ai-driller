@@ -84,13 +84,7 @@ Independent Component Analysis assumes the sources
 $\displaystyle \mathbf{S} = [s_1(t),\, s_2(t),\, \dots,\, s_m(t)]^{\top}$ are  
 
 * **Statistically independent**:  
-  \[
-    p(s_1, s_2, \dots, s_m) \;=\; \prod_{i=1}^{m} p(s_i)
-  \]
+ $p(s_1, s_2, \dots, s_m) = \prod_{i=1}^{m} p(s_i)$
 
 * **Non‑Gaussian**:  
-  \[
-    \exists\, i \in \{1,\dots,m\} \quad\text{such that}\quad
-    s_i(t) \not\sim \mathcal{N}\bigl(0,\sigma^{2}\bigr)
-  \]
-
+ $\exists, i \in {1,\dots,m}\ \text{such that}\ s_i(t) \not\sim \mathcal{N}(0,\sigma^{2})$
