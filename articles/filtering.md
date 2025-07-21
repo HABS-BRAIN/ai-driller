@@ -29,7 +29,8 @@ wavelet transform kicks in.
 
 The wavelet transform is a tool that allows us to decompose a signal into a set
 of simple oscillating functions, called a proper wavelet.
-What is a proper wavelet? A proper wavelet is a wavelet ψ(t) which
+What is a proper wavelet?
+A proper wavelet is a wavelet ψ(t) which
 must satisfy the following two conditions:
 
 ![Wavelet Transform Example](articles/images/image_wt.png)
