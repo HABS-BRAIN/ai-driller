@@ -122,3 +122,7 @@ The algorithm used to find  $\mathbf{W}$ contains five main steps. Note: there a
 algorithms that offer solutions to find back  $\mathbf{W}$, here we are going to discuss
 an algorithm by Bell and Sejnowski. We will give an interpretation of their
 algorithm as a method using the maximum likelihood estimator.
+
+# 3.4.1 Step 1: Assume that the sources follow a non-gaussian distribution
+Let us assume that the density of each source si is given by ps(x) and that the
+joint distribution of the sources s is given by:
