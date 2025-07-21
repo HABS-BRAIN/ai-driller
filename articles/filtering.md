@@ -171,7 +171,13 @@ Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electri
 
 # 4.3 Step 3: wt on the different sources of the ICA
 For each source $s_{ij} \in \mathcal{S}_{I}$ , we apply a Wavelet Transform :
-$\displaystyle \mathcal{W}{\psi}s_i ;=; \int{-\infty}^{\infty} s_i(t),\frac{1}{\sqrt{|a|}};\psi!\Bigl(\tfrac{t-b}{a}\Bigr),dt$
 
+$
+\mathcal{W}_{\psi}[\bm{s}_{i}](a, b) = \int_{-\infty}^{\infty} \bm{s}_{i}(t) \, \frac{1}{\sqrt{|a|}} \, \psi\left( \frac{t - b}{a} \right) \, dt
+$
 where ψ is the mother wavelet, a is the scale (inverse frequency), and b is the
-translation (time shift). This decomposition allows us to remove artifacts from
+translation (time shift). This decomposition allows us to remove artifacts from each source. Then all the components are of the time series and are translated back into EEG format using a method by Castellanos and Makarov, 2006.
+
+# 4.4 Step 4: ICA + DNN for noise sources identification
+On these EEG sources, we perform an ICA. Then for each of the ICA sources
+we compute these 6 features:
