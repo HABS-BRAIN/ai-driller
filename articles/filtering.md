@@ -97,15 +97,24 @@ $\mathbf{s} = W\mathbf{x}$, with $\mathbf{x}=A\mathbf{s}$, hence $W = A^{-1}$.
 Finding $W$ thereby recovers the matrix of independent sources $\mathbf{s}$.  
 In our example, the different sources are the voices of our guests. Nevertheless, recovery is subject to certain ambiguities.
 
----
 
 # 3.3 Ambiguities of ICA  
 
 ICA has two main ambiguities.
 
 # 3.3.1 Permutation ambiguity  
+Let’s assume $P$ is a permutation matrix (i.e., a matrix with for each row and
+each column exactly one 1. If $\mathbf{z}$ is a vector, $P\mathbf{z}$ is another vector for which
+the coordinates of  $\mathbf{z}$ are permuted. Thus if we are only given X,$\mathbf{X}$, it would be
+impossible to distinguish $W$ and $PW$.
 
-Let $P$ be a permutation matrix (each row and column contains exactly one 1).  
-For any vector $\mathbf{z}$, $P\mathbf{z}$ is obtained by permuting the coordinates of $\mathbf{z}$.  
-Therefore, given only $\mathbf{X}$, one cannot distinguish between $W$ and $PW$; the ordering of the recovered sources is arbitrary.
-
+# 3.3.2 Sign and Scale Ambiguity
+If A was replaced by $2A$ and $S$ was replaced by $\mathbf{S/2}$, then our final result would
+still be the same for $\mathbf{W}$. More broadly, if our matrix $A$ is scaled by a factor
+α and the matrix of sources s is scaled by a factor 1/α, then it is not possible
+only given $\mathbf{X}$ to know it has happened.
+# 3.4 Finding W
+The algorithm used to find W contains five main steps. Note: there are multiple
+algorithms that offer solutions to find back W, here we are going to discuss
+an algorithm by Bell and Sejnowski. We will give an interpretation of their
+algorithm as a method using the maximum likelihood estimator.
