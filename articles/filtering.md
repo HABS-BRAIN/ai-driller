@@ -105,7 +105,7 @@ ICA has two main ambiguities.
 
 # 3.3.1 Permutation ambiguity  
 
-Let $P$ be a permutation matrix (each row and column contains exactly one $1$).  
+Let $P$ be a permutation matrix (each row and column contains exactly one 1).  
 For any vector $\mathbf{z}$, $P\mathbf{z}$ is obtained by permuting the coordinates of $\mathbf{z}$.  
 Therefore, given only $\mathbf{X}$, one cannot distinguish between $W$ and $PW$; the ordering of the recovered sources is arbitrary.
 
