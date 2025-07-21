@@ -182,20 +182,22 @@ translation (time shift). This decomposition allows us to remove artifacts from 
 
 # 4.4 Step 4: ICA + DNN for noise sources identification
 On these EEG sources, we perform an ICA. Then for each of the ICA sources
-we compute these 6 features:
+We compute the following six features:
+
 $\displaystyle
 \mathbf{s}_{k} \;=\;
 \begin{bmatrix}
-\text{Mean Local Skewness}^{\,1} \\[4pt]
-\text{Alpha Power}^{\,2} \\[4pt]
-\lambda^{\,3} \\[4pt]
-\text{Fit Error}^{\,4} \\[4pt]
-\text{Range Within Pattern}^{\,5} \\[4pt]
+\text{Mean Local Skewness}^{\,1} \\[6pt]
+\text{Alpha Power}^{\,2} \\[6pt]
+\lambda^{\,3} \\[6pt]
+\text{Fit Error}^{\,4} \\[6pt]
+\text{Range Within Pattern}^{\,5} \\[6pt]
 \text{Current Density Norm}^{\,6}
 \end{bmatrix}$
-1Detects temporal outliers in the time series.
-2Average log power in the 8–13 Hz alpha band.
-3Deviation from the 1/f spectral profile.
-4Error of spectral fit in 8–15 Hz range.
-5Topographic spread across scalp.
-6Inverse model complexity estimate.
+
+1 Detects temporal outliers in the time series.  
+2 Average log power in the 8–13 Hz alpha band.  
+3 Deviation from the $1/f$ spectral profile.  
+4 Error of spectral fit in the 8–15 Hz range.  
+5 Topographic spread across the scalp.  
+6 Inverse model‑complexity estimate.
