@@ -209,6 +209,9 @@ $$
 Finally, these vectors are passed through a DNN with binary output: noise
 and brain activity which has been trained on hand-labeled data. Leaving us
 with a set of brain coming sources.
+
+![Wavelet Transform Example](articles/images/happe_filtering.png)
+
 # 5 Conclusion
 Identification of neuro markers is an endeavor which requires an important focus
 on pre-processing. However, there are no magical methods to perfectly extract
@@ -216,8 +219,6 @@ the electric activity of the brain. Therefore, the best way found is to build a
 dedicated pipeline for this purpose and we remark that these pipelines often
 have ICA and WT as bricks.
 
-
-![Wavelet Transform Example](articles/images/happe_filtering.png)
 
 # 6 Sources
  
