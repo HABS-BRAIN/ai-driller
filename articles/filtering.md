@@ -35,8 +35,6 @@ What is a proper wavelet?
 A proper wavelet is a wavelet ψ(t) which
 must satisfy the following two conditions:
 
-![Wavelet Transform Example](articles/images/image_wt.png)
-
 1. **Finite energy:**  
    $\displaystyle \int_{-\infty}^{\infty} |\psi(t)|^{2}\,dt < \infty$  
 
@@ -57,7 +55,7 @@ must satisfy the following two conditions:
 |-------------------|--------------|--------------|
 | **Large** | Strong match with wavelet shape  <br>(same polarity) | Strong match with inverted wavelet  <br>(opposite polarity) |
 | **Small** | Weak similarity to wavelet shape  <br>(slight positive correlation) | Weak similarity to inverted wavelet  <br>(slight negative correlation) |
-
+![Wavelet Transform Example](articles/images/image_wt.png)
 
 ### What do we mean by best fitting wavelet?
 
