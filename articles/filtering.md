@@ -165,7 +165,10 @@ removal of bad channels.
 For our EEG channels we perform an ICA, having as output a set of source
 vectors $\mathcal{S}_{I}$ where :
 
-$\mathcal{S}_{I} \;=\; \{\, s_{i1},\, s_{i2},\, \dots,\, s_{ij},\, \dots,\, s_{it} \,\}$
+$$
+\mathcal{S_I} = \left\{ \bm{s}_{i1}, \bm{s}_{i2}, \ldots, \bm{s}_{ij}, \ldots, \bm{s}_{it} \right\}
+$$
+
 Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electric activity.
 
 ## 4.3 Step 3: wt on the different sources of the ICA
