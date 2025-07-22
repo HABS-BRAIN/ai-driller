@@ -173,13 +173,7 @@ Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electri
 ## 4.3 Step 3: wt on the different sources of the ICA
 For each source $s_{ij} \in \mathcal{S}_{I}$ , we apply a Wavelet Transform :
 
-$$
-\mathcal{W}_{\psi}[\bm{s}_{i}](a, b) =
-\int_{-\infty}^{\infty}
-\bm{s}_{i}(t) \,
-\frac{1}{\sqrt{|a|}} \,
-\psi\left( \frac{t - b}{a} \right) \, dt
-$$
+<img src="https://latex.codecogs.com/png.image?\dpi{150} \mathcal{W}_{\psi}[\bm{s}_{i}](a, b)=\int_{-\infty}^{\infty} \bm{s}_{i}(t)\,\frac{1}{\sqrt{|a|}}\,\psi\left(\frac{t-b}{a}\right)\,dt" alt="Wavelet Transform" />
 
 
 where ψ is the mother wavelet, a is the scale (inverse frequency), and b is the
