@@ -167,7 +167,7 @@ vectors $\mathcal{S}_{I}$ where :
 
 $\mathcal{S}_I = \left\{ \bm{s}_{i1}, \bm{s}_{i2}, \ldots, \bm{s}_{ij}, \ldots, \bm{s}_{it} \right\}$
 
-
+   
 Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electric activity.
 
 ## 4.3 Step 3: wt on the different sources of the ICA
