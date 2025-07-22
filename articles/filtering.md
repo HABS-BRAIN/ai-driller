@@ -167,7 +167,7 @@ removal of bad channels.
 For our EEG channels we perform an ICA, having as output a set of source
 vectors $\mathcal{S}_{I}$ where :
 
-![](articles/images/ICA.png)
+![.](articles/images/ICA.png)
 
    
 Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electric activity.
@@ -175,7 +175,7 @@ Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electri
 ## 4.3 Step 3: wt on the different sources of the ICA
 For each source $s_{ij} \in \mathcal{S}_{I}$ , we apply a Wavelet Transform :
 
-![](articles/images/wavelet_transform.png)
+![.](articles/images/wavelet_transform.png)
 
 
 where ψ is the mother wavelet, a is the scale (inverse frequency), and b is the
