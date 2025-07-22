@@ -146,7 +146,7 @@ to find the  $\mathbf{W}$ that maximizes the likelihood.
 
 ### 3.4.4 Step 5: Recover sources
 Once the algorithm converges:
-$\mathbf{s}^{(i)} = W\,\mathbf{x}^{(i)}$
+$\mathbf{s}^{(i)} = W\\mathbf{x}^{(i)}$
 
 # 4 Combining models
 In the current state-of-the-art terms of EEG preprocessing, researchers use
