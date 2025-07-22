@@ -129,7 +129,7 @@ $p(s) = \displaystyle \prod_{j=1}^{d} p_s\bigl(s_j\bigr).$
 
 ### 3.4.2 Step 2: Change of variable – express $\mathbf{p(x)}$
 Since $s$ =$\mathbf{Wx}$, the density of $x$ becomes:
-$p(x) \=\ p(s)\.\lvert\det(W)\rvert \=\ \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\mathsf{T}} x\bigr)\,\lvert\det(W)\rvert.$
+$p(x) \=\ p(s)\.\lvert\det(W)\rvert \=\ \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\mathsf{T}} x\bigr)\.\lvert\det(W)\rvert$
 
 ### 3.4.3 MLE in order to find W
 The MLE is a method used to recover the value of an estimator. The main
