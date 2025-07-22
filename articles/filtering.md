@@ -183,16 +183,18 @@ translation (time shift). This decomposition allows us to remove artifacts from 
 On these EEG sources, we perform an ICA. Then for each of the ICA sources
 We compute the following six features:
 
-$\displaystyle
-\mathbf{s}_{k} \;=\;
+$$
+\mathbf{s}_{k} =
 \begin{bmatrix}
-\text{Mean Local Skewness}^{\,1} \\[6pt]
-\text{Alpha Power}^{\,2} \\[6pt]
-\lambda^{\,3} \\[6pt]
-\text{Fit Error}^{\,4} \\[6pt]
-\text{Range Within Pattern}^{\,5} \\[6pt]
+\text{Mean Local Skewness}^{\,1} \\\\[6pt]
+\text{Alpha Power}^{\,2} \\\\[6pt]
+\lambda^{\,3} \\\\[6pt]
+\text{Fit Error}^{\,4} \\\\[6pt]
+\text{Range Within Pattern}^{\,5} \\\\[6pt]
 \text{Current Density Norm}^{\,6}
-\end{bmatrix}$
+\end{bmatrix}
+$$
+
 
 ### Feature Footnotes  
 
