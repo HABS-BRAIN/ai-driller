@@ -109,7 +109,7 @@ each column exactly one 1. If $\mathbf{z}$ is a vector, $P\mathbf{z}$ is another
 the coordinates of  $\mathbf{z}$ are permuted. Thus if we are only given X,$\mathbf{X}$, it would be
 impossible to distinguish $W$ and $PW$.
 
-# 3.3.2 Sign and Scale Ambiguity
+### 3.3.2 Sign and Scale Ambiguity
 
 If A was replaced by $2A$ and $S$ was replaced by $\mathbf{S/2}$, then our final result would
 still be the same for $\mathbf{W}$. More broadly, if our matrix $A$ is scaled by a factor
