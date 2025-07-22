@@ -135,7 +135,7 @@ $p(x) \=\ p(s)\.\lvert\det(W)\rvert \=\ \displaystyle \prod_{j=1}^{d} p_s\\bigl(
 ### 3.4.3 Step 3: MLE in order to find W
 The MLE is a method used to recover the value of an estimator. The main
 idea is to find the value of your estimator for which the likelihood value is at its
-maximum. . The likelihood function $\displaystyle \mathcal{L}(\theta) \=\ \prod_{t=1}^{T} p\bigl(x^{(t)} \mid \theta\bigr)$
+maximum. The likelihood function $\displaystyle \mathcal{L}(\theta) \=\ \prod_{t=1}^{T} p\bigl(x^{(t)} \mid \theta\bigr)$
 is a function which computes how well the statistical model measures fits the
 observed data, it is derived from the joint probability of the random variable
 which presumemably generated the data. In our case the joint probability if
