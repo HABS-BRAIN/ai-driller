@@ -3,6 +3,8 @@
 **Author:** Arthur de Leusse  
 **Date:** July 15th 2025
 
+![Wavelet Transform Example](articles/images/joseph_fourier.jpg)
+
 # 1 Motivations
 
 As discussed in our previous blog “Attention models for EEG signals processing”
