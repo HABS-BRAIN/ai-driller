@@ -118,7 +118,7 @@ only given $\mathbf{X}$ to know that there is a scaling factor α.
 
 ## 3.4 Finding W
 
-The algorithm used to find  $\mathbf{W}$ contains five main steps. Note: there are multiple
+The algorithm used to find  $\mathbf{W}$ contains four main steps. Note: there are multiple
 algorithms that offer solutions to find back  $\mathbf{W}$, here we are going to discuss
 an algorithm by Bell and Sejnowski. We will give an interpretation of their
 algorithm as a method using the maximum likelihood estimator.
@@ -132,7 +132,7 @@ $p(s) = \displaystyle \prod_{j=1}^{d} p_s\bigl(s_j\bigr).$
 Since $s$ =$\mathbf{Wx}$, the density of $x$ becomes:
 $p(x) \=\ p(s)\.\lvert\det(W)\rvert \=\ \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\mathsf{T}} x\bigr)\.\lvert\det(W)\rvert$
 
-### 3.4.3 MLE in order to find W
+### 3.4.3 Step 3: MLE in order to find W
 The MLE is a method used to recover the value of an estimator. The main
 idea is to find the value of your estimator for which the likelihood value is at its
 maximum. . The likelihood function $\displaystyle \mathcal{L}(\theta) \=\ \prod_{t=1}^{T} p\bigl(x^{(t)} \mid \theta\bigr)$
@@ -145,7 +145,7 @@ We compute the log-likelihood since it ”transforms” the multiplication by a 
 and sums are easier to derive. We then perform the gradient descent algorithm
 to find the  $\mathbf{W}$ that maximizes the likelihood.
 
-### 3.4.4 Step 5: Recover sources
+### 3.4.4 Step 4: Recover sources
 Once the algorithm converges:
 $\mathbf{s}^{(i)} = W\\mathbf{x}^{(i)}$
 
