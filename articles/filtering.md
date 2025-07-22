@@ -139,7 +139,7 @@ is a function which computes how well the statistical model measures fits the
 observed data, it is derived from the joint probability of the random variable
 which presumemably generated the data. In our case the joint probability if
 given below :
-$p(x) = p(s)\\lvert\det(W)\rvert = \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\top} x\bigr)\\lvert\det(W)\rvert$
+$p(x) = p(s)\.\lvert\det(W)\rvert = \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\top} x\bigr)\.\lvert\det(W)\rvert$
 We compute the log-likelihood since it ”transforms” the multiplication by a sum
 and sums are easier to derive. We then perform the gradient descent algorithm
 to find the  $\mathbf{W}$ that maximizes the likelihood.
