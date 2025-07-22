@@ -51,12 +51,13 @@ must satisfy the following two conditions:
 
  The idea is to find the best fitting wavelet for each time point t. To do so, we compute the dot product of the signal and of the wavelet associated to a certain time interval. The interpretation of this dot product result is in the following table
 
+ 
+![Wavelet Transform Example](articles/images/image_wt.png)
+
 | Magnitude \\ Sign | **Positive** | **Negative** |
 |-------------------|--------------|--------------|
 | **Large** | Strong match with wavelet shape  <br>(same polarity) | Strong match with inverted wavelet  <br>(opposite polarity) |
 | **Small** | Weak similarity to wavelet shape  <br>(slight positive correlation) | Weak similarity to inverted wavelet  <br>(slight negative correlation) |
-![Wavelet Transform Example](articles/images/image_wt.png)
-
 ### What do we mean by best fitting wavelet?
 
 We can squeeze the wavelets with a scaling coefficient a. Thus, for all values of t, we compute the dot product
