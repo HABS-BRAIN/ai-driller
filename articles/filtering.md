@@ -106,7 +106,7 @@ There are two main ambiguities due to the use of ICA.
 
 Let’s assume $P$ is a permutation matrix (i.e., a matrix with for each row and
 each column exactly one 1. If $\mathbf{z}$ is a vector, $P\mathbf{z}$ is another vector for which
-the coordinates of  $\mathbf{z}$ are permuted. Thus if we are only given X,$\mathbf{X}$, it would be
+the coordinates of  $\mathbf{z}$ are permuted. Thus if we are only given $\mathbf{X}$, it would be
 impossible to distinguish $W$ and $PW$.
 
 ### 3.3.2 Sign and Scale Ambiguity
@@ -114,7 +114,7 @@ impossible to distinguish $W$ and $PW$.
 If A was replaced by $2A$ and $S$ was replaced by $\mathbf{S/2}$, then our final result would
 still be the same for $\mathbf{W}$. More broadly, if our matrix $A$ is scaled by a factor
 α and the matrix of sources s is scaled by a factor 1/α, then it is not possible
-only given $\mathbf{X}$ to know it has happened.
+only given $\mathbf{X}$ to know that there is a scaling factor α.
 
 ## 3.4 Finding W
 
