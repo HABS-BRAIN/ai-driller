@@ -3,7 +3,7 @@
 **Author:** Arthur de Leusse  
 **Date:** July 15th 2025
 
-![Wavelet Transform Example](articles/images/joseph_fourier.jpg)
+![A smart man ](articles/images/joseph_fourier.jpg)
 
 # 1 Motivations
 
@@ -167,7 +167,7 @@ removal of bad channels.
 For our EEG channels we perform an ICA, having as output a set of source
 vectors $\mathcal{S}_{I}$ where :
 
-<img src="https://latex.codecogs.com/png.image?\dpi{150} \mathcal{S}_{I}=\left\{\bm{s}_{i1},\bm{s}_{i2},\ldots,\bm{s}_{ij},\ldots,\bm{s}_{it}\right\}" alt="Set of sources S_I" />
+![](articles/images/ICA.png)
 
    
 Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electric activity.
@@ -175,7 +175,7 @@ Each vector $s_i \in \mathbb{R}^n$ represents a source from the recorded electri
 ## 4.3 Step 3: wt on the different sources of the ICA
 For each source $s_{ij} \in \mathcal{S}_{I}$ , we apply a Wavelet Transform :
 
-<img src="https://latex.codecogs.com/png.image?\dpi{150} \mathcal{W}_{\psi}[\bm{s}_{i}](a, b)=\int_{-\infty}^{\infty} \bm{s}_{i}(t)\,\frac{1}{\sqrt{|a|}}\,\psi\left(\frac{t-b}{a}\right)\,dt" alt="Wavelet Transform" />
+![](articles/images/wavelet_transform.png)
 
 
 where ψ is the mother wavelet, a is the scale (inverse frequency), and b is the
