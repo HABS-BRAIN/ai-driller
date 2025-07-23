@@ -9,7 +9,7 @@
 
 As discussed in our previous blog “Attention models for EEG signals processing”
 EEG signals are hard to work with. Indeed, they have a low signal to noise
-ratio, they vary a from a person to another and they are filled with muscle
+ratio, they vary a lot from a person to another and they are filled with muscle
 and movement artifacts. Hence, finding a good pre-processing method is crucial
 in neuro-markers identification. This post aims to provide an overview of the
 state-of the art methods for EEG filtering.
