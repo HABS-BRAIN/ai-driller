@@ -7,12 +7,12 @@
 
 # 1 Motivations
 
-As discussed in our previous blog “Attention models for EEG signals processing”
-EEG signals are hard to work with. Indeed, they have a low signal to noise
-ratio, they vary a lot from a person to another and they are filled with muscle
+As discussed in our previous blog “Attention models for EEG signal processing”,
+EEG signals are hard to work with. Indeed, they have a low signal-to-noise
+ratio, they vary a lot from one person to another and they are filled with muscle
 and movement artifacts. Hence, finding a good pre-processing method is crucial
-in neuro-markers identification. This post aims to provide an overview of the
-state-of the art methods for EEG filtering.
+in neuro-marker identification. This post aims to provide an overview of the
+state-of-the-art methods for EEG filtering.
 
 # 2 Wavelet Transfrom (wt)
 
@@ -47,9 +47,9 @@ must satisfy the following two conditions:
    It captures local variations in the signal, being sensitive to changes but not to constant trends.
 
 
-### What do we do with these proper wavelets ?
+### What do we do with these proper wavelets?
 
- The idea is to find the best fitting wavelet for each time point t. To do so, we compute the dot product of the signal and of the wavelet associated to a certain time interval. The interpretation of this dot product result is in the following table
+ The idea is to find the best-fitting wavelet for each time point t. To do so, we compute the dot product of the signal and of the wavelet associated to a certain time interval. The interpretation of this dot product result is in the following table
 
  
 ![Wavelet Transform Example](articles/images/image_wt.png)
@@ -138,7 +138,7 @@ idea is to find the value of your estimator for which the likelihood value is at
 maximum. The likelihood function $\displaystyle \mathcal{L}(\theta) \=\ \prod_{t=1}^{T} p\bigl(x^{(t)} \mid \theta\bigr)$
 is a function which computes how well the statistical model measures fits the
 observed data, it is derived from the joint probability of the random variable
-which presumemably generated the data. In our case the joint probability if
+which presumably generated the data. In our case the joint probability is
 given below :
 $p(x) = p(s)\.\lvert\det(W)\rvert = \displaystyle \prod_{j=1}^{d} p_s\\bigl(w_j^{\top} x\bigr)\.\lvert\det(W)\rvert$
 We compute the log-likelihood since it ”transforms” the multiplication by a sum
@@ -213,7 +213,7 @@ with a set of brain coming sources.
 ![Wavelet Transform Example](articles/images/happe_filtering.png)
 
 # 5 Conclusion
-Identification of neuro markers is an endeavor which requires an important focus
+Identification of neuro-markers is an endeavor which requires an important focus
 on pre-processing. However, there are no magical methods to perfectly extract
 the electric activity of the brain. Therefore, the best way found is to build a
 dedicated pipeline for this purpose and we remark that these pipelines often
