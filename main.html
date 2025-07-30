@@ -26,6 +26,13 @@
     mermaid.initialize({ startOnLoad: true });
   </script>
 
+<script>
+const password = prompt("Enter password:");
+if (password !== "your-secret-password") {
+    document.body.innerHTML = "Access denied";
+}
+</script>
+
   <!-- Your JS -->
   <script src="script.js"></script>
 
