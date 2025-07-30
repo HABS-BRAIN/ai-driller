@@ -27,10 +27,15 @@
   </script>
 
   <script>
-  const password = prompt("Enter password:");
-  if (password !== "your-secret-password") {
-      document.body.innerHTML = "Access denied";
-  }
+        // Change "mypassword123" to whatever you want the password to be
+        const correctPassword = "mypassword123";
+        const userPassword = prompt("Enter password to access this page:");
+        
+        if (userPassword !== correctPassword) {
+            document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+            // Stop all other scripts from running
+            throw new Error("Access denied");
+        }
   </script>
 
   <!-- Your JS -->
