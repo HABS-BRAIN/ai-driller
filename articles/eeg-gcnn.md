@@ -3,7 +3,7 @@
 **Author**: Anton Orlovskii  
 **Date**: July 31th 2025
 
-!(articles/images/convolution fun definition.png)
+![](articles/images/convolution_fun_definition.png)
 
 ## Introduction
 
