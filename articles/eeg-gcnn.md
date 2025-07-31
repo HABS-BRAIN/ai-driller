@@ -75,7 +75,7 @@ To prepare the EEG data for GCNN input, a minimal and standardized preprocessing
    Suppresses power line interference.
 
 > **No artifact removal (e.g., ICA or manual rejection) was applied.**  
-> This choice was intentional, to better reflect real-world clinical conditions where manual preprocessing is often impractical or unavailable.  
+> This choice was intentional by the authors, to better reflect real-world clinical conditions where manual preprocessing is often impractical or unavailable.  
 > Additionally, GCNNs are designed to extract robust spatial and functional patterns, and are capable of down-weighting localized artifact spikes in favor of more stable and distributed features.
 
 ### Channels functional features
