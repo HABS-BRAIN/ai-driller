@@ -55,7 +55,27 @@ $$
 ## Feature Extraction
 
 ### Preprocessing
+To prepare the EEG data for GCNN input, a minimal and standardized preprocessing pipeline was applied designed to preserve the clinical realism and structural characteristics of the signals:
 
+1. **Selection of a common subset of bipolar montage electrodes (8 channels):**  
+   The following bipolar pairs were used:  
+   - F7–F3, F8–F4  
+   - T7–C3, T8–C4  
+   - P7–P3, P8–P4  
+   - O1–P3, O2–P4  
+   This set provides broad spatial coverage across temporal, parietal, and occipital regions, with good left–right symmetry.
+
+2. **Resampling to 250 Hz:**  
+
+3. **High-pass filter at 1 Hz:**  
+   Removes slow drifts and low-frequency artifacts such as movement-related noise or baseline wander.
+
+4. **Notch filter at 50 Hz:**  
+   Suppresses power line interference.
+
+> **No artifact removal (e.g., ICA or manual rejection) was applied.**  
+> This choice was intentional, to better reflect real-world clinical conditions where manual preprocessing is often impractical or unavailable.  
+> Additionally, GCNNs are designed to extract robust spatial and functional patterns, and are capable of down-weighting localized artifact spikes in favor of more stable and distributed features.
 
 ### Channels functional features
 
