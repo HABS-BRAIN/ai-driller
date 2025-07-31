@@ -37,7 +37,7 @@
 
 ## References
 
-- Author's github with 
+- Authors' github with 
 > https://github.com/neerajwagh/eeg-gcnn 
 - Neeraj Wagh, Yogatheesan Varatharajah (2020)
 > https://proceedings.mlr.press/v136/wagh20a.html
