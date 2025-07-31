@@ -16,6 +16,8 @@ Each node and edge can carry its own set of features.
 For example, in the context of EEG signals, the nodes may correspond to EEG channels, each described by a set of features (e.g., Power Spectral Density (PSD) across different frequency bands).
 Edges can represent the connections between channels, such as the degree of correlation between signals from two channels.
 
+![Example of a graph](articles/images/graph_example.png)
+
 The graph is typically represented using an adjacency matrix *A* of size $$N \times N$$ (where $$N = |V|$$ or number of electrodes in our context)
 The values in this matrix indicate the presence or strength of a connection between pairs of nodes. That is:
 
