@@ -15,12 +15,22 @@
 
 ---
 
-## Method
+## Feature Extraction
 
 ### Preprocessing
 
 
-### Features
+### Channels functional features
+
+
+### Connectivity features
+
+
+---
+
+## Model
+
+### Graph convolution
 
 
 ---
