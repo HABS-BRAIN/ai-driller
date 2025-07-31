@@ -3,7 +3,7 @@
 **Author**: Anton Orlovskii  
 **Date**: July 31th 2025
 
-![Brain Network visualization](articles/images/brain-network.jpg)
+![Brain Network visualization](articles/images/convolution fun definition.png)
 
 ## Introduction
 
