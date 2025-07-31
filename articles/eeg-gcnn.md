@@ -1,8 +1,9 @@
-# Brain Network
+# EEG Graph Convolutional Neural Network
 
 **Author**: Anton Orlovskii  
-**Date**: June 20th 2026
+**Date**: July 31th 2025
 
+![Brain Network visualization](articles/images/brain-network.jpg)
 
 ## Introduction
 
@@ -75,10 +76,8 @@ $$
 
 ## References
 
-- Li et al. (2020)
-> https://www.semanticscholar.org/paper/de436ce4b0897da26e63dac0caacdb7c2c96226b 
-- Wu et al. (2020)
-> https://arxiv.org/abs/2004.01973
-- Tran et al. (2013)
-> https://link.springer.com/referenceworkentry/10.1007/978-1-4419-1005-9_978
+- Author's github with 
+> https://github.com/neerajwagh/eeg-gcnn 
+- Neeraj Wagh, Yogatheesan Varatharajah (2020)
+> https://proceedings.mlr.press/v136/wagh20a.html
 
