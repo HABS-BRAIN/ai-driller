@@ -15,11 +15,6 @@
 
 ---
 
-## Graph reminder
-
-
----
-
 ## Method
 
 ### Preprocessing
