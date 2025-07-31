@@ -62,7 +62,8 @@ To prepare the EEG data for GCNN input, a minimal and standardized preprocessing
    - F7–F3, F8–F4  
    - T7–C3, T8–C4  
    - P7–P3, P8–P4  
-   - O1–P3, O2–P4  
+   - O1–P3, O2–P4
+     
    This set provides broad spatial coverage across temporal, parietal, and occipital regions, with good left–right symmetry.
 
 2. **Resampling to 250 Hz:**  
