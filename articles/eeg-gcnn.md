@@ -174,6 +174,12 @@ $$
 
 Here, $$S_{ij}$$ represents the cross-spectral density between signals from electrodes $$i$$ and $$j$$, and $$E[\cdot]$$ denotes the expected value (typically estimated via averaging over frequency bands).
 
+Below are examples of alternative connectivity features to be used:
+
+1.  **Pearson / Spearman Correlation** - measures of codependence between signals
+2.  **Phase Locking Value** - shows how stable the phase difference between two signals remains over time.
+3.  **Mutual Information** - measures how well knowledge of one signal reduces uncertainty about another.
+
 ---
 
 ## Model
