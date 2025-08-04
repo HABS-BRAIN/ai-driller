@@ -103,6 +103,10 @@ For each time window, functional features are computed individually for each of 
 
 In the original version, the authors use **Power Spectral Density (PSD)**, which estimates how the signal's power is distributed across different frequencies.
 
+$$
+PSD(f) = \frac{1}{T} \left| \int_{0}^{T} x(t) e^{-2\pi i f t} dt \right|^2
+$$
+
 The following six frequency bands are used:
 
 - **Delta** (1–4 Hz)  
@@ -110,7 +114,13 @@ The following six frequency bands are used:
 - **Alpha** (7.5–13 Hz)  
 - **Lower Beta** (13–16 Hz)  
 - **Higher Beta** (16–30 Hz)  
-- **Gamma** (30–40 Hz)  
+- **Gamma** (30–40 Hz)
+
+For each frequency band total band power is computed based on PSD distribution:
+
+$$
+P_{\text{band}} = \int_{f_{\text{low}}}^{f_{\text{high}}} PSD(f) \ df
+$$
 
 As a result, each window yields a feature matrix $$H$$ of size $$N = 8 \times K = 6$$, where each row corresponds to a channel, and each column to a frequency band.
 
