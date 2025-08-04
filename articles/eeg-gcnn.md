@@ -114,6 +114,25 @@ The following six frequency bands are used:
 
 As a result, each window yields a feature matrix $$H$$ of size $$N = 8 \times K = 6$$, where each row corresponds to a channel, and each column to a frequency band.
 
+Below are examples of alternative features that can be used instead of or in addition to PSD (as each channel might have multiple features extending the feature space):
+
+1. **Time-domain features:**
+   - **Mean** – average amplitude of the signal.
+   - **Variance** – reflects amplitude variability.
+   - **Skewness** – asymmetry of the signal distribution.
+   - **Kurtosis** – sharpness or peakedness of the signal distribution.
+
+2. **Hjorth Parameters** – describe the shape and temporal dynamics of the signal:
+   - **Activity** – signal variance (overall power).
+   - **Mobility** – estimate of average frequency (ratio of variances).
+   - **Complexity** – how the frequency content changes over time; deviation from pure sinusoidal behavior.
+
+3. **Entropy-based features:**
+   - **Shannon Entropy** – randomness or uncertainty in the signal’s amplitude distribution.
+   - **Spectral Entropy** – entropy of the power spectrum; measures how spread-out the frequency content is.
+
+4. **Differential Entropy** - logarithmic measure of signal power for continuous-valued data.
+
 ### Connectivity features
 
 
