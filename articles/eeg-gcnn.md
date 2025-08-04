@@ -114,6 +114,8 @@ The following six frequency bands are used:
 
 As a result, each window yields a feature matrix $$H$$ of size $$N = 8 \times K = 6$$, where each row corresponds to a channel, and each column to a frequency band.
 
+![EEG-GCNN Functional Features](articles/images/gcnn-functional.png)
+
 Below are examples of alternative features that can be used instead of or in addition to PSD (as each channel might have multiple features extending the feature space):
 
 1. **Time-domain features:**
@@ -135,10 +137,38 @@ Below are examples of alternative features that can be used instead of or in add
 
 ### Connectivity features
 
+The second part of the feature engineering process in the EEG-GCNN model involves computing features that describe **inter-channel relationships** for each time window.  
+From the graph perspective, these relationships are encoded in the **adjacency matrix $$A$$)**, as previously introduced.
+
+The authors propose to construct $$A$$ by averaging two separate adjacency matrices:
+
+$$
+A_{ij} = \frac{1}{2} \left( A_{ij}^{s} + A_{ij}^{f} \right)
+$$
+
+1. **Geodesic Distance-Based Adjacency**  
+   Reflects the **spatial proximity** between EEG electrodes on the scalp, calculated as the angle between electrode positions in 3D space:
+
+$$
+A_{ij}^{s} = \arccos \left( \frac{x_i x_j + y_i y_j + z_i z_j}{r^2} \right)
+$$
+
+where $$(x_i, y_i, z_i)$$ and $$(x_j, y_j, z_j)$$ are 3D coordinates of electrodes $$i$$ and $$j$$, and $$r$$ is the radius of the spherical head model.
+
+2. **Spectral Coherence-Based Adjacency**  
+   Measures the **functional connectivity** between EEG channels based on frequency-domain coherence of their signals:
+
+$$
+A_{ij}^{f} = \frac{ \left| E[S_{ij}] \right| }{ \sqrt{ E[S_{ii}] \cdot E[S_{jj}] } }
+$$
+
+Here, $$S_{ij}$$ represents the cross-spectral density between signals from electrodes $$i$$ and $$j$$, and $$E[\cdot]$$ denotes the expected value (typically estimated via averaging over frequency bands).
 
 ---
 
 ## Model
+
+![EEG-GCNN Model architecture](articles/images/gcnn-model.png)
 
 ### Graph convolution
 
