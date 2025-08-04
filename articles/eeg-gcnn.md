@@ -6,7 +6,7 @@
 ![Convolution?](articles/images/convolution_fun_definition.png)
 
 ## Introduction
-While studying state-of-the-art methods for EEG signal analysis, we encountered a wide range of machine learning models and feature extraction techniques — from statistical features derived from the time series of each channel (such as Power Spectral Density or Differential Entropy) and inter-channel relationships (e.g., Brain Network) to "black-box" approaches based on transformer-based architectures (such as EEGPT, LaBraM, and EEG-Conformer). However, a compromise between interpretability and architectural complexity has been lacking. A potential candidate to bridge this gap could be the Graph Convolutional Neural Network (GCNN) architecture, which is based on the concept of Graph Convolution presented by T.N. Kipf, M. Welling in 2016.
+While studying state-of-the-art methods for EEG signal analysis, we encountered a wide range of machine learning models and feature extraction techniques — from statistical features derived from the time series of each channel (such as Power Spectral Density or Differential Entropy) and inter-channel relationships (e.g., Brain Network) to "black-box" approaches based on transformer-based architectures (such as EEGPT, LaBraM, and EEG-Conformer). However, a compromise between interpretability and architectural complexity has been lacking. A potential candidate to bridge this gap could be the Graph Convolutional Neural Network (GCNN) architecture, which is based on the concept of Graph Convolution presented by T.N. Kipf, M. Welling in 2016. We will consider the model implemetation EEG-GCNN proposed by N. Wagh, Y. Varatharajah (2020).
 
 ---
 
@@ -58,7 +58,7 @@ $$
 To prepare the EEG data for GCNN input, a minimal and standardized preprocessing pipeline was applied designed to preserve the clinical realism and structural characteristics of the signals:
 
 1. **Selection of a common subset of bipolar montage electrodes (8 channels):**  
-   The following bipolar pairs were used:  
+   The following bipolar pairs were used by the authors:  
    - F7–F3, F8–F4  
    - T7–C3, T8–C4  
    - P7–P3, P8–P4  
@@ -99,7 +99,20 @@ The choice of this parameter is typically influenced by the following factors:
 
 
 ### Channels functional features
+For each time window, functional features are computed individually for each of the \( N \) EEG channels.
 
+In the original version, the authors use **Power Spectral Density (PSD)**, which estimates how the signal's power is distributed across different frequencies.
+
+The following six frequency bands are used:
+
+- **Delta** (1–4 Hz)  
+- **Theta** (4–7.5 Hz)  
+- **Alpha** (7.5–13 Hz)  
+- **Lower Beta** (13–16 Hz)  
+- **Higher Beta** (16–30 Hz)  
+- **Gamma** (30–40 Hz)  
+
+As a result, each window yields a feature matrix $$H$$ of size $$N = 8 \times K = 6$$, where each row corresponds to a channel, and each column to a frequency band.
 
 ### Connectivity features
 
@@ -124,6 +137,6 @@ The choice of this parameter is typically influenced by the following factors:
 > https://arxiv.org/abs/1609.02907
 - N. Wagh, Y. Varatharajah (2020)
 > https://proceedings.mlr.press/v136/wagh20a.html
-- Authors' github
+- EEG-GCNN github
 > https://github.com/neerajwagh/eeg-gcnn 
 
