@@ -91,11 +91,13 @@ The choice of this parameter is typically influenced by the following factors:
 2. GCNNs operate on features derived from **inter-channel connectivity**, which are more stable and meaningful over longer time windows.
 3. Longer windows also provide **better spectral resolution**, as defined by the formula:
 
-     $$\Delta f = \frac{1}{T}$$
+$$
+\Delta f = \frac{1}{T}
+$$
 
-     where $$\Delta f$$ is the frequency resolution, and $$T$$ is the window length in seconds.
+where $$\Delta f$$ is the frequency resolution, and $$T$$ is the window length in seconds.
 
-4. Shorter windows allow for **more training samples**, which can help with data efficiency and generalization in data-driven models.
+5. Shorter windows allow for **more training samples**, which can help with data efficiency and generalization in data-driven models.
 
 
 ### Channels functional features
