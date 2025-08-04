@@ -78,6 +78,26 @@ To prepare the EEG data for GCNN input, a minimal and standardized preprocessing
 > This choice was intentional by the authors, to better reflect real-world clinical conditions where manual preprocessing is often impractical or unavailable.  
 > Additionally, GCNNs are designed to extract robust spatial and functional patterns, and are capable of down-weighting localized artifact spikes in favor of more stable and distributed features.
 
+### Windowing the EEG Signal
+
+After preprocessing, the signal is segmented into windows of length *t*.  
+The authors chose a window length of *t* = 10 seconds.
+
+The choice of this parameter is typically influenced by the following factors:
+
+1. Analysis objective:
+   - If the signal contains fast events (e.g., artifacts, stimuli), and the goal is to make predictions related to those events, **shorter windows** (up to ~5 seconds) are generally preferred.
+   - If the goal is to capture **more stable patterns** (e.g., background brain activity, neurophysiological traits), **longer windows** (5–30 seconds) tend to be more reliable.
+2. GCNNs operate on features derived from **inter-channel connectivity**, which are more stable and meaningful over longer time windows.
+3. Longer windows also provide **better spectral resolution**, as defined by the formula:
+
+     $$\Delta f = \frac{1}{T}$$
+
+     where $$\Delta f$$ is the frequency resolution, and $$T$$ is the window length in seconds.
+
+4. Shorter windows allow for **more training samples**, which can help with data efficiency and generalization in data-driven models.
+
+
 ### Channels functional features
 
 
