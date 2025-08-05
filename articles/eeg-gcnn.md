@@ -186,9 +186,17 @@ Below are examples of alternative connectivity features to be used:
 
 ## Model
 
+Now that we have defined the **node feature matrix $$H$$** and the **connectivity (adjacency) matrix $$A$$**, we can move on to the model itself.  
+The overall architecture is shown below.
+
 ![EEG-GCNN Model architecture](articles/images/gcnn-model.png)
 
+The core of this architecture lies in the **Graph Convolution (GraphConv) layers**, which perform convolution operations over graph-structured data.  
+Let's take a closer look at this concept.
+
 ### Graph convolution
+
+
 
 
 ---
