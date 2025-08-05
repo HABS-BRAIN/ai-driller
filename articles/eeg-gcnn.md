@@ -224,7 +224,17 @@ Assume each node is described by **two features**. Below are the matrices $$A$$ 
 Based on the graph convolution formula, we can now illustrate — in a simplified way — how the features of **node 3** are updated in the next layer, (For simplicity, we omit the weight matrix and the non-linear activation function.)
 ![Feature update](articles/images/node-update.jpg)
 Thus, we can clearly see that at each layer, **nodes "exchange" information with their neighbors** and **update their feature representations** accordingly.
+>
+In previous explanation, we omitted the **weight matrix** and **non-linearity** for simplicity.  
+However, their role is essential for the model's learning capability:
 
+- The **weight matrix** $$W^{(l)}$$ allows the model to **learn which features and connections are more important**, and which are less relevant.  
+  This enables the network to model **real dependencies** in the data during training.
+
+- The **non-linearity** $$\sigma$$ (such as ReLU) is necessary, just like in many other machine learning models, to allow the network to learn **complex, non-linear relationships**.  
+  Without it, the entire model would collapse into a linear function, which is insufficient for modeling real-world data.
+
+### Predictions 
 
 The model makes predictions **for each individual window** of the EEG signal.  
 (In the original paper, the task is to predict whether the EEG segment belongs to a healthy or a diseased subject.)
@@ -232,6 +242,7 @@ The model makes predictions **for each individual window** of the EEG signal.
 To obtain **patient-level predictions**, a simple aggregation strategy can be applied:
 - For **classification**, majority voting across all windows.
 - For **regression**, averaging the predictions over all windows.
+
 
 ---
 
