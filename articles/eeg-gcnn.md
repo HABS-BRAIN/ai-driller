@@ -243,10 +243,32 @@ To obtain **patient-level predictions**, a simple aggregation strategy can be ap
 - For **classification**, majority voting across all windows.
 - For **regression**, averaging the predictions over all windows.
 
+### Performance
+Classification dataset - сombination of TUAB and MPI LEMON (data imbalance taken into account in performance metrics):
+- 203,616 diseased windows
+- 21,718 healthy windows
+  
+For evaluation of the model the authors propose the following scheme:
+
+![Image convolution](articles/images/gcnn-evaluation.jpg)
+
+To evaluate performance, the model was tested in two configurations:  
+- **Deep EEG-GCNN** (with more layers)  
+- **Shallow EEG-GCNN** (with fewer layers)  
+
+Both versions were compared against a fully connected neural network (**FCNN**) and **Random Forests**.  
+The results are presented in the table below:
+
+| **Model**            | **AUC**         | **Precision**    | **Recall**       | **F1**           | **Bal. Accuracy** |
+|----------------------|------------------|------------------|------------------|------------------|-------------------|
+| FCNN                 | 0.71 (0.08)      | 0.94 (0.02)      | 0.66 (0.11)      | 0.77 (0.08)      | 0.66 (0.07)       |
+| Random Forests       | 0.80 (0.01)      | 0.95 (0.01)      | 0.79 (0.08)      | 0.86 (0.05)      | 0.74 (0.02)       |
+| **Deep EEG-GCNN**    | **0.90 (0.04)**  | **0.99 (0.00)**  | 0.74 (0.08)      | 0.84 (0.06)      | **0.85 (0.04)**   |
+| **Shallow EEG-GCNN** | **0.90 (0.02)**  | **0.99 (0.01)**  | 0.72 (0.07)      | 0.83 (0.04)      | **0.83 (0.02)**   |
 
 ---
 
-## Alternatives
+## Discussions
 
 
 ---
