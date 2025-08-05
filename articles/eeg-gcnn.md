@@ -226,6 +226,12 @@ Based on the graph convolution formula, we can now illustrate — in a simplifie
 Thus, we can clearly see that at each layer, **nodes "exchange" information with their neighbors** and **update their feature representations** accordingly.
 
 
+The model makes predictions **for each individual window** of the EEG signal.  
+(In the original paper, the task is to predict whether the EEG segment belongs to a healthy or a diseased subject.)
+
+To obtain **patient-level predictions**, a simple aggregation strategy can be applied:
+- For **classification**, majority voting across all windows.
+- For **regression**, averaging the predictions over all windows.
 
 ---
 
