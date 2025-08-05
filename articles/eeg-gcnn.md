@@ -195,7 +195,35 @@ The core of this architecture lies in the **Graph Convolution (GraphConv) layers
 Let's take a closer look at this concept.
 
 ### Graph convolution
+First, let’s recall the core idea behind convolution in image processing:  
+For each pixel, a fixed-size window (e.g., 3×3) is taken, and a **convolution operation** is applied using a predefined filter.  
+This results in a new value for the **central pixel** in the output feature map.
 
+![Image convolution](articles/images/pixel-convolution.jpg)
+
+Unlike classical convolution — which applies a fixed filter over a local window to produce a feature map —  
+**graph convolution** updates each node’s features by **aggregating information from its neighbors** at every layer.
+
+The core operation of graph convolution (in the spectral or message-passing style) is given by the following formula:
+
+$$
+H^{(l+1)} = \sigma\left( \hat{D}^{-1/2} \hat{A} \hat{D}^{-1/2} H^{(l)} W^{(l)} \right)
+$$
+
+where:
+- $$H^{(l)}$$ — node features at layer $$l$$,
+- $$\hat{A} = A + I$$ — adjacency matrix with self-loops added,
+- $$\hat{D}$$— degree matrix of $$\hat{A}$$,
+- $$W^{(l)}$$ — learnable weight matrix at layer $$l$$,
+- $$\sigma$$ — non-linearity (e.g., ReLU).
+
+>To simplify, consider a graph of **three nodes**, all connected with each other.  
+Assume each node is described by **two features**. Below are the matrices $$A$$ and $$H$$. Using the formulas from the **graph theory section**, we can also write the convolution operation using the **normalized adjacency matrix**.
+![Graph](articles/images/graph-with-values.jpg)
+![Graph parameters](articles/images/graph-equations.jpg)
+Based on the graph convolution formula, we can now illustrate — in a simplified way — how the features of **node 3** are updated in the next layer, (For simplicity, we omit the weight matrix and the non-linear activation function.)
+![Feature update](articles/images/node-update.jpg)
+Thus, we can clearly see that at each layer, **nodes "exchange" information with their neighbors** and **update their feature representations** accordingly.
 
 
 
