@@ -270,16 +270,13 @@ The results are presented in the table below:
 
 ## Conclusion
 
-Modeling EEG signals as graphs and applying graph convolution mechanisms has proven to be an effective approach.  
-It also offers **high flexibility and interpretability** due to the ability to vary both **functional** and **connectivity-based features**, making the architecture easily adaptable to a wide range of EEG-related tasks, such as **emotion detection** or **neurophysiological factor classification**.
+Modeling EEG signals as graphs and applying graph convolution mechanisms has proven to be an effective approach which is confirmed by its **significant performance advantage** over fully connected neural networks (FCNN) and Random Forests in the task of classifying healthy vs. diseased subjects.
 
-The model’s effectiveness is confirmed by its **significant performance advantage** over fully connected neural networks (FCNN) and Random Forests in the task of classifying healthy vs. diseased subjects.
+The model also offers **high flexibility and interpretability** due to the ability to vary both **functional** and **connectivity-based features**, making the architecture easily adaptable to a wide range of EEG-related tasks, such as **emotion detection** or **neurophysiological factor classification**.
 
-However, the model has some limitations:
+However, the model has some limitation:
 
-1. **No artifact removal** was applied in the original version, which may negatively affect predictions — especially in low-channel or noisy EEG recordings — despite GCNN's theoretical robustness to such artifacts.
-
-2. **A fixed, pre-defined adjacency matrix** is used at each graph convolution layer.  
+**A fixed, pre-defined adjacency matrix** is used at each graph convolution layer.  
    This limits the model’s ability to account for subject-specific variations in connectivity or signal features.
 
 ---
@@ -289,7 +286,6 @@ However, the model has some limitations:
 - Explore **dynamic graphs**, where adjacency matrices vary over time or across subjects.
 - Integrate **attention mechanisms** to learn edge weights directly during training.
 - Combine GCNNs with **temporal models** (e.g., Transformers) to capture dynamics across windows.
-
 
 ---
 
