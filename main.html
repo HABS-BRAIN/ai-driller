@@ -26,15 +26,6 @@
     mermaid.initialize({ startOnLoad: true });
   </script>
 
-  <script>
-        const correctPassword = "antonino-forever";
-        const userPassword = prompt("Enter password to access this page:");
-        
-        if (userPassword !== correctPassword) {
-            document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
-            throw new Error("Access denied");
-        }
-  </script>
 
   <!-- Your JS -->
   <script src="script.js"></script>
