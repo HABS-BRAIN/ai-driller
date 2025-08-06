@@ -295,10 +295,15 @@ However, the model has some limitations:
 
 ## References
 
-- T.N. Kipf, M. Welling (2016)
-> https://arxiv.org/abs/1609.02907
-- N. Wagh, Y. Varatharajah (2020)
-> https://proceedings.mlr.press/v136/wagh20a.html
-- EEG-GCNN github
-> https://github.com/neerajwagh/eeg-gcnn 
+Kipf, T. N., & Welling, M. (2016). *Semi-supervised classification with graph convolutional networks*. arXiv preprint arXiv:1609.02907.  
+https://arxiv.org/abs/1609.02907
+
+Wagh, N., & Varatharajah, Y. (2020). *EEG-GCNN: An EEG-based graph convolutional neural network for classification of brain states*. In *Proceedings of the 3rd International Conference on Machine Learning and Data Engineering (ICMLDE 2020)*.  
+https://proceedings.mlr.press/v136/wagh20a.html
+
+Wagh, N. (2020). *EEG-GCNN (Code repository)*. GitHub.  
+https://github.com/neerajwagh/eeg-gcnn
+
+Bronstein, M. M., Bruna, J., Cohen, T., & Velickovic, P. (2021). *Understanding Graph Neural Networks*. Distill.  
+https://distill.pub/2021/understanding-gnns/
 
