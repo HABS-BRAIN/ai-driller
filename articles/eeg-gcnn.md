@@ -199,7 +199,7 @@ First, let’s recall the core idea behind convolution in image processing:
 For each pixel, a fixed-size window (e.g., 3×3) is taken, and a **convolution operation** is applied using a predefined filter.  
 This results in a new value for the **central pixel** in the output feature map.
 
-![Image convolution](articles/images/pixel-convolution.jpg)
+![Image convolution](articles/images/pixel-convolution.png)
 
 Unlike classical convolution — which applies a fixed filter over a local window to produce a feature map —  
 **graph convolution** updates each node’s features by **aggregating information from its neighbors** at every layer.
@@ -250,7 +250,7 @@ Classification dataset - сombination of TUAB and MPI LEMON (data imbalance take
   
 For evaluation of the model, the authors propose the following scheme:
 
-![Image convolution](articles/images/gcnn-evaluation.jpg)
+![Image convolution](articles/images/gcnn-evaluation.png)
 
 To evaluate performance, the model was tested in two configurations:  
 - **Deep EEG-GCNN** (with more layers)  
