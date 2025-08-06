@@ -231,7 +231,7 @@ However, their role is essential for the model's learning capability:
 - The **weight matrix** $$W^{(l)}$$ allows the model to **learn which features and connections are more important**, and which are less relevant.  
   This enables the network to model **real dependencies** in the data during training.
 
-- The **non-linearity** $$\sigma$$ (such as ReLU) is necessary, just like in many other machine learning models, to allow the network to learn **complex, non-linear relationships**.  
+- The **non-linearity** ReLu function $$\sigma(x) = max(0, x)$$ is necessary, just like in many other machine learning models, to allow the network to learn **complex, non-linear relationships**.  
   Without it, the entire model would collapse into a linear function, which is insufficient for modeling real-world data.
 
 ### Predictions 
