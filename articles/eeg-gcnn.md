@@ -36,7 +36,7 @@ $$
 \hat{A} = A + I
 $$
 
-From the adjacency matrix *A* we can define *defgree matrix D*, a diagonal matrix where each entry $$D_{ij}=d_{i}$$ corresponds to the degree of node $$v_{i}$$ i.e., the number of edges connected to it.
+From the adjacency matrix *A* we can define *degree matrix D*, a diagonal matrix where each entry $$D_{ij}=d_{i}$$ corresponds to the degree of node $$v_{i}$$ i.e., the number of edges connected to it.
 This degree matrix is often used to normalize the adjacency matrix.
 Normalization allows the adjacency matrix to encode relative information about a node’s connections to its neighbors and prevents rows from dominating simply because the corresponding node has more connections:
 
@@ -58,7 +58,7 @@ $$
 To prepare the EEG data for GCNN input, a minimal and standardized preprocessing pipeline was applied designed to preserve the clinical realism and structural characteristics of the signals:
 
 1. **Selection of a common subset of bipolar montage electrodes (8 channels):**  
-   The following bipolar pairs were used by the authors:  
+   The authors used the following bipolar pairs:  
    - F7–F3, F8–F4  
    - T7–C3, T8–C4  
    - P7–P3, P8–P4  
@@ -83,7 +83,7 @@ To prepare the EEG data for GCNN input, a minimal and standardized preprocessing
 After preprocessing, the signal is segmented into windows of length *t*.  
 The authors chose a window length of *t* = 10 seconds.
 
-The choice of this parameter is typically influenced by the following factors:
+The following factors typically influence the choice of this parameter:
 
 1. Analysis objective:
    - If the signal contains fast events (e.g., artifacts, stimuli), and the goal is to make predictions related to those events, **shorter windows** (up to ~5 seconds) are generally preferred.
@@ -217,7 +217,7 @@ where:
 - $$W^{(l)}$$ — learnable weight matrix at layer $$l$$,
 - $$\sigma$$ — non-linearity (e.g., ReLU).
 
->To simplify, consider a graph of **three nodes**, all connected with each other.  
+> To simplify, consider a graph of **three nodes**, all connected with each other.  
 Assume each node is described by **two features**. Below are the matrices $$A$$ and $$H$$. Using the formulas from the **graph theory section**, we can also write the convolution operation using the **normalized adjacency matrix**.
 ![Graph](articles/images/graph-with-values.jpg)
 ![Graph parameters](articles/images/graph-equations.jpg)
@@ -248,7 +248,7 @@ Classification dataset - сombination of TUAB and MPI LEMON (data imbalance take
 - 203,616 diseased windows
 - 21,718 healthy windows
   
-For evaluation of the model the authors propose the following scheme:
+For evaluation of the model, the authors propose the following scheme:
 
 ![Image convolution](articles/images/gcnn-evaluation.jpg)
 
@@ -271,7 +271,7 @@ The results are presented in the table below:
 ## Conclusion
 
 Modeling EEG signals as graphs and applying graph convolution mechanisms has proven to be an effective approach.  
-It also offers **high flexibility and interpretability** due to the ability to vary both **functional** and **connectivity-based features**, making the architecture easily adaptable to a wide range of EEG-related tasks — such as **emotion detection** or **neurophysiological factor classification**.
+It also offers **high flexibility and interpretability** due to the ability to vary both **functional** and **connectivity-based features**, making the architecture easily adaptable to a wide range of EEG-related tasks, such as **emotion detection** or **neurophysiological factor classification**.
 
 The model’s effectiveness is confirmed by its **significant performance advantage** over fully connected neural networks (FCNN) and Random Forests in the task of classifying healthy vs. diseased subjects.
 
